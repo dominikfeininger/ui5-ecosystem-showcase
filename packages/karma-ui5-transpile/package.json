@@ -1,7 +1,7 @@
 {
   "name": "karma-ui5-transpile",
-  "version": "3.3.1",
-  "description": "",
+  "version": "3.6.3",
+  "description": "Preprocessor transpiles code of UI5 projects",
   "author": "Peter Muessig",
   "license": "Apache-2.0",
   "homepage": "https://github.com/ui5-community/ui5-ecosystem-showcase/tree/main/packages/karma-ui5-transpile#readme",
@@ -25,11 +25,11 @@
     "sapui5"
   ],
   "dependencies": {
-    "babel-plugin-istanbul": "^6.1.1",
-    "js-yaml": "^4.1.0"
+    "babel-plugin-istanbul": "^7.0.1",
+    "js-yaml": "^4.1.1"
   },
   "devDependencies": {
-    "karma": "^6.4.2",
+    "karma": "^6.4.4",
     "ui5-tooling-transpile": "workspace:^"
   },
   "peerDependencies": {

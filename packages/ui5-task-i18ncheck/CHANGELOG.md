@@ -3,6 +3,101 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.3.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-i18ncheck@3.2.4...ui5-task-i18ncheck@3.3.0) (2026-03-12)
+
+
+### Features
+
+* update dependencies ([#1326](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1326)) ([6f16575](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/6f16575680b0c526261b84f83b22743806c8509b))
+
+
+
+
+
+## [3.2.4](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-i18ncheck@3.2.3...ui5-task-i18ncheck@3.2.4) (2026-01-15)
+
+**Note:** Version bump only for package ui5-task-i18ncheck
+
+
+
+
+
+## [3.2.3](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-i18ncheck@3.2.2...ui5-task-i18ncheck@3.2.3) (2025-09-17)
+
+**Note:** Version bump only for package ui5-task-i18ncheck
+
+
+
+
+
+## [3.2.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-i18ncheck@3.2.1...ui5-task-i18ncheck@3.2.2) (2025-09-15)
+
+**Note:** Version bump only for package ui5-task-i18ncheck
+
+
+
+
+
+## [3.2.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-i18ncheck@3.2.0...ui5-task-i18ncheck@3.2.1) (2025-03-19)
+
+**Note:** Version bump only for package ui5-task-i18ncheck
+
+
+
+
+
+# [3.2.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-i18ncheck@3.1.2...ui5-task-i18ncheck@3.2.0) (2025-02-06)
+
+
+### Features
+
+* general dependencies update ([#1162](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1162)) ([5375d76](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/5375d76496741433330d76ce59a89b39f7ad8a69))
+
+
+
+
+
+## [3.1.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-i18ncheck@3.1.1...ui5-task-i18ncheck@3.1.2) (2025-01-06)
+
+
+### Bug Fixes
+
+* **ui5-task-i18ncheck:** fix mime type issue for DOMParser creation ([#1142](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1142)) ([c295ef2](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/c295ef2ac6f0af9983519b243e6b0fcd5e04e207)), closes [#1141](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1141)
+
+
+
+
+
+## [3.1.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-i18ncheck@3.1.0...ui5-task-i18ncheck@3.1.1) (2024-11-01)
+
+
+### Bug Fixes
+
+* update dependencies ([#1114](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1114)) ([d7672f2](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/d7672f2cd10f8a5de1da3070050ab98810e0fcf8))
+
+
+
+
+
+# [3.1.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-i18ncheck@3.0.2...ui5-task-i18ncheck@3.1.0) (2024-09-06)
+
+
+### Features
+
+* enhanced v4 compat + update dependencies ([#1070](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1070)) ([2d7ed16](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/2d7ed1623249febd32ecabdd2b47698f1cd968d5))
+
+
+
+
+
+## [3.0.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-i18ncheck@3.0.1...ui5-task-i18ncheck@3.0.2) (2024-02-18)
+
+**Note:** Version bump only for package ui5-task-i18ncheck
+
+
+
+
+
 ## [3.0.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-i18ncheck@3.0.0...ui5-task-i18ncheck@3.0.1) (2023-10-14)
 
 **Note:** Version bump only for package ui5-task-i18ncheck

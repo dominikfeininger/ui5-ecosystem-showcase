@@ -1,15 +1,15 @@
 # UI5 task for zipping all project resources
 
-> :wave: This is a **community project** and there is no official support for this package! Feel free to use it, open issues, contribute, and help answering questions.
+> :wave: This is an **open‑source, community‑driven project**, developed and actively monitored by members of the UI5 community. You are welcome to use it, report issues, contribute enhancements, and support others in the community.
 
 Task for [ui5-builder](https://github.com/SAP/ui5-builder), enabling zipping.
 
 ## Prerequisites
 
-- Requires at least [`@ui5/cli@3.0.0`](https://sap.github.io/ui5-tooling/v3/pages/CLI/) (to support [`specVersion: "3.0"`](https://sap.github.io/ui5-tooling/pages/Configuration/#specification-version-30))
+- Requires at least [`@ui5/cli@3.0.0`](https://ui5.github.io/cli/v3/pages/CLI/) (to support [`specVersion: "3.0"`](https://ui5.github.io/cli/pages/Configuration/#specification-version-30))
 
-> :warning: **UI5 Tooling Compatibility**
-> All releases of this tooling extension using the major version `3` require UI5 Tooling V3. Any previous releases below major version `3` (if available) also support older versions of the UI5 Tooling. But the usage of the latest UI5 Tooling is strongly recommended!
+> :warning: **UI5 CLI Compatibility**
+> All releases of this UI5 CLI extension using the major version `3` require UI5 CLI V3. Any previous releases below major version `3` (if available) also support older versions of the UI5 CLI. But the usage of the latest UI5 CLI is strongly recommended!
 
 ## Install
 
@@ -30,10 +30,13 @@ Default value: `<app-id.zip>`
 List of files to be included in the ZIP archive relative to the project root or Map of of files to be included in the ZIP archive relative to the project root and target path in the ZIP archive.
 
 - onlyZip: `true|false`
-Set this to `true` if you also want to generate the unzipped resources in the `dist` folder. Otherwise, it will only create the zipped archive.
+Set this to `true` to omit the resources contained in the ZIP from the build result (typically in the `dist` folder). By default, the build result contains all resources and the ZIP.
 
 - includeDependencies: `true|false` or `String<Array>`
 Set this to `true` if you also want to include the dependencies (UI5 libraries) in the zip archive. Otherwise, it will only include the workspace files (controller, views, etc). In order to select only specific dependencies to be included in the final zip you just need to specify the list of dependencies (value of `ui5.yaml`: `metadata > name`).
+
+- relativePaths `true|false`
+Set this to `true` if you want to turn absolute data source paths in the `manifest.json` into relative paths, e.g. `"uri": "/backend/"` will be turned into `"uri": "backend/"` upon ZIP creation. This is useful when deploying the ZIP to the HTML Application Repository on SAP BTP, Cloud Foundry environment to later consume it in SAP Build Work Zone, standard edition, which only supports relative paths.
 
 **NOTE:** Starting with release `3.0.5`, the `ui5-task-zipper` includes the generated workspace resources such as the self-contained bundles (`sap-ui-custom.*` files). To do so, it is important that the `ui5-task-zipper` is running as last task in the build.
 

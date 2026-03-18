@@ -1,5 +1,6 @@
 /* eslint-disable jsdoc/check-param-names */
-const path = require("path");
+const { extname } = require("path");
+const { readFileSync } = require("fs");
 
 /**
  * Custom middleware to transpile resources to JavaScript modules.
@@ -18,7 +19,7 @@ const path = require("path");
  * @param {object} parameters.middlewareUtil Specification version dependent interface to a
  *                                        [MiddlewareUtil]{@link module:@ui5/server.middleware.MiddlewareUtil} instance
  * @param {object} parameters.options Options
- * @param {string} [parameters.options.configuration] Custom server middleware configuration if given in ui5.yaml
+ * @param {object} [parameters.options.configuration] Custom server middleware configuration if given in ui5.yaml
  * @returns {Function} Middleware function to use
  */
 module.exports = async function ({ log, resources, options, middlewareUtil }) {
@@ -57,7 +58,7 @@ module.exports = async function ({ log, resources, options, middlewareUtil }) {
 						return !isFrameworkProject(reader?._readers?.[0]?._project);
 					})
 				]
-		  })
+			})
 		: resources.rootProject;
 
 	const outputCache = {};
@@ -123,8 +124,9 @@ module.exports = async function ({ log, resources, options, middlewareUtil }) {
 				config.debug && log.info(`Starting "@ui5/ts-interface-generator" in watch mode...`);
 				main({
 					watch: true,
-					logLevel: config.debug ? log.constructor.getLevel() : "error",
-					config: path.join(cwd, "tsconfig.json")
+					loglevel: config.debug ? log.constructor.getLevel() : "error",
+					config: config.tsConfigFile,
+					jsdoc: config.generateTsInterfacesJsDoc
 				});
 			} catch (e) {
 				log.error(e);
@@ -137,6 +139,12 @@ module.exports = async function ({ log, resources, options, middlewareUtil }) {
 		}
 	}
 
+	// determine the NPM package name from a given source
+	const getNpmPackageName = (source) => {
+		const npmPackageScopeRegEx = /^((?:(@[^/]+)\/)?([^/]+))(?:\/(.*))?$/;
+		return npmPackageScopeRegEx.exec(source)?.[1];
+	};
+
 	return async (req, res, next) => {
 		const pathname = req.url?.match("^[^?]*")[0];
 		if (pathname.endsWith(".js") && shouldHandlePath(pathname, config.excludes, config.includes)) {
@@ -146,7 +154,61 @@ module.exports = async function ({ log, resources, options, middlewareUtil }) {
 			const matchedResources = await reader.byGlob(pathWithFilePattern);
 			config.debug && log.verbose(`  --> Found ${matchedResources?.length || 0} match(es)!`);
 
-			const resource = matchedResources?.[0];
+			let resource = matchedResources?.[0];
+
+			// SPECIAL CASE: usage of npm packages to transport UI5 resources (using marker file)
+			// if the resource is not found, we try to resolve it as a node module as some
+			// resources could be part of UI5 module projects (TODO: check for UI5 modules only)
+			// this scenario is only relevant for the middleware as the build process will
+			// already transpile the resources in the module project
+			//
+			// -----------------------------------------------------------
+			// /!\ TODO: WE NEED TO DO THIS ALSO FOR THE BUILD PROCESS /!\
+			// -----------------------------------------------------------
+			if (!resource) {
+				try {
+					const match = new RegExp(`^/resources/(.*)\\.js$`).exec(pathname);
+					if (match) {
+						// determine the npm package name from the path
+						const npmPackage = getNpmPackageName(match[1]);
+						// check for the existence of the marker file which indicates that the
+						// package is a UI5 module and we can lookup files there - in case of
+						// not being a UI5 module an error will be thrown and we will ignore it
+						require.resolve(`${npmPackage}/.ui5pkg`);
+						// real path for the node module
+						let realpath;
+						// TODO: think about getting rid of the hard-coded file extension mappings
+						//       and derive the file extensions from the provided file patterns
+						try {
+							realpath = require.resolve(`${match[1]}.tsx`);
+						} catch {
+							/* noop */
+						}
+						try {
+							realpath = realpath || require.resolve(`${match[1]}.ts`);
+						} catch {
+							/* noop */
+						}
+						try {
+							realpath = realpath || require.resolve(`${match[1]}.jsx`);
+						} catch {
+							/* noop */
+						}
+						try {
+							realpath = realpath || require.resolve(`${match[1]}.js`);
+						} catch {
+							/* noop */
+						}
+						resource = middlewareUtil.resourceFactory.createResource({
+							path: pathname.replace(/\.js$/, extname(realpath)),
+							string: readFileSync(realpath, { encoding: "utf-8" })
+						});
+					}
+				} catch {
+					/* ignore error */
+				}
+			}
+
 			if (resource) {
 				// transpile the resource (+ error handling)
 				try {

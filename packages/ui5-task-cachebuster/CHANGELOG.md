@@ -3,6 +3,122 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-cachebuster@3.3.0...ui5-task-cachebuster@3.3.1) (2026-01-15)
+
+**Note:** Version bump only for package ui5-task-cachebuster
+
+
+
+
+
+# [3.3.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-cachebuster@3.2.3...ui5-task-cachebuster@3.3.0) (2025-12-02)
+
+
+### Features
+
+* update depedency versions ([#1302](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1302)) ([0a22ebd](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/0a22ebdde9bcbce570eb7ccdda8539e106dc44e1))
+
+
+
+
+
+## [3.2.3](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-cachebuster@3.2.2...ui5-task-cachebuster@3.2.3) (2025-09-17)
+
+**Note:** Version bump only for package ui5-task-cachebuster
+
+
+
+
+
+## [3.2.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-cachebuster@3.2.1...ui5-task-cachebuster@3.2.2) (2025-09-15)
+
+**Note:** Version bump only for package ui5-task-cachebuster
+
+
+
+
+
+## [3.2.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-cachebuster@3.2.0...ui5-task-cachebuster@3.2.1) (2025-07-06)
+
+
+### Bug Fixes
+
+* update project dependencies ([#1235](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1235)) ([456fb61](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/456fb6143125e3334acafb129e219499b2a1c882))
+
+
+
+
+
+# [3.2.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-cachebuster@3.1.1...ui5-task-cachebuster@3.2.0) (2025-02-06)
+
+
+### Bug Fixes
+
+* **ui5-task-cachebuster:** support new resource-roots config option ([#1166](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1166)) ([54215b5](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/54215b5cdb218e7df608eee37723ca7ca3b4998e)), closes [#1165](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1165)
+
+
+### Features
+
+* general dependencies update ([#1162](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1162)) ([5375d76](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/5375d76496741433330d76ce59a89b39f7ad8a69))
+
+
+
+
+
+## [3.1.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-cachebuster@3.1.0...ui5-task-cachebuster@3.1.1) (2024-11-01)
+
+
+### Bug Fixes
+
+* update dependencies ([#1114](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1114)) ([d7672f2](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/d7672f2cd10f8a5de1da3070050ab98810e0fcf8))
+
+
+
+
+
+# [3.1.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-cachebuster@3.0.9...ui5-task-cachebuster@3.1.0) (2024-09-06)
+
+
+### Features
+
+* enhanced v4 compat + update dependencies ([#1070](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1070)) ([2d7ed16](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/2d7ed1623249febd32ecabdd2b47698f1cd968d5))
+
+
+
+
+
+## [3.0.9](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-cachebuster@3.0.8...ui5-task-cachebuster@3.0.9) (2024-07-22)
+
+**Note:** Version bump only for package ui5-task-cachebuster
+
+
+
+
+
+## [3.0.8](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-cachebuster@3.0.7...ui5-task-cachebuster@3.0.8) (2024-05-15)
+
+**Note:** Version bump only for package ui5-task-cachebuster
+
+
+
+
+
+## [3.0.7](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-cachebuster@3.0.6...ui5-task-cachebuster@3.0.7) (2024-02-18)
+
+**Note:** Version bump only for package ui5-task-cachebuster
+
+
+
+
+
+## [3.0.6](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-cachebuster@3.0.5...ui5-task-cachebuster@3.0.6) (2024-01-17)
+
+**Note:** Version bump only for package ui5-task-cachebuster
+
+
+
+
+
 ## [3.0.5](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-cachebuster@3.0.4...ui5-task-cachebuster@3.0.5) (2023-12-10)
 
 **Note:** Version bump only for package ui5-task-cachebuster

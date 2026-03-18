@@ -4,7 +4,7 @@ const yazl = require("yazl");
 /**
  * Determines the project name from the given resource collection.
  *
- * <b>ATTENTION: this is a hack to be compatible with UI5 tooling 2.x and 3.x</b>
+ * <b>ATTENTION: this is a hack to be compatible with UI5 CLI 2.x and 3.x</b>
  *
  * @param {module:@ui5/fs.AbstractReader} collection Reader or Collection to read resources of the root project and its dependencies
  * @returns {string} project name
@@ -18,7 +18,24 @@ const determineProjectName = (collection) => {
 		}
 	}
 	// /* V2 */ reader?._project?.metadata?.name || /* V3 */ reader?._readers?.[0]?._project?._name
-	return projectName || collection._project?._name /* UI5 tooling 3.x */ || collection._project?.metadata?.name; /* UI5 tooling 2.x */
+	return projectName || collection._project?._name /* UI5 CLI 3.x */ || collection._project?.metadata?.name; /* UI5 CLI 2.x */
+};
+
+/**
+ * Turn absolute data source paths in the into relative paths (for manifest.json and Component-preload.js)
+ *
+ * @param {object} content of the manifest
+ * returns {object} modified content of the manifest
+ */
+const absoluteToRelativePaths = (manifest) => {
+	if (manifest["sap.app"]["dataSources"]) {
+		for (const [dataSourceName, dataSource] of Object.entries(manifest["sap.app"]["dataSources"])) {
+			if (dataSource.uri?.substring(0, 1) === "/") {
+				manifest["sap.app"]["dataSources"][dataSourceName].uri = dataSource.uri.substring(1);
+			}
+		}
+	}
+	return manifest;
 };
 
 /**
@@ -31,8 +48,9 @@ const determineProjectName = (collection) => {
  * @param {object} parameters.options Options
  * @param {string} parameters.options.projectName Project name
  * @param {string} parameters.options.projectNamespace Project namespace
- * @param {string} [parameters.options.archiveName] ZIP archive name (defaults to project namespace)
- * @param {string} [parameters.options.additionalFiles] List of additional files to be included
+ * @param {object} [parameters.options.configuration] Task configuration if given in ui5.yaml
+ * @param {string} [parameters.options.configuration.archiveName] ZIP archive name (defaults to project namespace)
+ * @param {string} [parameters.options.configuration.additionalFiles] List of additional files to be included
  * @param {object} parameters.taskUtil the task utilities
  * @returns {Promise<undefined>} Promise resolving with undefined once data has been written
  */
@@ -41,6 +59,9 @@ module.exports = async function ({ log, workspace, dependencies, options, taskUt
 
 	// debug mode?
 	const isDebug = options?.configuration?.debug;
+
+	// turn absolute paths into relative paths?
+	const relativePaths = options?.configuration?.relativePaths;
 
 	// determine the name of the ZIP archive (either from config or from project namespace)
 	const defaultName = options && options.configuration && options.configuration.archiveName;
@@ -58,9 +79,9 @@ module.exports = async function ({ log, workspace, dependencies, options, taskUt
 						: dependencies._readers.filter((reader) => {
 								const projectName = determineProjectName(reader);
 								return includeDependencies.indexOf(projectName) !== -1;
-						  }),
+							}),
 					name: "Filtered reader collection of ui5-task-zipper",
-			  });
+				});
 
 	// retrieve the resource path prefix (to get all application resources)
 	const prefixPath = `/resources/${options.projectNamespace}/`;
@@ -79,20 +100,43 @@ module.exports = async function ({ log, workspace, dependencies, options, taskUt
 	const zip = new yazl.ZipFile();
 	try {
 		// include the application related resources
+		const zipEntries = [];
 		await Promise.all(
 			allResources.map((resource) => {
-				if (taskUtil.getTag(resource, taskUtil.STANDARD_TAGS.OmitFromBuildResult)) {
+				if (taskUtil.getTag(resource, OmitFromBuildResult)) {
 					// resource should not be part of the build result -> no need to include it in the zip
 					return;
 				}
 				if (onlyZip) {
 					taskUtil.setTag(resource, OmitFromBuildResult, true);
 				}
-				return resource.getBuffer().then((buffer) => {
-					isDebug && log.info(`Adding ${resource.getPath()} to archive.`);
-					zip.addBuffer(buffer, resource.getPath().replace(prefixPath, "").replace(/^\//, "")); // Replace first forward slash at the start of the path
-				});
-			})
+				const resourcePath = resource.getPath().replace(prefixPath, "").replace(/^\//, "");
+				if (!zipEntries.includes(resourcePath)) {
+					zipEntries.push(resourcePath);
+					return resource.getBuffer().then((buffer) => {
+						isDebug && log.info(`Adding ${resource.getPath()} to archive.`);
+						if (relativePaths && resourcePath === "manifest.json") {
+							let manifest = JSON.parse(buffer.toString("utf-8"));
+							manifest = absoluteToRelativePaths(manifest);
+							zip.addBuffer(Buffer.from(JSON.stringify(manifest, null, 4), "utf-8"), "manifest.json");
+						} else if (relativePaths && resourcePath === "Component-preload.js") {
+							const oldPreload = buffer.toString("utf-8");
+							const manifestStart = oldPreload.indexOf("manifest.json\":'{");
+							const manifestEnd = oldPreload.indexOf("}'", manifestStart);
+							const oldManifest = oldPreload.substring(manifestStart + 16, manifestEnd + 1);
+							const oldManifestNoEscapedSingleQuotes = oldManifest.replace(/\\'/g, "REPLACE_WITH_ESCAPED_SINGLE_QUOTE");
+							const newManifest = absoluteToRelativePaths(JSON.parse(oldManifestNoEscapedSingleQuotes));
+							const newManifestEscapedSingleQuotes = JSON.stringify(newManifest).replace(/REPLACE_WITH_ESCAPED_SINGLE_QUOTE/g, "\\'");
+							const newPreload = oldPreload.replace(oldManifest, newManifestEscapedSingleQuotes);
+							zip.addBuffer(Buffer.from(newPreload, "utf-8"), "Component-preload.js");
+						} else {
+							zip.addBuffer(buffer, resourcePath); // Replace first forward slash at the start of the path
+						}
+					});
+				} else {
+					log.warn(`Duplicate resource path found: ${resourcePath}! Skipping...`);
+				}
+			}),
 		);
 		// include the additional files from the project
 		const additionalFiles = options?.configuration?.additionalFiles;
@@ -136,7 +180,7 @@ module.exports = async function ({ log, workspace, dependencies, options, taskUt
  * @returns {Promise<Set>}
  *      Promise resolving with a Set containing all dependencies
  *      that should be made available to the task.
- *      UI5 Tooling will ensure that those dependencies have been
+ *      UI5 CLI will ensure that those dependencies have been
  *      built before executing the task.
  */
 module.exports.determineRequiredDependencies = async function ({ availableDependencies, options }) {

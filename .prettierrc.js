@@ -6,7 +6,7 @@ module.exports = {
 			return packageName != "prettier" && packageName.includes("prettier");
 		})
 		.flatMap((packageName) => {
-			return [require(packageName)];
+			return [require.resolve(packageName)];
 		}),
 	singleQuote: false,
 	printWidth: 200,
@@ -21,6 +21,12 @@ module.exports = {
 				tabWidth: 2,
 				keySeparator: "=",
 				xmlWhitespaceSensitivity: "ignore",
+			},
+		},
+		{
+			files: ["*.ts", "*.tsx"],
+			options: {
+				parser: "typescript",
 			},
 		},
 	],

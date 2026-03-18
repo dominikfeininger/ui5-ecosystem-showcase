@@ -1,0 +1,44 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [0.8.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsmodule@0.7.0...ui5-tsmodule@0.8.0) (2026-03-12)
+
+
+### Features
+
+* update dependencies ([#1326](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1326)) ([6f16575](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/6f16575680b0c526261b84f83b22743806c8509b))
+
+
+
+
+
+# [0.7.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsmodule@0.6.1...ui5-tsmodule@0.7.0) (2025-12-02)
+
+
+### Features
+
+* update depedency versions ([#1302](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1302)) ([0a22ebd](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/0a22ebdde9bcbce570eb7ccdda8539e106dc44e1))
+
+
+
+
+
+## [0.6.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsmodule@0.6.0...ui5-tsmodule@0.6.1) (2025-07-06)
+
+
+### Bug Fixes
+
+* update project dependencies ([#1235](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1235)) ([456fb61](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/456fb6143125e3334acafb129e219499b2a1c882))
+
+
+
+
+
+# 0.6.0 (2025-05-14)
+
+
+### Features
+
+* **ui5-tooling-modules:** jsdoc generation support for seamless web components ([#1210](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1210)) ([9379843](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/9379843cebca49d20129c68da08b5046bf84b236))

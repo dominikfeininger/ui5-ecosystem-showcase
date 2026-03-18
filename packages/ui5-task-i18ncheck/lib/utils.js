@@ -42,7 +42,7 @@ let ELEMENT_NODE = (NodeType.ELEMENT_NODE = 1);
 let readI18nUsageFromXML = (file_content, file_path) => {
 	// return new Promise<any[]>((resolve, reject) => {
 
-	let doc = new xmldom.DOMParser().parseFromString(file_content);
+	let doc = new xmldom.DOMParser().parseFromString(file_content, xmldom.MIME_TYPE.XML_APPLICATION);
 	let docEl = doc.documentElement;
 	let arr = [];
 	getI18nUsageInXMLRecursive(arr, file_path, docEl);
@@ -54,6 +54,7 @@ let readI18nUsageFromXML = (file_content, file_path) => {
 let getUsageFromXMLAttribute = (file, attributeString) => {
 	let regex = RegExp("({i18n>[^}]*})", "g");
 	//let str1 = 'table {i18n>test}football, {i18n>test2}foosball';
+	/* eslint-disable-next-line no-useless-assignment */
 	let arrayTemp = [];
 	let resultArr = [];
 	while ((arrayTemp = regex.exec(attributeString)) !== null) {

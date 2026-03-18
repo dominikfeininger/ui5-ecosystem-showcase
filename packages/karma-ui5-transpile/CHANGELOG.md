@@ -3,6 +3,295 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.3](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/karma-ui5-transpile@3.6.2...karma-ui5-transpile@3.6.3) (2026-03-12)
+
+**Note:** Version bump only for package karma-ui5-transpile
+
+
+
+
+
+## [3.6.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/karma-ui5-transpile@3.6.1...karma-ui5-transpile@3.6.2) (2026-01-15)
+
+**Note:** Version bump only for package karma-ui5-transpile
+
+
+
+
+
+## [3.6.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/karma-ui5-transpile@3.6.0...karma-ui5-transpile@3.6.1) (2026-01-15)
+
+**Note:** Version bump only for package karma-ui5-transpile
+
+
+
+
+
+# [3.6.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/karma-ui5-transpile@3.5.15...karma-ui5-transpile@3.6.0) (2025-12-02)
+
+
+### Features
+
+* update depedency versions ([#1302](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1302)) ([0a22ebd](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/0a22ebdde9bcbce570eb7ccdda8539e106dc44e1))
+
+
+
+
+
+## [3.5.15](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/karma-ui5-transpile@3.5.14...karma-ui5-transpile@3.5.15) (2025-09-17)
+
+**Note:** Version bump only for package karma-ui5-transpile
+
+
+
+
+
+## [3.5.14](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/karma-ui5-transpile@3.5.13...karma-ui5-transpile@3.5.14) (2025-09-15)
+
+**Note:** Version bump only for package karma-ui5-transpile
+
+
+
+
+
+## [3.5.13](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/karma-ui5-transpile@3.5.12...karma-ui5-transpile@3.5.13) (2025-07-06)
+
+**Note:** Version bump only for package karma-ui5-transpile
+
+
+
+
+
+## [3.5.12](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/karma-ui5-transpile@3.5.11...karma-ui5-transpile@3.5.12) (2025-05-14)
+
+**Note:** Version bump only for package karma-ui5-transpile
+
+
+
+
+
+## [3.5.11](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/karma-ui5-transpile@3.5.10...karma-ui5-transpile@3.5.11) (2025-03-25)
+
+**Note:** Version bump only for package karma-ui5-transpile
+
+
+
+
+
+## [3.5.10](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/karma-ui5-transpile@3.5.9...karma-ui5-transpile@3.5.10) (2025-03-22)
+
+**Note:** Version bump only for package karma-ui5-transpile
+
+
+
+
+
+## [3.5.9](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/karma-ui5-transpile@3.5.8...karma-ui5-transpile@3.5.9) (2025-03-19)
+
+**Note:** Version bump only for package karma-ui5-transpile
+
+
+
+
+
+## [3.5.8](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/karma-ui5-transpile@3.5.7...karma-ui5-transpile@3.5.8) (2025-03-11)
+
+**Note:** Version bump only for package karma-ui5-transpile
+
+
+
+
+
+## [3.5.7](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/karma-ui5-transpile@3.5.6...karma-ui5-transpile@3.5.7) (2025-02-07)
+
+**Note:** Version bump only for package karma-ui5-transpile
+
+
+
+
+
+## [3.5.6](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/karma-ui5-transpile@3.5.5...karma-ui5-transpile@3.5.6) (2025-02-06)
+
+**Note:** Version bump only for package karma-ui5-transpile
+
+
+
+
+
+## [3.5.5](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/karma-ui5-transpile@3.5.4...karma-ui5-transpile@3.5.5) (2025-02-01)
+
+**Note:** Version bump only for package karma-ui5-transpile
+
+
+
+
+
+## [3.5.4](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/karma-ui5-transpile@3.5.3...karma-ui5-transpile@3.5.4) (2025-01-30)
+
+**Note:** Version bump only for package karma-ui5-transpile
+
+
+
+
+
+## [3.5.3](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/karma-ui5-transpile@3.5.2...karma-ui5-transpile@3.5.3) (2025-01-08)
+
+**Note:** Version bump only for package karma-ui5-transpile
+
+
+
+
+
+## [3.5.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/karma-ui5-transpile@3.5.1...karma-ui5-transpile@3.5.2) (2025-01-06)
+
+**Note:** Version bump only for package karma-ui5-transpile
+
+
+
+
+
+## [3.5.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/karma-ui5-transpile@3.5.0...karma-ui5-transpile@3.5.1) (2024-11-01)
+
+**Note:** Version bump only for package karma-ui5-transpile
+
+
+
+
+
+# [3.5.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/karma-ui5-transpile@3.4.8...karma-ui5-transpile@3.5.0) (2024-09-06)
+
+
+### Features
+
+* enhanced v4 compat + update dependencies ([#1070](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1070)) ([2d7ed16](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/2d7ed1623249febd32ecabdd2b47698f1cd968d5))
+
+
+
+
+
+## [3.4.8](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/karma-ui5-transpile@3.4.7...karma-ui5-transpile@3.4.8) (2024-08-21)
+
+**Note:** Version bump only for package karma-ui5-transpile
+
+
+
+
+
+## [3.4.7](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/karma-ui5-transpile@3.4.6...karma-ui5-transpile@3.4.7) (2024-07-22)
+
+**Note:** Version bump only for package karma-ui5-transpile
+
+
+
+
+
+## [3.4.6](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/karma-ui5-transpile@3.4.5...karma-ui5-transpile@3.4.6) (2024-07-19)
+
+**Note:** Version bump only for package karma-ui5-transpile
+
+
+
+
+
+## [3.4.5](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/karma-ui5-transpile@3.4.4...karma-ui5-transpile@3.4.5) (2024-06-27)
+
+**Note:** Version bump only for package karma-ui5-transpile
+
+
+
+
+
+## [3.4.4](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/karma-ui5-transpile@3.4.3...karma-ui5-transpile@3.4.4) (2024-06-26)
+
+**Note:** Version bump only for package karma-ui5-transpile
+
+
+
+
+
+## [3.4.3](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/karma-ui5-transpile@3.4.2...karma-ui5-transpile@3.4.3) (2024-06-02)
+
+**Note:** Version bump only for package karma-ui5-transpile
+
+
+
+
+
+## [3.4.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/karma-ui5-transpile@3.4.1...karma-ui5-transpile@3.4.2) (2024-05-31)
+
+**Note:** Version bump only for package karma-ui5-transpile
+
+
+
+
+
+## [3.4.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/karma-ui5-transpile@3.4.0...karma-ui5-transpile@3.4.1) (2024-05-15)
+
+**Note:** Version bump only for package karma-ui5-transpile
+
+
+
+
+
+# [3.4.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/karma-ui5-transpile@3.3.7...karma-ui5-transpile@3.4.0) (2024-04-21)
+
+
+### Features
+
+* **karma-ui5-transpile:** add description to keep version in sync with transpile extension ([bbf4d85](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/bbf4d85684b20189518232c5e5423d0cc7a8f652))
+
+
+
+
+
+## [3.3.7](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/karma-ui5-transpile@3.3.6...karma-ui5-transpile@3.3.7) (2024-03-06)
+
+**Note:** Version bump only for package karma-ui5-transpile
+
+
+
+
+
+## [3.3.6](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/karma-ui5-transpile@3.3.5...karma-ui5-transpile@3.3.6) (2024-03-04)
+
+**Note:** Version bump only for package karma-ui5-transpile
+
+
+
+
+
+## [3.3.5](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/karma-ui5-transpile@3.3.4...karma-ui5-transpile@3.3.5) (2024-02-23)
+
+**Note:** Version bump only for package karma-ui5-transpile
+
+
+
+
+
+## [3.3.4](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/karma-ui5-transpile@3.3.3...karma-ui5-transpile@3.3.4) (2024-02-18)
+
+**Note:** Version bump only for package karma-ui5-transpile
+
+
+
+
+
+## [3.3.3](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/karma-ui5-transpile@3.3.2...karma-ui5-transpile@3.3.3) (2024-01-17)
+
+**Note:** Version bump only for package karma-ui5-transpile
+
+
+
+
+
+## [3.3.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/karma-ui5-transpile@3.3.1...karma-ui5-transpile@3.3.2) (2023-12-15)
+
+**Note:** Version bump only for package karma-ui5-transpile
+
+
+
+
+
 ## [3.3.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/karma-ui5-transpile@3.3.0...karma-ui5-transpile@3.3.1) (2023-12-10)
 
 **Note:** Version bump only for package karma-ui5-transpile

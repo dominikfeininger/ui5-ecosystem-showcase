@@ -1,6 +1,6 @@
 {
   "name": "ui5-middleware-serveframework",
-  "version": "3.0.2",
+  "version": "3.8.0",
   "description": "UI5 middleware to serve a locally built framework",
   "author": "Peter Muessig",
   "license": "Apache-2.0",
@@ -14,12 +14,20 @@
     "lint": "eslint lib"
   },
   "dependencies": {
-    "@ui5/project": "^3.8.0",
+    "dotenv": "^17.3.1",
     "etag": "^1.8.1",
     "fresh": "^0.5.2",
-    "https-proxy-agent": "^7.0.2",
-    "js-yaml": "^4.1.0",
+    "https-proxy-agent": "^8.0.0",
+    "js-yaml": "^4.1.1",
     "node-fetch": "^2.7.0",
-    "proxy-from-env": "^1.1.0"
+    "proxy-from-env": "^2.0.0"
+  },
+  "devDependencies": {
+    "@ui5/builder": "*",
+    "@ui5/project": "*"
+  },
+  "peerDependencies": {
+    "@ui5/builder": ">=3 <5",
+    "@ui5/project": ">=3 <5"
   }
 }

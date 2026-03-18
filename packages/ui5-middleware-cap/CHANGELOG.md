@@ -3,6 +3,135 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.4](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-cap@3.3.3...ui5-middleware-cap@3.3.4) (2026-01-15)
+
+**Note:** Version bump only for package ui5-middleware-cap
+
+
+
+
+
+## [3.3.3](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-cap@3.3.2...ui5-middleware-cap@3.3.3) (2025-11-02)
+
+**Note:** Version bump only for package ui5-middleware-cap
+
+
+
+
+
+## [3.3.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-cap@3.3.1...ui5-middleware-cap@3.3.2) (2025-09-17)
+
+**Note:** Version bump only for package ui5-middleware-cap
+
+
+
+
+
+## [3.3.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-cap@3.3.0...ui5-middleware-cap@3.3.1) (2025-09-15)
+
+**Note:** Version bump only for package ui5-middleware-cap
+
+
+
+
+
+# [3.3.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-cap@3.2.14...ui5-middleware-cap@3.3.0) (2024-09-06)
+
+
+### Features
+
+* enhanced v4 compat + update dependencies ([#1070](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1070)) ([2d7ed16](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/2d7ed1623249febd32ecabdd2b47698f1cd968d5))
+
+
+
+
+
+## [3.2.14](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-cap@3.2.13...ui5-middleware-cap@3.2.14) (2024-08-11)
+
+
+### Bug Fixes
+
+* decouple tooling extensions from UI5 tooling version ([#1058](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1058)) ([6694c59](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/6694c59422ac37d9aea971679de46f5f59b8025c)), closes [#1054](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1054)
+
+
+
+
+
+## [3.2.13](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-cap@3.2.12...ui5-middleware-cap@3.2.13) (2024-07-22)
+
+**Note:** Version bump only for package ui5-middleware-cap
+
+
+
+
+
+## [3.2.12](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-cap@3.2.11...ui5-middleware-cap@3.2.12) (2024-07-19)
+
+**Note:** Version bump only for package ui5-middleware-cap
+
+
+
+
+
+## [3.2.11](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-cap@3.2.10...ui5-middleware-cap@3.2.11) (2024-05-31)
+
+**Note:** Version bump only for package ui5-middleware-cap
+
+
+
+
+
+## [3.2.10](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-cap@3.2.9...ui5-middleware-cap@3.2.10) (2024-05-15)
+
+**Note:** Version bump only for package ui5-middleware-cap
+
+
+
+
+
+## [3.2.9](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-cap@3.2.8...ui5-middleware-cap@3.2.9) (2024-02-18)
+
+**Note:** Version bump only for package ui5-middleware-cap
+
+
+
+
+
+## [3.2.8](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-cap@3.2.7...ui5-middleware-cap@3.2.8) (2024-01-25)
+
+**Note:** Version bump only for package ui5-middleware-cap
+
+
+
+
+
+## [3.2.7](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-cap@3.2.6...ui5-middleware-cap@3.2.7) (2024-01-17)
+
+**Note:** Version bump only for package ui5-middleware-cap
+
+
+
+
+
+## [3.2.6](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-cap@3.2.5...ui5-middleware-cap@3.2.6) (2023-12-25)
+
+
+### Bug Fixes
+
+* **cds-plugin-ui5:** support odata and odata-v4 endpoints ([#930](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/930)) ([249e18d](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/249e18dbeae2a2a6c2cb8694b0f2bd6dd9714888))
+
+
+
+
+
+## [3.2.5](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-cap@3.2.4...ui5-middleware-cap@3.2.5) (2023-12-15)
+
+**Note:** Version bump only for package ui5-middleware-cap
+
+
+
+
+
 ## [3.2.4](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-cap@3.2.3...ui5-middleware-cap@3.2.4) (2023-12-10)
 
 **Note:** Version bump only for package ui5-middleware-cap

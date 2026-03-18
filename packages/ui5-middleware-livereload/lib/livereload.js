@@ -3,10 +3,11 @@ const connectLivereload = require("connect-livereload");
 const livereload = require("livereload");
 const path = require("path");
 const fs = require("fs");
+const os = require("os");
 const portfinder = require("portfinder");
 
 /**
- * @typedef {Object} [configuration] configuration
+ * @typedef {object} [configuration] configuration
  * @property {string|yo<input|xml,json,properties>} extraExts - file extensions other than `js`, `html` and `css` to monitor for changes
  * @property {string|yo<input|35729>} [port] - an open port choosen the live reload server is started on
  * @property {string|yo<input|webapp>} [watchPath] path inside `$yourapp` the reload server monitors for changes
@@ -37,9 +38,10 @@ const getPortForLivereload = async (options, defaultPort) => {
 /**
  * Determines the source paths of the given resource collection recursivly.
  *
- * <b>ATTENTION: this is a hack to be compatible with UI5 tooling 2.x and 3.x</b>
+ * <b>ATTENTION: this is a hack to be compatible with UI5 CLI 2.x and 3.x</b>
  *
  * @param {module:@ui5/fs.AbstractReader} collection Reader or Collection to read resources of the root project and its dependencies
+ * @param {boolean} skipFwkDeps Whether to skip framework dependencies
  * @returns {string[]} source paths
  */
 const determineSourcePaths = (collection, skipFwkDeps) => {
@@ -71,7 +73,7 @@ const determineSourcePaths = (collection, skipFwkDeps) => {
  * @param {module:@ui5/fs.AbstractReader} parameters.resources.dependencies Reader or Collection to read resources of
  *                                        the projects dependencies
  * @param {object} parameters.options Options
- * @param {string} [parameters.options.configuration] Custom server middleware configuration if given in ui5.yaml
+ * @param {object} [parameters.options.configuration] Custom server middleware configuration if given in ui5.yaml
  * @param {object} parameters.middlewareUtil Specification version dependent interface to a MiddlewareUtil instance
  * @returns {Function} Middleware function to use
  */
@@ -98,7 +100,7 @@ module.exports = async ({ log, resources, options, middlewareUtil }) => {
 					const depPath = path.dirname(
 						require.resolve(`${dep}/ui5.yaml`, {
 							paths: [cwd],
-						})
+						}),
 					);
 					const webappPath = path.join(depPath, "webapp");
 					if (fs.existsSync(webappPath)) {
@@ -135,13 +137,11 @@ module.exports = async ({ log, resources, options, middlewareUtil }) => {
 		usePolling: usePolling,
 	};
 
-	const cli = require("yargs");
-	if (cli.argv.h2) {
-		const os = require("os");
-		const fs = require("fs");
-
-		sslKeyPath = cli.argv.key ? cli.argv.key : path.join(os.homedir(), ".ui5", "server", "server.key");
-		sslCertPath = cli.argv.cert ? cli.argv.cert : path.join(os.homedir(), ".ui5", "server", "server.crt");
+	if (process.argv.includes("--h2")) {
+		const indexKey = process.argv.indexOf("--key");
+		sslKeyPath = indexKey !== -1 ? process.argv[indexKey + 1] : path.join(os.homedir(), ".ui5", "server", "server.key");
+		const indexCert = process.argv.indexOf("--cert");
+		sslCertPath = indexCert !== -1 ? process.argv[indexCert + 1] : path.join(os.homedir(), ".ui5", "server", "server.crt");
 		debug ? log.info(`Livereload using SSL key ${sslKeyPath}`) : null;
 		debug ? log.info(`Livereload using SSL certificate ${sslCertPath}`) : null;
 

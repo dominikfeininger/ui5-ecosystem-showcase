@@ -3,6 +3,1397 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.19.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.18.7...ui5-tsapp@0.19.0) (2026-03-12)
+
+
+### Features
+
+* update dependencies ([#1326](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1326)) ([6f16575](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/6f16575680b0c526261b84f83b22743806c8509b))
+
+
+
+
+
+## [0.18.7](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.18.6...ui5-tsapp@0.18.7) (2026-02-12)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.18.6](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.18.5...ui5-tsapp@0.18.6) (2026-02-11)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.18.5](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.18.4...ui5-tsapp@0.18.5) (2026-02-10)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.18.4](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.18.3...ui5-tsapp@0.18.4) (2026-01-27)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.18.3](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.18.2...ui5-tsapp@0.18.3) (2026-01-15)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.18.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.18.1...ui5-tsapp@0.18.2) (2026-01-15)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.18.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.18.0...ui5-tsapp@0.18.1) (2025-12-29)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+# [0.18.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.39...ui5-tsapp@0.18.0) (2025-12-02)
+
+
+### Features
+
+* update depedency versions ([#1302](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1302)) ([0a22ebd](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/0a22ebdde9bcbce570eb7ccdda8539e106dc44e1))
+
+
+
+
+
+## [0.17.39](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.38...ui5-tsapp@0.17.39) (2025-11-27)
+
+
+### Bug Fixes
+
+* **ui5-tooling-modules:** include also non-documented properties in wrappers ([#1299](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1299)) ([bd63306](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/bd633061b3e03379cfed1b83a79a5bc317d65ddf))
+
+
+
+
+
+## [0.17.38](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.37...ui5-tsapp@0.17.38) (2025-11-21)
+
+
+### Bug Fixes
+
+* **ui5-tooling-modules:** no scoping for non UI5Elements ([#1298](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1298)) ([81febf4](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/81febf47c038042b713a362521872b8d5e261f22)), closes [#1297](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1297)
+
+
+
+
+
+## [0.17.37](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.36...ui5-tsapp@0.17.37) (2025-11-06)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.17.36](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.35...ui5-tsapp@0.17.36) (2025-11-06)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.17.35](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.34...ui5-tsapp@0.17.35) (2025-11-05)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.17.34](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.33...ui5-tsapp@0.17.34) (2025-11-05)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.17.33](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.32...ui5-tsapp@0.17.33) (2025-11-05)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.17.32](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.31...ui5-tsapp@0.17.32) (2025-11-02)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.17.31](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.30...ui5-tsapp@0.17.31) (2025-11-02)
+
+
+### Bug Fixes
+
+* **ui5-tooling-modules:** proper named export of enums, correct re-export ([#1286](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1286)) ([2f22526](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/2f225269a051bed0632edb0852c78555bf5ac862))
+
+
+
+
+
+## [0.17.30](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.29...ui5-tsapp@0.17.30) (2025-10-14)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.17.29](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.28...ui5-tsapp@0.17.29) (2025-10-10)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.17.28](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.27...ui5-tsapp@0.17.28) (2025-10-09)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.17.27](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.26...ui5-tsapp@0.17.27) (2025-10-09)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.17.26](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.25...ui5-tsapp@0.17.26) (2025-10-07)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.17.25](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.24...ui5-tsapp@0.17.25) (2025-09-30)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.17.24](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.23...ui5-tsapp@0.17.24) (2025-09-30)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.17.23](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.22...ui5-tsapp@0.17.23) (2025-09-30)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.17.22](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.21...ui5-tsapp@0.17.22) (2025-09-17)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.17.21](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.20...ui5-tsapp@0.17.21) (2025-09-17)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.17.20](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.19...ui5-tsapp@0.17.20) (2025-09-15)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.17.19](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.18...ui5-tsapp@0.17.19) (2025-09-11)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.17.18](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.17...ui5-tsapp@0.17.18) (2025-09-06)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.17.17](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.16...ui5-tsapp@0.17.17) (2025-09-05)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.17.16](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.15...ui5-tsapp@0.17.16) (2025-08-19)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.17.15](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.14...ui5-tsapp@0.17.15) (2025-08-14)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.17.14](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.13...ui5-tsapp@0.17.14) (2025-08-07)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.17.13](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.12...ui5-tsapp@0.17.13) (2025-07-31)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.17.12](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.11...ui5-tsapp@0.17.12) (2025-07-29)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.17.11](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.10...ui5-tsapp@0.17.11) (2025-07-14)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.17.10](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.9...ui5-tsapp@0.17.10) (2025-07-06)
+
+
+### Bug Fixes
+
+* update project dependencies ([#1235](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1235)) ([456fb61](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/456fb6143125e3334acafb129e219499b2a1c882))
+
+
+
+
+
+## [0.17.9](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.8...ui5-tsapp@0.17.9) (2025-07-04)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.17.8](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.7...ui5-tsapp@0.17.8) (2025-06-16)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.17.7](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.6...ui5-tsapp@0.17.7) (2025-06-11)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.17.6](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.5...ui5-tsapp@0.17.6) (2025-06-06)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.17.5](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.4...ui5-tsapp@0.17.5) (2025-06-02)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.17.4](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.3...ui5-tsapp@0.17.4) (2025-05-23)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.17.3](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.2...ui5-tsapp@0.17.3) (2025-05-21)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.17.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.1...ui5-tsapp@0.17.2) (2025-05-15)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.17.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.17.0...ui5-tsapp@0.17.1) (2025-05-15)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+# [0.17.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.16.28...ui5-tsapp@0.17.0) (2025-05-14)
+
+
+### Features
+
+* **ui5-tooling-modules:** jsdoc generation support for seamless web components ([#1210](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1210)) ([9379843](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/9379843cebca49d20129c68da08b5046bf84b236))
+
+
+
+
+
+## [0.16.28](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.16.27...ui5-tsapp@0.16.28) (2025-04-18)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.16.27](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.16.26...ui5-tsapp@0.16.27) (2025-04-17)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.16.26](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.16.25...ui5-tsapp@0.16.26) (2025-04-14)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.16.25](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.16.24...ui5-tsapp@0.16.25) (2025-04-13)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.16.24](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.16.23...ui5-tsapp@0.16.24) (2025-04-09)
+
+
+### Bug Fixes
+
+* **ui5-tooling-modules:** keep comments for xml and sourcemaps for js ([#1201](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1201)) ([1958f37](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/1958f37724cdfc0c0fc2da73fb08058692ebb79e))
+
+
+
+
+
+## [0.16.23](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.16.22...ui5-tsapp@0.16.23) (2025-04-04)
+
+
+### Bug Fixes
+
+* **ui5-tooling-modules:** support primitive array types for webc ([#1198](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1198)) ([dceae64](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/dceae6442720ce2b9a4c32a202eaf0fc1d79e9e9))
+
+
+
+
+
+## [0.16.22](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.16.21...ui5-tsapp@0.16.22) (2025-04-03)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.16.21](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.16.20...ui5-tsapp@0.16.21) (2025-04-03)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.16.20](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.16.19...ui5-tsapp@0.16.20) (2025-04-01)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.16.19](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.16.18...ui5-tsapp@0.16.19) (2025-03-25)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.16.18](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.16.17...ui5-tsapp@0.16.18) (2025-03-22)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.16.17](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.16.16...ui5-tsapp@0.16.17) (2025-03-19)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.16.16](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.16.15...ui5-tsapp@0.16.16) (2025-03-19)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.16.15](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.16.14...ui5-tsapp@0.16.15) (2025-03-19)
+
+
+### Bug Fixes
+
+* **ui5-tooling-modules:** support re-export of main package modules for webc packages ([c61afbd](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/c61afbd6db9a6665690248c3516ba3756bcd91d3))
+
+
+
+
+
+## [0.16.14](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.16.13...ui5-tsapp@0.16.14) (2025-03-13)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.16.13](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.16.12...ui5-tsapp@0.16.13) (2025-03-12)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.16.12](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.16.11...ui5-tsapp@0.16.12) (2025-03-11)
+
+
+### Bug Fixes
+
+* **ui5-tooling-transpile:** avoid top-level use strict directive ([#1181](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1181)) ([62642c0](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/62642c02d8fcf0754f6a342bf229348a09e70774))
+
+
+
+
+
+## [0.16.11](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.16.10...ui5-tsapp@0.16.11) (2025-03-09)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.16.10](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.16.9...ui5-tsapp@0.16.10) (2025-03-04)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.16.9](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.16.8...ui5-tsapp@0.16.9) (2025-03-04)
+
+
+### Bug Fixes
+
+* **ui5-tooling-modules:** support watching of additional files/folders ([#1176](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1176)) ([294d757](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/294d7579159c2369fab2948ad1390e057b3c7bfe))
+
+
+
+
+
+## [0.16.8](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.16.7...ui5-tsapp@0.16.8) (2025-03-03)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.16.7](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.16.6...ui5-tsapp@0.16.7) (2025-03-03)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.16.6](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.16.5...ui5-tsapp@0.16.6) (2025-03-02)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.16.5](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.16.4...ui5-tsapp@0.16.5) (2025-03-02)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.16.4](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.16.3...ui5-tsapp@0.16.4) (2025-03-02)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.16.3](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.16.2...ui5-tsapp@0.16.3) (2025-02-10)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.16.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.16.1...ui5-tsapp@0.16.2) (2025-02-07)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.16.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.16.0...ui5-tsapp@0.16.1) (2025-02-07)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+# [0.16.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.15.36...ui5-tsapp@0.16.0) (2025-02-06)
+
+
+### Features
+
+* general dependencies update ([#1162](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1162)) ([5375d76](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/5375d76496741433330d76ce59a89b39f7ad8a69))
+
+
+
+
+
+## [0.15.36](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.15.35...ui5-tsapp@0.15.36) (2025-02-03)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.15.35](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.15.34...ui5-tsapp@0.15.35) (2025-02-01)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.15.34](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.15.33...ui5-tsapp@0.15.34) (2025-01-31)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.15.33](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.15.32...ui5-tsapp@0.15.33) (2025-01-31)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.15.32](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.15.31...ui5-tsapp@0.15.32) (2025-01-30)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.15.31](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.15.30...ui5-tsapp@0.15.31) (2025-01-08)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.15.30](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.15.29...ui5-tsapp@0.15.30) (2025-01-08)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.15.29](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.15.28...ui5-tsapp@0.15.29) (2025-01-06)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.15.28](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.15.27...ui5-tsapp@0.15.28) (2025-01-04)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.15.27](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.15.26...ui5-tsapp@0.15.27) (2025-01-02)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.15.26](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.15.25...ui5-tsapp@0.15.26) (2024-12-26)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.15.25](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.15.24...ui5-tsapp@0.15.25) (2024-12-13)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.15.24](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.15.23...ui5-tsapp@0.15.24) (2024-12-13)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.15.23](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.15.22...ui5-tsapp@0.15.23) (2024-11-22)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.15.22](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.15.21...ui5-tsapp@0.15.22) (2024-11-20)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.15.21](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.15.20...ui5-tsapp@0.15.21) (2024-11-14)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.15.20](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.15.19...ui5-tsapp@0.15.20) (2024-11-07)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.15.19](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.15.18...ui5-tsapp@0.15.19) (2024-11-07)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.15.18](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.15.17...ui5-tsapp@0.15.18) (2024-11-06)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.15.17](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.15.16...ui5-tsapp@0.15.17) (2024-11-05)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.15.16](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.15.15...ui5-tsapp@0.15.16) (2024-11-01)
+
+
+### Bug Fixes
+
+* update dependencies ([#1114](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1114)) ([d7672f2](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/d7672f2cd10f8a5de1da3070050ab98810e0fcf8))
+
+
+
+
+
+## [0.15.15](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.15.14...ui5-tsapp@0.15.15) (2024-10-30)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.15.14](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.15.13...ui5-tsapp@0.15.14) (2024-10-28)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.15.13](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.15.12...ui5-tsapp@0.15.13) (2024-10-22)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.15.12](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.15.11...ui5-tsapp@0.15.12) (2024-10-19)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.15.11](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.15.10...ui5-tsapp@0.15.11) (2024-10-18)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.15.10](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.15.9...ui5-tsapp@0.15.10) (2024-10-17)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.15.9](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.15.8...ui5-tsapp@0.15.9) (2024-10-12)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.15.8](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.15.7...ui5-tsapp@0.15.8) (2024-10-10)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.15.7](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.15.6...ui5-tsapp@0.15.7) (2024-10-06)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.15.6](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.15.5...ui5-tsapp@0.15.6) (2024-10-06)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.15.5](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.15.4...ui5-tsapp@0.15.5) (2024-10-05)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.15.4](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.15.3...ui5-tsapp@0.15.4) (2024-10-02)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.15.3](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.15.2...ui5-tsapp@0.15.3) (2024-10-01)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.15.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.15.1...ui5-tsapp@0.15.2) (2024-10-01)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.15.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.15.0...ui5-tsapp@0.15.1) (2024-09-14)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+# [0.15.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.14.0...ui5-tsapp@0.15.0) (2024-09-10)
+
+
+### Features
+
+* **ui5-tooling-modules:** addToNamespace=true is the default now ([#1075](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1075)) ([997fa6a](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/997fa6a23af04f14cbbb9d6bc91a12fb9162a8e4))
+
+
+
+
+
+# [0.14.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.13.38...ui5-tsapp@0.14.0) (2024-09-06)
+
+
+### Features
+
+* enhanced v4 compat + update dependencies ([#1070](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1070)) ([2d7ed16](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/2d7ed1623249febd32ecabdd2b47698f1cd968d5))
+
+
+
+
+
+## [0.13.38](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.13.37...ui5-tsapp@0.13.38) (2024-08-30)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.13.37](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.13.36...ui5-tsapp@0.13.37) (2024-08-25)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.13.36](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.13.35...ui5-tsapp@0.13.36) (2024-08-25)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.13.35](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.13.34...ui5-tsapp@0.13.35) (2024-08-21)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.13.34](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.13.33...ui5-tsapp@0.13.34) (2024-08-13)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.13.33](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.13.32...ui5-tsapp@0.13.33) (2024-08-12)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.13.32](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.13.31...ui5-tsapp@0.13.32) (2024-08-11)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.13.31](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.13.30...ui5-tsapp@0.13.31) (2024-08-07)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.13.30](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.13.29...ui5-tsapp@0.13.30) (2024-07-22)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.13.29](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.13.28...ui5-tsapp@0.13.29) (2024-07-21)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.13.28](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.13.27...ui5-tsapp@0.13.28) (2024-07-19)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.13.27](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.13.26...ui5-tsapp@0.13.27) (2024-06-30)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.13.26](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.13.25...ui5-tsapp@0.13.26) (2024-06-27)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.13.25](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.13.24...ui5-tsapp@0.13.25) (2024-06-26)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.13.24](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.13.23...ui5-tsapp@0.13.24) (2024-06-25)
+
+
+### Bug Fixes
+
+* **ui5-task-copyright:** xml declaration/preable must be before comment ([#1022](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1022)) ([12834b8](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/12834b851dd3146266f6392d2b500dfa9c768d0a))
+
+
+
+
+
+## [0.13.23](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.13.22...ui5-tsapp@0.13.23) (2024-06-10)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.13.22](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.13.21...ui5-tsapp@0.13.22) (2024-06-02)
+
+
+### Bug Fixes
+
+* **ui5-tooling-modules:** skip transpile of SystemJS modules ([#1013](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1013)) ([199750e](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/199750ef1c14a9ad840be2e159fd2186a0051889))
+
+
+
+
+
+## [0.13.21](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.13.20...ui5-tsapp@0.13.21) (2024-05-31)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.13.20](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.13.19...ui5-tsapp@0.13.20) (2024-05-15)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.13.19](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.13.18...ui5-tsapp@0.13.19) (2024-05-15)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.13.18](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.13.17...ui5-tsapp@0.13.18) (2024-05-13)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.13.17](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.13.16...ui5-tsapp@0.13.17) (2024-05-11)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.13.16](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.13.15...ui5-tsapp@0.13.16) (2024-05-10)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.13.15](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.13.14...ui5-tsapp@0.13.15) (2024-05-10)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.13.14](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.13.13...ui5-tsapp@0.13.14) (2024-05-07)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.13.13](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.13.12...ui5-tsapp@0.13.13) (2024-04-21)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.13.12](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.13.11...ui5-tsapp@0.13.12) (2024-03-31)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.13.11](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.13.10...ui5-tsapp@0.13.11) (2024-03-31)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.13.10](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.13.9...ui5-tsapp@0.13.10) (2024-03-27)
+
+
+### Bug Fixes
+
+* **ui5-tooling-stringreplace:** corrected the mime type for ts ([#981](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/981)) ([e777f5a](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/e777f5a67ad1d81d4c6efd8a3a0af442ecb88266))
+
+
+
+
+
+## [0.13.9](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.13.8...ui5-tsapp@0.13.9) (2024-03-06)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.13.8](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.13.7...ui5-tsapp@0.13.8) (2024-03-05)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.13.7](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.13.6...ui5-tsapp@0.13.7) (2024-03-04)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.13.6](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.13.5...ui5-tsapp@0.13.6) (2024-03-04)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.13.5](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.13.4...ui5-tsapp@0.13.5) (2024-02-29)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.13.4](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.13.3...ui5-tsapp@0.13.4) (2024-02-27)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.13.3](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.13.2...ui5-tsapp@0.13.3) (2024-02-23)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.13.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.13.1...ui5-tsapp@0.13.2) (2024-02-21)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.13.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.13.0...ui5-tsapp@0.13.1) (2024-02-21)
+
+
+### Bug Fixes
+
+* **ui5-task-copyright:** allow to inject params via env ([#957](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/957)) ([9442880](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/9442880fa987052fdab4413c7e87e63f5f258a9b))
+
+
+
+
+
+# [0.13.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.12.0...ui5-tsapp@0.13.0) (2024-02-19)
+
+
+### Features
+
+* **ui5-tooling-modules:** support minification of generated code ([#953](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/953)) ([4513a36](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/4513a360be97c234928fa7b5a91054701a5b5758))
+
+
+
+
+
+# [0.12.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.11.10...ui5-tsapp@0.12.0) (2024-02-19)
+
+
+### Features
+
+* **ui5-task-copyright:** new task to prepend copyrights to sources ([#952](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/952)) ([d7e8ad6](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/d7e8ad6a32b6112858b1d7187292df22bc21ad68))
+
+
+### BREAKING CHANGES
+
+* **ui5-task-copyright:** new release
+
+
+
+
+
+## [0.11.10](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.11.9...ui5-tsapp@0.11.10) (2024-02-18)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.11.9](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.11.8...ui5-tsapp@0.11.9) (2024-01-30)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.11.8](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.11.7...ui5-tsapp@0.11.8) (2024-01-25)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.11.7](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.11.6...ui5-tsapp@0.11.7) (2024-01-25)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.11.6](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.11.5...ui5-tsapp@0.11.6) (2024-01-24)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.11.5](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.11.4...ui5-tsapp@0.11.5) (2024-01-21)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.11.4](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.11.3...ui5-tsapp@0.11.4) (2024-01-17)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.11.3](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.11.2...ui5-tsapp@0.11.3) (2023-12-25)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
+## [0.11.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.11.1...ui5-tsapp@0.11.2) (2023-12-15)
+
+**Note:** Version bump only for package ui5-tsapp
+
+
+
+
+
 ## [0.11.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tsapp@0.11.0...ui5-tsapp@0.11.1) (2023-12-10)
 
 **Note:** Version bump only for package ui5-tsapp

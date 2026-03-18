@@ -3,6 +3,91 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-module@0.6.0...ui5-module@0.7.0) (2026-03-12)
+
+
+### Features
+
+* update dependencies ([#1326](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1326)) ([6f16575](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/6f16575680b0c526261b84f83b22743806c8509b))
+
+
+
+
+
+# [0.6.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-module@0.5.2...ui5-module@0.6.0) (2025-12-02)
+
+
+### Features
+
+* update depedency versions ([#1302](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1302)) ([0a22ebd](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/0a22ebdde9bcbce570eb7ccdda8539e106dc44e1))
+
+
+
+
+
+## [0.5.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-module@0.5.1...ui5-module@0.5.2) (2025-07-06)
+
+
+### Bug Fixes
+
+* update project dependencies ([#1235](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1235)) ([456fb61](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/456fb6143125e3334acafb129e219499b2a1c882))
+
+
+
+
+
+## [0.5.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-module@0.5.0...ui5-module@0.5.1) (2025-03-19)
+
+**Note:** Version bump only for package ui5-module
+
+
+
+
+
+# [0.5.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-module@0.4.1...ui5-module@0.5.0) (2025-02-06)
+
+
+### Features
+
+* general dependencies update ([#1162](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1162)) ([5375d76](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/5375d76496741433330d76ce59a89b39f7ad8a69))
+
+
+
+
+
+## [0.4.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-module@0.4.0...ui5-module@0.4.1) (2024-11-01)
+
+
+### Bug Fixes
+
+* update dependencies ([#1114](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1114)) ([d7672f2](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/d7672f2cd10f8a5de1da3070050ab98810e0fcf8))
+
+
+
+
+
+# [0.4.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-module@0.3.0...ui5-module@0.4.0) (2024-09-06)
+
+
+### Features
+
+* enhanced v4 compat + update dependencies ([#1070](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1070)) ([2d7ed16](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/2d7ed1623249febd32ecabdd2b47698f1cd968d5))
+
+
+
+
+
+# [0.3.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-module@0.2.4...ui5-module@0.3.0) (2024-08-12)
+
+
+### Features
+
+* **ui5-tooling-modules:** performance opt + persistent bundle info cache ([#1059](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1059)) ([b02e050](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/b02e050e5e338626c6370db11025c3a0256c3fe5)), closes [#1052](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1052)
+
+
+
+
+
 ## [0.2.4](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-module@0.2.3...ui5-module@0.2.4) (2023-07-01)
 
 

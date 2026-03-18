@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 const path = require("path");
 const { existsSync } = require("fs");
 const { readdir: readdirAsync, readFile: readFileAsync } = require("fs").promises;
@@ -15,7 +14,7 @@ const JSZip = require("jszip");
  * @param {object} parameters Parameters
  * @param {@ui5/logger/Logger} parameters.log Logger instance
  * @param {object} parameters.options Options
- * @param {string} [parameters.options.configuration] Custom server middleware configuration if given in ui5.yaml
+ * @param {object} [parameters.options.configuration] Custom server middleware configuration if given in ui5.yaml
  * @param {object} parameters.middlewareUtil Specification version dependent interface to a
  *                                        [MiddlewareUtil]{@link module:@ui5/server.middleware.MiddlewareUtil} instance
  * @returns {Function} Middleware function to use
@@ -83,7 +82,7 @@ module.exports = async ({ log, options, middlewareUtil }) => {
 					content: content,
 					startTime: startTime,
 				};
-			})
+			}),
 	);
 
 	// read the resources of the JAR files
@@ -97,12 +96,12 @@ module.exports = async ({ log, options, middlewareUtil }) => {
 					})
 					.map(async (entry) => {
 						jarResources[entry] = await jar.content.file(entry).async("string");
-					})
+					}),
 			);
 			if (isDebug) {
 				log.info(`  - Loading JAR file ${jar.file} took ${Date.now() - jar.startTime}ms`);
 			}
-		})
+		}),
 	);
 
 	return async function serveWebJARs(req, res, next) {

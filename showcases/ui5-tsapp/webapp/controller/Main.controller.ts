@@ -1,19 +1,27 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import Controller from "sap/ui/core/mvc/Controller";
 import MessageBox from "sap/m/MessageBox";
 import { version, utils, write } from "xlsx";
 import { Info } from "luxon";
 import { Client } from "@stomp/stompjs";
+import { Chart } from "chart.js";
 import capitalize from "ui5/ecosystem/demo/tslib/util/capitalize";
+import camelizeSomething from "../utils/camelizeSomething";
+import WebComponent from "sap/ui/core/webc/WebComponent";
+import LuigiEvents, { LuigiContainer } from "@luigi-project/container";
+import _capitalize from "ui5-tsmodule/capitalize";
 
 function limitString(string = "", limit = 40) {
 	return string.substring(0, limit);
 }
 
+console.log(camelizeSomething());
+
 console.log(`[STATIC IMPORT] XLSX loaded: ${version}`);
 // eslint-disable-next-line @typescript-eslint/no-base-to-string
 console.log(`[STATIC IMPORT] Luxon loaded: ${limitString(Info.toString())}`);
 console.log(`[STATIC IMPORT] STOMP loaded: ${limitString(Client.toString())}`);
+console.log(`[STATIC IMPORT] Chart.js loaded: ${Chart.version}`);
 
 // dynamic import of xlsx (just named exports)
 import("xlsx")
@@ -43,7 +51,7 @@ import("@stomp/stompjs")
 		console.log("[DYNAMIC IMPORT] Failed to load STOMP from application runtime environment!", ex);
 	});
 
-// dynamic import of a provided library (will fail without UI5 tooling server!)
+// dynamic import of a provided library (will fail without UI5 CLI server!)
 import("moment")
 	.then(({ version }) => {
 		console.log(`[DYNAMIC IMPORT] Moment.js loaded: ${version}`);
@@ -56,10 +64,22 @@ import("moment")
  * @namespace ui5.ecosystem.demo.tsapp.controller
  */
 export default class Main extends Controller {
+	public onInit(): void {
+		// TODO: add and remove event handler
+		const oLuigi = this.byId("luigi") as WebComponent;
+		console.log(`The LuigiContainer as named export is no Web Component!`, LuigiContainer);
+		oLuigi.attachBrowserEvent(LuigiEvents.ALERT_REQUEST, (event: Event) => {
+			const detail = (event as CustomEvent).detail as { text: string };
+			MessageBox.show(`Hello World, ${detail.text}!`);
+		});
+	}
+
 	public sayHello(): void {
 		// using regular imports
-		const text: string = capitalize("ui5");
-		MessageBox.show(`Hello World, ${text}!`);
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-call
+		const text1: string = capitalize("ui5");
+		const text2: string = _capitalize("type-script");
+		MessageBox.show(`Hello World, ${text1}, ${text2}!`);
 	}
 
 	public async sayHelloAsync(): Promise<void> {

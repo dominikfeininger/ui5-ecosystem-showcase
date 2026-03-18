@@ -9,7 +9,7 @@
  *                [TaskUtil]{@link module:@ui5/builder.tasks.TaskUtil} instance
  * @param {object} parameters.options Options
  * @param {string} [parameters.options.projectNamespace] Project namespace
- * @param {string} [parameters.options.configuration] Task configuration if given in ui5.yaml; possible is debug : true|false
+ * @param {object} [parameters.options.configuration] Task configuration if given in ui5.yaml; possible is debug : true|false
  * @returns {Promise<undefined>} Promise resolving with <code>undefined</code> once data has been written or rejecting in case of an error
  */
 module.exports = async function ({ workspace, /* dependencies,*/ taskUtil, options }) {
@@ -33,9 +33,9 @@ module.exports = async function ({ workspace, /* dependencies,*/ taskUtil, optio
 				.getString()
 				.then((content) => {
 					//TODO also for data-sap-ui-theme-roots ??
-					const sRegex = /data-sap-ui-resourceroots[\s]*=[\s]*'(.*?)'/is;
+					const sRegex = /(data-sap-ui-resource-?roots)[\s]*=[\s]*'(.*?)'/is;
 					const mParts = content.match(sRegex);
-					const sResourceRoots = mParts?.[1]; //captureGroup at index 1 in match result
+					const sResourceRoots = mParts?.[2]; //captureGroup at index 2 in match result
 					if (sResourceRoots) {
 						var oResouceRoots = JSON.parse(sResourceRoots);
 						const aModuleNames = Object.keys(oResouceRoots);
@@ -46,7 +46,7 @@ module.exports = async function ({ workspace, /* dependencies,*/ taskUtil, optio
 							oResouceRoots[sModuleName] = sModulePath;
 						});
 
-						var changed = content.replace(sRegex, `data-sap-ui-resourceroots='${JSON.stringify(oResouceRoots)}'`);
+						var changed = content.replace(sRegex, `${mParts[1]}='${JSON.stringify(oResouceRoots)}'`);
 						indexResource.setString(changed);
 						return workspace.write(indexResource);
 					}
@@ -88,7 +88,7 @@ module.exports = async function ({ workspace, /* dependencies,*/ taskUtil, optio
 								isDebug && console.log(`moved: ${copy.getPath()}`);
 							});
 						});
-					})
+					}),
 				);
 			})
 			.catch((e) => {
@@ -103,7 +103,7 @@ module.exports = async function ({ workspace, /* dependencies,*/ taskUtil, optio
  * @returns {Promise<Set>}
  *      Promise resolving with a Set containing all dependencies
  *      that should be made available to the task.
- *      UI5 Tooling will ensure that those dependencies have been
+ *      UI5 CLI will ensure that those dependencies have been
  *      built before executing the task.
  */
 module.exports.determineRequiredDependencies = async function () {

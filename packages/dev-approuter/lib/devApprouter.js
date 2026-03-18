@@ -5,11 +5,10 @@ const xsenv = require("@sap/xsenv");
 const findUI5Modules = require("cds-plugin-ui5/lib/findUI5Modules");
 const createPatchedRouter = require("cds-plugin-ui5/lib/createPatchedRouter");
 const applyUI5Middleware = require("cds-plugin-ui5/lib/applyUI5Middleware");
-
 const findCDSModules = require("ui5-middleware-cap/lib/findCDSModules");
 const applyCDSMiddleware = require("ui5-middleware-cap/lib/applyCDSMiddleware");
 
-const { parseConfig, applyDependencyConfig, addDestination, configureCDSRoute, configureUI5Route } = require("./helpers");
+const { LOG, parseConfig, applyDependencyConfig, addDestination, configureCDSRoute, configureUI5Route } = require("./helpers");
 
 // marker that the dev-approuter is running
 process.env["dev-approuter"] = true;
@@ -47,6 +46,8 @@ class DevApprouter {
 
 		const config = parseConfig();
 		const cwd = process.cwd();
+		const arPort = process.env.PORT || 5000;
+		const cdsPort = process.env.CDS_PORT || 4004;
 
 		// lookup the CDS server root
 		let cdsServerConfig;
@@ -89,7 +90,7 @@ class DevApprouter {
 			});
 
 			// mounting the router for the UI5 application to the CDS server
-			console.log(`Mounting ${mountPath} to UI5 app ${modulePath}`);
+			LOG.info(`Mounting ${mountPath} to UI5 app ${modulePath}`);
 
 			let middlewareMountPath;
 			// define middlewareMountPath as `/_${mountPath}` if ui5 module is referenced as "dependency" in xs-dev.json or xs-app.json
@@ -100,7 +101,7 @@ class DevApprouter {
 				middlewareMountPath = "/_" + mountPath;
 
 				// add destination for newly configured route
-				addDestination(moduleId, process.env.PORT, middlewareMountPath);
+				addDestination(moduleId, arPort, middlewareMountPath);
 			} else {
 				middlewareMountPath = mountPath;
 			}
@@ -115,7 +116,6 @@ class DevApprouter {
 		// start CDS server on different port
 		if (cdsServerConfig) {
 			const { modulePath, moduleId } = cdsServerConfig;
-			const port = process.env.CDS_PORT || 4004;
 
 			// start CDS server on different port (requires to override the
 			// origin listen function to intercept call from CDS server and
@@ -124,8 +124,8 @@ class DevApprouter {
 			const app = express();
 			app._listen = app.listen;
 			app.listen = function (port, callback) {
-				return this._listen(process.env.CDS_PORT || 4004, function () {
-					console.log(`CDS server started at: http://localhost:${process.env.CDS_PORT || 4004}`);
+				return this._listen(cdsPort, function () {
+					LOG.info(`CDS server started at: http://localhost:${cdsPort}`);
 					callback?.apply(callback, arguments);
 				});
 			};
@@ -143,20 +143,29 @@ class DevApprouter {
 					dependency: moduleId,
 					authenticationType: "none",
 				};
-				config.routes.unshift(Object.assign({}, route));
+				// respect already declared routes in xs-dev.json
+				// so inserting these auto-generated ones after
+				config.routes.push(Object.assign({}, route));
 				config.dependencyRoutes[moduleId] = configureCDSRoute(moduleId, servicesPaths, route);
 			} else {
 				config.dependencyRoutes[moduleId] = configureCDSRoute(moduleId, servicesPaths, config.dependencyRoutes[moduleId]);
 			}
 
 			// add destination for newly configured route
-			addDestination(moduleId, port);
+			addDestination(moduleId, cdsPort);
 		}
 
 		// create and start the SAP Approuter
 		// https://help.sap.com/docs/btp/sap-business-technology-platform/extension-api-of-application-router
-		approuter().start({
-			port: process.env.PORT || 5000,
+		const _approuter = approuter();
+		// helper: if used in a hybrid setup w/ xsuaa,
+		// this endpoint helps to debug auth(n,z) issues
+		// DANGER, WILL SMITH: you must not use this in production envs!
+		_approuter.beforeRequestHandler.use("/my-jwt", (req, res) => {
+			res.end(req.session?.user?.token?.accessToken || "none");
+		});
+		_approuter.start({
+			port: arPort,
 			xsappConfig: applyDependencyConfig(config),
 			extensions: [
 				{
@@ -166,7 +175,7 @@ class DevApprouter {
 				},
 			].concat(extensions),
 		});
-		console.log(`Approuter started at: http://localhost:${process.env.PORT || 5000}`);
+		LOG.info(`Approuter started at: http://localhost:${arPort}`);
 	}
 }
 

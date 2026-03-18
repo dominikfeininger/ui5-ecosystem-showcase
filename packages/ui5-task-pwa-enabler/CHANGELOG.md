@@ -3,6 +3,101 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.4.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-pwa-enabler@3.3.3...ui5-task-pwa-enabler@3.4.0) (2026-03-12)
+
+
+### Features
+
+* update dependencies ([#1326](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1326)) ([6f16575](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/6f16575680b0c526261b84f83b22743806c8509b))
+
+
+
+
+
+## [3.3.3](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-pwa-enabler@3.3.2...ui5-task-pwa-enabler@3.3.3) (2026-01-15)
+
+**Note:** Version bump only for package ui5-task-pwa-enabler
+
+
+
+
+
+## [3.3.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-pwa-enabler@3.3.1...ui5-task-pwa-enabler@3.3.2) (2025-09-17)
+
+**Note:** Version bump only for package ui5-task-pwa-enabler
+
+
+
+
+
+## [3.3.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-pwa-enabler@3.3.0...ui5-task-pwa-enabler@3.3.1) (2025-09-15)
+
+**Note:** Version bump only for package ui5-task-pwa-enabler
+
+
+
+
+
+# [3.3.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-pwa-enabler@3.2.0...ui5-task-pwa-enabler@3.3.0) (2025-02-06)
+
+
+### Features
+
+* general dependencies update ([#1162](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1162)) ([5375d76](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/5375d76496741433330d76ce59a89b39f7ad8a69))
+
+
+
+
+
+# [3.2.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-pwa-enabler@3.1.0...ui5-task-pwa-enabler@3.2.0) (2024-09-06)
+
+
+### Features
+
+* enhanced v4 compat + update dependencies ([#1070](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1070)) ([2d7ed16](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/2d7ed1623249febd32ecabdd2b47698f1cd968d5))
+
+
+
+
+
+# [3.1.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-pwa-enabler@3.0.8...ui5-task-pwa-enabler@3.1.0) (2024-06-10)
+
+
+### Features
+
+* **ui5-task-pwa-enabler:** add support for path prefix for file caching ([#1018](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1018)) ([43aa428](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/43aa428911bada9e1160b39fdb97aa2c89fcda62)), closes [#1017](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1017)
+
+
+
+
+
+## [3.0.8](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-pwa-enabler@3.0.7...ui5-task-pwa-enabler@3.0.8) (2024-05-15)
+
+**Note:** Version bump only for package ui5-task-pwa-enabler
+
+
+
+
+
+## [3.0.7](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-pwa-enabler@3.0.6...ui5-task-pwa-enabler@3.0.7) (2024-03-30)
+
+
+### Bug Fixes
+
+* **ui5-task-pwa-enabler:** improved error handling ([#983](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/983)) ([25f0832](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/25f0832253e0bfb1ecd91f4e2fe42e93bada70de))
+
+
+
+
+
+## [3.0.6](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-pwa-enabler@3.0.5...ui5-task-pwa-enabler@3.0.6) (2024-01-17)
+
+**Note:** Version bump only for package ui5-task-pwa-enabler
+
+
+
+
+
 ## [3.0.5](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-pwa-enabler@3.0.4...ui5-task-pwa-enabler@3.0.5) (2023-12-10)
 
 **Note:** Version bump only for package ui5-task-pwa-enabler

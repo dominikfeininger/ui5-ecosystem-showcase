@@ -1,4 +1,4 @@
-const crypto = require("crypto")
+const { randomBytes } = require("crypto")
 const fs = require("fs-extra")
 const nock = require("nock")
 const path = require("path")
@@ -12,7 +12,7 @@ const prepUI5ServerConfig = require("./_prep_server_util")
 
 test.beforeEach(async (t) => {
 	// copy ui5 app to a temp dir in test folder scope
-	t.context.tmpDir = path.resolve(`./test/_ui5-app/${crypto.randomBytes(5).toString("hex")}`)
+	t.context.tmpDir = path.resolve(`./test/_ui5-app/${randomBytes(5).toString("hex")}`)
 	await copyUI5app(t.context.tmpDir)
 
 	// dynamic port allocation for ui5 serve
@@ -217,8 +217,16 @@ test("(multitenant) auth in yaml, xsuaa auth in route -> route is protected", as
 	const { graphFromPackageDependencies } = await import("@ui5/project/graph")
 	const graph = await graphFromPackageDependencies({ cwd: t.context.tmpDir })
 
+	// install a global hook to register the approuter instances
+	globalThis["ui5-middleware-approuter"] = {
+		approuters: []
+	}
+
 	const server = await import("@ui5/server")
 	let serve = await server.serve(graph, { port: t.context.port.ui5Server })
+
+	// get the approuter instance
+	const approuter = globalThis["ui5-middleware-approuter"]?.approuters?.pop()
 
 	// wait for ui5 server and app router to boot
 	// -- probably don't need this as we're `await`ing server.serve() above?
@@ -244,9 +252,9 @@ test("(multitenant) auth in yaml, xsuaa auth in route -> route is protected", as
 	nock.restore()
 
 	// clean up programmatic ui5 server
-	const _close = () =>
+	const _close = (server) =>
 		new Promise((resolve, reject) => {
-			serve.close((error) => {
+			server.close((error) => {
 				if (error) {
 					reject(error)
 				} else {
@@ -255,5 +263,6 @@ test("(multitenant) auth in yaml, xsuaa auth in route -> route is protected", as
 			})
 		})
 
-	await _close()
+	await _close(approuter)
+	await _close(serve)
 })

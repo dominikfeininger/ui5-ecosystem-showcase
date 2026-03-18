@@ -1,0 +1,12 @@
+{{{generateApiDocumentation description}}}
+"{{eventName}}": { {{#if event.allowPreventDefault}}
+    "allowPreventDefault": true,{{/if}}{{#if event.enableEventBubbling}}
+    "enableEventBubbling": true,{{/if}}{{#if event.mapping}}
+    "mapping": "{{event.mapping}}",{{/if}}{{#if event.parameters}}
+    "parameters": {
+    {{#each event.parameters}}
+{{{lookup @root.parametersJsDoc @key}}}
+        "{{@key}}": {{{json this}}},
+    {{/each}}
+    }{{/if}}
+},

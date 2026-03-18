@@ -4,13 +4,16 @@ metadata:
 type: application
 framework:
   name: OpenUI5
-  version: "1.120.1"
+  version: "1.145.0"
   libraries:
     - name: sap.m
     - name: sap.ui.core
     - name: sap.ui.layout
     - name: themelib_sap_horizon
 builder:
+  settings:
+    includeDependency:
+      - ui5.ecosystem.demo.lib
   componentPreload:
     excludes:
       - "ui5/ecosystem/demo/app/thirdparty/js-temporal/**"
@@ -73,9 +76,9 @@ builder:
       afterTask: ui5-tooling-transpile-task
       configuration:
         debug: true
-        prependPathMappings: true
-        addToNamespace: true
         removeScopePrefix: true
+        additionalDependencies:
+          - "xlsx"
         includeAssets:
           "@octokit/core":
             - "dist-web/*.map"
@@ -96,7 +99,7 @@ builder:
         debug: true
         lessToCompile: # (Optional by default css from manifest will be used)
           - "css/**/style.less"
-# https://sap.github.io/ui5-tooling/pages/extensibility/CustomServerMiddleware/
+# https://ui5.github.io/cli/pages/extensibility/CustomServerMiddleware/
 server:
   customMiddleware:
     - name: ui5-middleware-servestatic
@@ -105,6 +108,18 @@ server:
       configuration:
         debug: true
         rootPath: ../../docs
+    - name: ui5-middleware-servestatic
+      mountPath: "/sst/@ui5/webcomponents-icons"
+      afterMiddleware: compression
+      configuration:
+        debug: true
+        npmPackagePath: "@ui5/webcomponents-icons/dist/generated/assets"
+    - name: ui5-middleware-servestatic
+      mountPath: /sst/tui-image-editor
+      afterMiddleware: compression
+      configuration:
+        debug: true
+        npmPackagePath: "tui-image-editor/dist/svg"
     - name: ui5-middleware-simpleproxy
       mountPath: /versioninfo
       afterMiddleware: compression
@@ -144,6 +159,12 @@ server:
         debug: true
         baseUri: "ws://localhost:1081/wsecho/"
         enableWebSocket: true
+    - name: ui5-middleware-simpleproxy
+      mountPath: /version.json
+      afterMiddleware: compression
+      configuration:
+        debug: true
+        baseUri: "https://sdk.openui5.org/version.json"
     - name: ui5-tooling-stringreplace-middleware
       afterMiddleware: compression
       configuration:
@@ -201,6 +222,10 @@ server:
     - name: ui5-tooling-modules-middleware
       afterMiddleware: ui5-tooling-transpile-middleware
       configuration:
+        debug: true
+        #sourcemap: true
+        additionalDependencies:
+          - "xlsx"
         #skipCache: true
     - name: ui5-tooling-less-middleware
       beforeMiddleware: serveResources

@@ -27,12 +27,25 @@ const nextFreePort = async (basePort) => {
 }
 
 /**
+ * Replaces the oldUrl with the newUrl in the text.
+ *
+ * @param {string} text text to replace the url in
+ * @param {string} oldUrl old url to replace
+ * @param {string} newUrl new url to replace with
+ * @returns replaced text
+ */
+function replaceUrl(text, oldUrl, newUrl) {
+	const regex = new RegExp(oldUrl.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&"), "gi")
+	return text.replace(regex, newUrl)
+}
+
+/**
  * Custom UI5 Server middleware "approuter"
  *
  * @param {object} parameters Parameters
  * @param {@ui5/logger/Logger} parameters.log Logger instance
  * @param {object} parameters.options Options
- * @param {string} [parameters.options.configuration] Custom server middleware configuration if given in ui5.yaml
+ * @param {object} [parameters.options.configuration] Custom server middleware configuration if given in ui5.yaml
  * @param {object} parameters.middlewareUtil Specification version dependent interface to a
  *                                        [MiddlewareUtil]{@link module:@ui5/server.middleware.MiddlewareUtil} instance
  * @returns {Function} Middleware function to use
@@ -91,6 +104,7 @@ module.exports = async ({ log, options, middlewareUtil }) => {
 	let destinations
 	try {
 		destinations = JSON.parse(process.env.destinations)
+		// eslint-disable-next-line no-unused-vars
 	} catch (ex) {
 		// no destinations from environment => let's check the effectiveOptions
 	}
@@ -102,6 +116,7 @@ module.exports = async ({ log, options, middlewareUtil }) => {
 				try {
 					destinations = effectiveOptions.destinations = JSON.parse(process.env[destinationsEnvKey])
 				} catch (error) {
+					/* eslint-disable-next-line preserve-caught-error */
 					throw new Error(`No valid destinations JSON in .env file at '${destinationsEnvKey}': ${error}`)
 				}
 			} else {
@@ -116,13 +131,15 @@ module.exports = async ({ log, options, middlewareUtil }) => {
 
 	// finally the destinations need to be an array,
 	// so that we can serialize it to the env
-	if (Array.isArray(destinations)) {
+	if (Array.isArray(destinations) && destinations.length > 0) {
 		process.env.destinations = JSON.stringify(destinations)
+	} else {
+		delete process.env.destinations
 	}
 
 	// determine the routes
 	const routes = []
-	// default: ignore routes that point to web apps as they are already hosted by the ui5 tooling,
+	// default: ignore routes that point to web apps as they are already hosted by the UI5 CLI,
 	// but allow overwriting this behavior via "allowLocalDir"
 	xsappConfig.routes = xsappConfig.routes.filter(
 		(route) =>
@@ -165,7 +182,7 @@ module.exports = async ({ log, options, middlewareUtil }) => {
 						`adding cf-like destination "${
 							route.destination || "(xs-app.json specific setting)"
 						}" proxying reqs to ${route.source}`
-				  )
+					)
 				: null
 		}
 	})
@@ -208,6 +225,7 @@ module.exports = async ({ log, options, middlewareUtil }) => {
 					)
 				})
 				return extensionModule
+				// eslint-disable-next-line no-unused-vars
 			} catch (ex) {
 				log.warn(
 					`⚠️ Failed to resolve extension "${JSON.stringify(extension)}"! The extension will be ignored...`
@@ -230,6 +248,12 @@ module.exports = async ({ log, options, middlewareUtil }) => {
 		workingDir: rootPath,
 		extensions
 	})
+
+	// for testing purposes we centrally register the instances of the approuters
+	// until the UI5 CLI provides a better way to access the approuter instances
+	if (globalThis["ui5-middleware-approuter"]?.approuters) {
+		globalThis["ui5-middleware-approuter"].approuters.push(approuter)
+	}
 
 	// determine base uri based on subdomain info
 	let baseUri
@@ -303,10 +327,10 @@ module.exports = async ({ log, options, middlewareUtil }) => {
 					req.baseUrl
 				}`
 			const referrerUrl = new URL(route.path, referrer).toString()
-			data = data.replaceAll(route.url, referrerUrl)
+			data = replaceUrl(data, `https://${route.url.substr(8)}`, referrerUrl)
 			// in some cases, the odata servers respond http instead of https in the content
 			if (route.url?.startsWith("https://")) {
-				data = data.replaceAll(`http://${route.url.substr(8)}`, referrerUrl)
+				data = replaceUrl(data, `http://${route.url.substr(8)}`, referrerUrl)
 			}
 			return new Buffer.from(data)
 		} else {
@@ -315,44 +339,47 @@ module.exports = async ({ log, options, middlewareUtil }) => {
 	})
 
 	// the proxy middleware (based on https://www.npmjs.com/package/http-proxy-middleware)
-	const proxyMiddleware = createProxyMiddleware(filter, {
-		logLevel: effectiveOptions.debug ? "info" : "warn",
+	const proxyMiddleware = createProxyMiddleware({
+		logger: effectiveOptions.debug ? console : undefined,
 		target: baseUri,
+		pathFilter: filter,
 		changeOrigin: true, // for vhosted sites
 		selfHandleResponse: true, // res.end() will be called internally by responseInterceptor()
 		autoRewrite: true, // rewrites the location host/port on (301/302/307/308) redirects based on requested host/port
 		xfwd: true, // adds x-forward headers
-		onProxyReq: (proxyReq, req, res) => {
-			// sanitize the x-forwarded-proto header as it may include an invalid protocol: "https,http"
-			if (req.headers["x-forwarded-proto"]?.indexOf(",") !== -1) {
-				const proto = (req.headers["x-forwarded-proto"] || "https").split(",")[0]
-				req.header["x-forwarded-proto"] = proto
-				proxyReq.setHeader("x-forwarded-proto", proto)
-			}
-			// if the ui5-middleware-index is used and redirects the welcome file
-			// we need to send a redirect to trigger the auth-flow of the approuter
-			if (req["ui5-middleware-index"]?.url === "/") {
-				// mark the response as redirected
-				res["ui5-middleware-approuter"] = {
-					redirected: true
+		on: {
+			proxyReq: (proxyReq, req, res) => {
+				// sanitize the x-forwarded-proto header as it may include an invalid protocol: "https,http"
+				if (req.headers["x-forwarded-proto"]?.indexOf(",") !== -1) {
+					const proto = (req.headers["x-forwarded-proto"] || "https").split(",")[0]
+					req.header["x-forwarded-proto"] = proto
+					proxyReq.setHeader("x-forwarded-proto", proto)
 				}
-				// redirect the response to baseUrl + url
-				const baseUrl = req["ui5-patched-router"]?.baseUrl || "/"
-				return res.redirect(`${baseUrl !== "/" ? baseUrl : ""}${req.url}`)
-			} else if (req["ui5-patched-router"]?.originalUrl) {
-				proxyReq.setHeader("x-forwarded-path", req["ui5-patched-router"].originalUrl)
-			}
-		},
-		/*
-		onProxyReqWs: (proxyReq, req, socket, options, head) => {
-			console.log(`${req.url}`);
-		},
-		*/
-		onProxyRes: async (proxyRes, req, res) => {
-			// we only handle the response when the request hasn't been
-			// redirected already in the flow above
-			if (!res["ui5-middleware-approuter"]?.redirected) {
-				return intercept(proxyRes, req, res)
+				// if the ui5-middleware-index is used and redirects the welcome file
+				// we need to send a redirect to trigger the auth-flow of the approuter
+				if (req["ui5-middleware-index"]?.url === "/") {
+					// mark the response as redirected
+					res["ui5-middleware-approuter"] = {
+						redirected: true
+					}
+					// redirect the response to baseUrl + url
+					const baseUrl = req["ui5-patched-router"]?.baseUrl || "/"
+					return res.redirect(`${baseUrl !== "/" ? baseUrl : ""}${req.url}`)
+				} else if (req["ui5-patched-router"]?.originalUrl) {
+					proxyReq.setHeader("x-forwarded-path", req["ui5-patched-router"].originalUrl)
+				}
+			},
+			/*
+			proxyReqWs: (proxyReq, req, socket, options, head) => {
+				console.log(`${req.url}`);
+			},
+			*/
+			proxyRes: async (proxyRes, req, res) => {
+				// we only handle the response when the request hasn't been
+				// redirected already in the flow above
+				if (!res["ui5-middleware-approuter"]?.redirected) {
+					return intercept(proxyRes, req, res)
+				}
 			}
 		}
 	})
@@ -373,6 +400,6 @@ module.exports = async ({ log, options, middlewareUtil }) => {
 					})
 				},
 				proxyMiddleware
-		  )
+			)
 		: proxyMiddleware
 }

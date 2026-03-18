@@ -10,7 +10,7 @@ const LessBuilder = require("./LessBuilder");
  * @param {module:@ui5/fs.AbstractReader} parameters.dependencies Reader or Collection to read dependency files
  * @param {object} parameters.options Options
  * @param {string} parameters.options.projectName Project name
- * @param {string} [parameters.options.configuration] Task configuration if given in ui5.yaml
+ * @param {object} [parameters.options.configuration] Task configuration if given in ui5.yaml
  * @param {module:@ui5/builder.tasks.TaskUtil} [parameters.taskUtil] TaskUtil
  * @returns {Promise<undefined>} Promise resolving with <code>undefined</code> once data has been written
  */
@@ -29,6 +29,12 @@ module.exports = async function ({ log, workspace, dependencies, options, taskUt
 
 	// determine the less files to compile from the ui5.yaml (config)
 	let lessToCompile = options?.configuration?.lessToCompile || [];
+
+	// handle case when the parameter is a string, e.g. lessToCompile: 'theme/style.less'
+	if (typeof lessToCompile === "string") {
+		lessToCompile = [lessToCompile];
+	}
+
 	if (lessToCompile.length === 0) {
 		// if nothing is specified, we extract the less files to compile from the manifest
 		let manifest = await (await workspace.byPath(`${localPath}/manifest.json`)).getString();
@@ -38,7 +44,7 @@ module.exports = async function ({ log, workspace, dependencies, options, taskUt
 				const lessFile = style.uri ? style.uri.replace(".css", ".less") : null;
 				if (lessFile) {
 					if (!path.isAbsolute(lessFile)) {
-						return path.join(localPath, lessFile);
+						return path.posix.join(localPath, lessFile);
 					}
 				}
 				return lessFile;
@@ -50,9 +56,9 @@ module.exports = async function ({ log, workspace, dependencies, options, taskUt
 	const lessResources = [];
 	for (const glob of lessToCompile) {
 		if (!path.isAbsolute(glob)) {
-			lessResources.push(...((await workspace.byGlobSource(path.join(localPath, glob))) || []));
+			lessResources.push(...((await workspace.byGlob(path.posix.join(localPath, glob))) || []));
 		} else {
-			lessResources.push(...((await workspace.byGlobSource(glob)) || []));
+			lessResources.push(...((await workspace.byGlob(glob)) || []));
 		}
 	}
 
@@ -68,7 +74,7 @@ module.exports = async function ({ log, workspace, dependencies, options, taskUt
 		lessResources.map((lessResource) => {
 			isDebug && log.info(`Compiling file ${translateResourcePath(lessResource.getPath())}...`);
 			return lessBuilder.build(lessResource);
-		})
+		}),
 	);
 
 	// finally write the compiled resources back to the workspace
@@ -80,7 +86,7 @@ module.exports = async function ({ log, workspace, dependencies, options, taskUt
 				string: output.css,
 			});
 			return workspace.write(resource);
-		})
+		}),
 	);
 };
 
@@ -94,7 +100,7 @@ module.exports = async function ({ log, workspace, dependencies, options, taskUt
  * @returns {Promise<Set>}
  *      Promise resolving with a Set containing all dependencies
  *      that should be made available to the task.
- *      UI5 Tooling will ensure that those dependencies have been
+ *      UI5 CLI will ensure that those dependencies have been
  *      built before executing the task.
  */
 module.exports.determineRequiredDependencies = async function ({ availableDependencies }) {

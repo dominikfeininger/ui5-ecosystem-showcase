@@ -1,19 +1,19 @@
-# UI5 Tooling Extension for Transpiling JS/TS
+# UI5 CLI Extension for Transpiling JS/TS
 
-> :wave: This is a **community project** and there is no official support for this package! Feel free to use it, open issues, contribute, and help answering questions.
+> :wave: This is an **open‑source, community‑driven project**, developed and actively monitored by members of the UI5 community. You are welcome to use it, report issues, contribute enhancements, and support others in the community.
 
-The tooling extension provides a middleware and a task which transpiles JavaScript or TypeScript code to ES5 by using Babel. A default Babel configuration will be provided by the tooling extension unless a inline Babel configuration in the `ui5.yaml` or any Babel configuration as described at [Babel config files](https://babeljs.io/docs/en/config-files) will be provided.
+The UI5 CLI extension provides a middleware and a task which transpiles JavaScript or TypeScript code to ES5 by using Babel. A default Babel configuration will be provided by the UI5 CLI extension unless a inline Babel configuration in the `ui5.yaml` or any Babel configuration as described at [Babel config files](https://babeljs.io/docs/en/config-files) will be provided.
 
 The middleware handles by default all requests to `.js`-files. For JavaScript transpilation the matching `.js`-file or for TypeScript the matching `.ts`-file will be transpiled on-the-fly via Babel. The transpiled JavaScript file will inline the `sourcemap`. Because of the `sourcemap`, setting breakpoints in the **original (ES6+ or TS) source** will cause the debugger to stop **when the corresponding transpiled source code is reached**.
 
-The task finally transpiles the relevant source files during the UI5 Tooling build process. In case of TypeScript is enabled, for libraries, the task also generates the `d.ts`-files. For applications, this option can be enabled on demand.
+The task finally transpiles the relevant source files during the UI5 CLI build process. In case of TypeScript is enabled, for libraries, the task also generates the `d.ts`-files. For applications, this option can be enabled on demand.
 
 ## Prerequisites
 
-- Requires at least [`@ui5/cli@3.0.0`](https://sap.github.io/ui5-tooling/v3/pages/CLI/) (to support [`specVersion: "3.0"`](https://sap.github.io/ui5-tooling/pages/Configuration/#specification-version-30))
+- Requires at least [`@ui5/cli@3.0.0`](https://ui5.github.io/cli/v3/pages/CLI/) (to support [`specVersion: "3.0"`](https://ui5.github.io/cli/pages/Configuration/#specification-version-30))
 
-> :warning: **UI5 Tooling Compatibility**
-> All releases of this tooling extension using the major version `3` require UI5 Tooling V3. Any previous releases below major version `3` (if available) also support older versions of the UI5 Tooling. But the usage of the latest UI5 Tooling is strongly recommended!
+> :warning: **UI5 CLI Compatibility**
+> All releases of this UI5 CLI extension using the major version `3` require UI5 CLI V3. Any previous releases below major version `3` (if available) also support older versions of the UI5 CLI. But the usage of the latest UI5 CLI is strongly recommended!
 
 ## Install
 
@@ -21,13 +21,19 @@ The task finally transpiles the relevant source files during the UI5 Tooling bui
 npm install ui5-tooling-transpile --save-dev
 ```
 
+If you want the `ui5-tooling-transpile` to add it's configuration to the `ui5.yaml`, just add the command line argument `-rte` or `--register-tooling-extension`:
+
+```bash
+npm install ui5-tooling-transpile --save-dev -rte
+```
+
 ## Configuration options (in `$yourapp/ui5.yaml`)
 
 - debug: `boolean`  
   enable detailed logging (can be even more verbose by using the `--verbose` argument)
 
-- babelConfig: `Object`
-  object to use as configuration for babel instead of the babel configuration from the file system (as described at [Babel config files](https://babeljs.io/docs/en/config-files)), or the default configuration defined in this middleware (just using the `@babel/preset-env`)
+- babelConfig: `String|Object`
+  path to the babel config file or object to use as configuration for babel instead of the babel configuration from the file system (as described at [Babel config files](https://babeljs.io/docs/en/config-files)), or the default configuration defined in this middleware (just using the `@babel/preset-env`)
 
 - includes: `String<Array>` (old alias: includePatterns)
   array of paths your application to include in transpilation, e.g. `/modern-stuff/`
@@ -39,16 +45,28 @@ npm install ui5-tooling-transpile --save-dev
   source file pattern for the resources to transpile, defaults to `.js` and will be changed to `.ts` if a `tsconfig.json` file is located in the project or by explicitly setting the configuration option transformTypeScript to `true` (multiple file extensions can be handled by specifying mutliple extensions using the glob syntax, e.g.: `.+(js|jsx)` or `.+(ts|tsx)`)
 
 - transformTypeScript: `boolean` (old alias: transpileTypeScript)
-  if enabled, the tooling extension transforms TypeScript sources; the default value is derived from the existence of a `tsconfig.json` in the root folder of the project - if the file exists the configuration option is `true` otherwise `false`; setting this configuration option overrules the automatic determination
+  if enabled, the UI5 CLI extension transforms TypeScript sources; the default value is derived from the existence of a `tsconfig.json` in the root folder of the project - if the file exists the configuration option is `true` otherwise `false`; setting this configuration option overrules the automatic determination
+
+- altTsConfig: `String`
+  specify the location of an alternate `tsconfig.json` to use for the TypeScript transpilation step. Also the detection whether the project uses TypeScript is then using the alternate `tsconfig.json` file
 
 - generateTsInterfaces: `boolean|undefined` (*experimental feature*)
   option requires a dependency to the `@ui5/ts-interface-generator` when either the value of the option is `true` or `undefined` and the project is a TypeScript-based project or the `transformTypeScript` option is set to `true` - can be forced to be inactive by setting the option to `false` (only relevant for the middleware)
 
+- generateTsInterfacesJsDoc: `String(none|minimal|verbose)` (*experimental feature*)
+  configures the amount of JSDoc which should be generated by the `@ui5/ts-interface-generator`. For details please check: <https://github.com/SAP/ui5-typescript/tree/main/packages/ts-interface-generator#commandline-options>
+
 - generateDts: `boolean`
-  if enabled, the tooling extension will generate type definitions (`.d.ts`) files; by default for projects of type `library` this option is considered as `true` and for other projects such as `application` this option is considered as `false` by default (is only relevant in case of transformTypeScript is `true`)
+  if enabled, the UI5 CLI extension will generate type definitions (`.d.ts`) files; by default for projects of type `library` this option is considered as `true` and for other projects such as `application` this option is considered as `false` by default (is only relevant in case of transformTypeScript is `true`)
+
+- failOnDtsErrors: `boolean`
+  if enabled, the UI5 CLI extension will fail during the generation of type definitions (`.d.ts`) files; this option is considered as `false` by default (is only relevant in case of generateDts is `true`)
 
 - omitTSFromBuildResult: `boolean`
   if enabled, the TypeScript sources will be omitted from the build result. This will disable the debugging support in the TypeScript sources (since the related source files aren't included anymore)
+
+- omitSourceMaps: `boolean`
+  if enabled, the SourceMaps will not be generated for the JavaScript sources created from the TypeScript sources
 
 - transpileDependencies: `boolean` (*experimental feature*)
   if enabled, the middleware also transpile the sources from the dependencies which is needed for development scenarios when referring to other projects (this configuration option is ignored by the task)
@@ -57,7 +75,10 @@ npm install ui5-tooling-transpile --save-dev
   if enabled, the resources will be transpiled at startup to avoid additional overhead for the first requests to the transpiled resources.
 
 - skipBabelPresetPluginResolve: `boolean` (*experimental feature*)
-  if enabled, the babel presets and plugins will not be resolved by the tooling extension and babel itself will do it. This can cause babel presets or plugins not to be found in case of working in monorepos.
+  if enabled, the babel presets and plugins will not be resolved by the UI5 CLI extension and babel itself will do it. This can cause babel presets or plugins not to be found in case of working in monorepos
+
+- generateBabelConfig: `boolean|string` (*experimental feature*)
+  this option allows to generate the babel config file for the current project when the babel config file doesn't exist - this option is useful when you are using babel generation within a different tooling (like a native babel execution inside e.g. jest) to use the same configuration like when running the task or middleware; if the value is a string the UI5 CLI extension will assume to generate a file with the provided name
 
 The following configuration options will only be taken into account if no inline babel configuration is maintained in the `ui5.yaml` as `babelConfig` or no external babel configuration exists in any configuration file as described in [Babels configuration section](https://babeljs.io/docs/configuration):
 
@@ -80,7 +101,7 @@ The following configuration options will only be taken into account if no inline
 
 ## Usage
 
-By default, the tooling extension is configuration free and works out-of-the-box. The programming language is derived from the existence of the `tsconfig.json` in the project root.
+By default, the UI5 CLI extension is configuration free and works out-of-the-box. The programming language is derived from the existence of the `tsconfig.json` in the project root.
 
 Define the dependency in `$yourapp/package.json`:
 
@@ -110,7 +131,7 @@ That's it. Now you can transpile your sources with the help of Babel.
 
 ### Advanced Options
 
-Configuration options are added in the configuration section. For JavaScript projects, ensure that no `tsconfig.json` is present in the project root. This would turn the tooling extension into the TypeScript mode.
+Configuration options are added in the configuration section. For JavaScript projects, ensure that no `tsconfig.json` is present in the project root. This would turn the UI5 CLI extension into the TypeScript mode.
 
 Example configuration for a JavaScript project without external Babel configuration which removes console statements and exclude specific paths:
 
@@ -168,7 +189,7 @@ Please use the GitHub bug tracking system to post questions, bug reports or to c
 
 ## Contributing
 
-Any type of contribution (code contributions, pull requests, issues) to this set of tooling extensions will be equally appreciated.
+Any type of contribution (code contributions, pull requests, issues) to this set of UI5 CLI extensions will be equally appreciated.
 
 ## License
 

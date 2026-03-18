@@ -31,7 +31,8 @@ function parseBoolean(b) {
 function parseJSON(v) {
 	try {
 		return JSON.parse(v);
-	} catch (e) {
+		// eslint-disable-next-line no-unused-vars
+	} catch (err) {
 		return undefined;
 	}
 }
@@ -57,7 +58,7 @@ function sanitizeObject(o) {
  * @param {object} parameters Parameters
  * @param {@ui5/logger/Logger} parameters.log Logger instance
  * @param {object} parameters.options Options
- * @param {string} [parameters.options.configuration] Custom server middleware configuration if given in ui5.yaml
+ * @param {object} [parameters.options.configuration] Custom server middleware configuration if given in ui5.yaml
  * @param {object} parameters.middlewareUtil Specification version dependent interface to a
  *                                        [MiddlewareUtil]{@link module:@ui5/server.middleware.MiddlewareUtil} instance
  * @returns {Function} Middleware function to use
@@ -120,8 +121,7 @@ module.exports = async function ({ log, options, middlewareUtil }) {
 	const hasExcludePatterns = excludePatterns && Array.isArray(excludePatterns);
 	const filter = function (pathname, req) {
 		if (hasExcludePatterns) {
-			const targetPath = pathname.substring(req.baseUrl?.length || 0);
-			const exclude = excludePatterns.some((glob) => minimatch(targetPath, glob));
+			const exclude = excludePatterns.some((glob) => minimatch(pathname, glob));
 			if (exclude) {
 				const url = req.url;
 				debug && log.info(`[${baseUri}] Request ${url} is excluded`);
@@ -139,9 +139,10 @@ module.exports = async function ({ log, options, middlewareUtil }) {
 
 	// run the proxy middleware based on the host configuration
 	const target = /^(.*)\/$/.exec(baseURL.toString())?.[1] || baseURL.toString(); // remove trailing slash!
-	const proxyMiddleware = createProxyMiddleware(filter, {
-		logLevel: effectiveOptions.debug ? "info" : "warn",
+	const proxyMiddleware = createProxyMiddleware({
+		logger: effectiveOptions.debug ? console : undefined,
 		target,
+		pathFilter: filter,
 		agent,
 		secure: strictSSL,
 		changeOrigin: true, // for vhosted sites
@@ -149,59 +150,60 @@ module.exports = async function ({ log, options, middlewareUtil }) {
 		xfwd: true, // adds x-forward headers
 		auth: username != null && password != null ? `${username}:${password}` : undefined,
 		headers: httpHeaders,
-		pathRewrite: function (path, req) {
-			// in case of Router scenarios (cds-plugin-ui5) we need to use
-			// the parsed original url to determine the proper target path
-			// as it contains also the mountpath of the proxy middleware
-			const baseUrl = req.baseUrl?.length > 1 ? req.baseUrl + "/" : undefined;
-			const url = req.url;
-			let pathname = baseUrl && url?.startsWith(baseUrl) ? url.substring(baseUrl.length - 1) : url;
+		pathRewrite: function (path /*, req*/) {
 			// append the query parameters if available
 			if (query) {
-				const url = new URL(pathname, baseURL);
+				const url = new URL(path, new URL("/", baseURL));
+				let pathname = url.pathname;
+				if (pathname === "/") {
+					pathname = "";
+				}
 				const search = url.searchParams;
 				Object.keys(query).forEach((key) => search.append(key, query[key]));
-				pathname = `${url.pathname}${url.search}`;
+				path = `${pathname}${url.search}`;
 			}
-			return pathname;
+			return path;
 		},
 		selfHandleResponse: true, // + responseInterceptor: necessary to omit ERR_CONTENT_DECODING_FAILED error when opening OData URls directly
-		onProxyRes: responseInterceptor(async (responseBuffer, proxyRes, req, res) => {
-			const url = req.url;
-			effectiveOptions.debug && log.info(`[${baseUri}] ${req.method} ${url} -> ${target}${url} [${proxyRes.statusCode}]`);
-			// remove the secure flag of the cookies
-			if (ssl) {
-				const setCookie = res.getHeader("set-cookie");
-				if (Array.isArray(setCookie)) {
-					res.setHeader(
-						"set-cookie",
-						proxyRes.headers["set-cookie"]
-							// remove flag 'Secure'
-							.map(function (cookieValue) {
-								return cookieValue.replace(/;\s*secure\s*(?:;|$)/gi, ";");
-							})
-							// remove attribute 'Domain'
-							.map(function (cookieValue) {
-								return cookieValue.replace(/;\s*domain=[^;]+\s*(?:;|$)/gi, ";");
-							})
-							// remove attribute 'Path'
-							.map(function (cookieValue) {
-								return cookieValue.replace(/;\s*path=[^;]+\s*(?:;|$)/gi, ";");
-							})
-							// remove attribute 'SameSite'
-							.map(function (cookieValue) {
-								return cookieValue.replace(/;\s*samesite=[^;]+\s*(?:;|$)/gi, ";");
-							})
-					);
+		on: {
+			proxyRes: responseInterceptor(async (responseBuffer, proxyRes, req, res) => {
+				effectiveOptions.debug && console.log("Proxy response status:", proxyRes.statusCode);
+				const url = req.url;
+				effectiveOptions.debug && log.info(`[${baseUri}] ${req.method} ${url} -> ${target}${url} [${proxyRes.statusCode}]`);
+				// remove the secure flag of the cookies
+				if (ssl) {
+					const setCookie = res.getHeader("set-cookie");
+					if (Array.isArray(setCookie)) {
+						res.setHeader(
+							"set-cookie",
+							proxyRes.headers["set-cookie"]
+								// remove flag 'Secure'
+								.map(function (cookieValue) {
+									return cookieValue.replace(/;\s*secure\s*(?:;|$)/gi, ";");
+								})
+								// remove attribute 'Domain'
+								.map(function (cookieValue) {
+									return cookieValue.replace(/;\s*domain=[^;]+\s*(?:;|$)/gi, ";");
+								})
+								// remove attribute 'Path'
+								.map(function (cookieValue) {
+									return cookieValue.replace(/;\s*path=[^;]+\s*(?:;|$)/gi, ";");
+								})
+								// remove attribute 'SameSite'
+								.map(function (cookieValue) {
+									return cookieValue.replace(/;\s*samesite=[^;]+\s*(?:;|$)/gi, ";");
+								}),
+						);
+					}
 				}
-			}
-			// remove etag
-			if (removeETag) {
-				debug && log.info(`[${baseUri}] Removing etag from ${url}`);
-				res.removeHeader("etag", undefined);
-			}
-			return responseBuffer;
-		}),
+				// remove etag
+				if (removeETag) {
+					debug && log.info(`[${baseUri}] Removing etag from ${url}`);
+					res.removeHeader("etag", undefined);
+				}
+				return responseBuffer;
+			}),
+		},
 	});
 
 	// manually install the upgrade function for the websocket
@@ -213,15 +215,14 @@ module.exports = async function ({ log, options, middlewareUtil }) {
 					on("upgrade", (req, socket, head) => {
 						// only handle requests in the mountpath
 						if (mountpath === req.url) {
-							req.baseUrl = req.url;
-							req.url += "/";
+							req.url = "/";
 							// call the upgrade function of the proxy middleware to
 							// initialize the websocket and establish the connection
 							proxyMiddleware.upgrade.call(this, req, socket, head);
 						}
 					});
 				},
-				proxyMiddleware
-		  )
+				proxyMiddleware,
+			)
 		: proxyMiddleware;
 };

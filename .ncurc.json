@@ -1,8 +1,10 @@
 {
   "reject": [
+    "pnpm",
     "@sap/cds",
     "chart.js",
     "@octokit/core",
+    "nock",
     "node-fetch",
     "minimatch",
     "@wdio/cli",
@@ -11,7 +13,6 @@
     "@wdio/spec-reporter",
     "wdio-ui5-service",
     "eslint-plugin-wdio",
-    "@prettier/plugin-xml",
-    "prettier"
+    "http-proxy-middleware"
   ]
 }

@@ -1,15 +1,15 @@
 # UI5 task for turning a UI5 App into a PWA
 
-> :wave: This is a **community project** and there is no official support for this package! Feel free to use it, open issues, contribute, and help answering questions.
+> :wave: This is an **open‑source, community‑driven project**, developed and actively monitored by members of the UI5 community. You are welcome to use it, report issues, contribute enhancements, and support others in the community.
 
 Progressive Web Apps are web applications that have been designed to be capable, reliable, and installable. These three pillars transform them into an experience that feels like a platform-specific application. Interested? Find out more here: [What are Progressive Web Apps (PWAs)?](https://web.dev/progressive-web-apps/).
 
 ## Prerequisites
 
-- Requires at least [`@ui5/cli@3.0.0`](https://sap.github.io/ui5-tooling/v3/pages/CLI/) (to support [`specVersion: "3.0"`](https://sap.github.io/ui5-tooling/pages/Configuration/#specification-version-30))
+- Requires at least [`@ui5/cli@3.0.0`](https://ui5.github.io/cli/v3/pages/CLI/) (to support [`specVersion: "3.0"`](https://ui5.github.io/cli/pages/Configuration/#specification-version-30))
 
-> :warning: **UI5 Tooling Compatibility**
-> All releases of this tooling extension using the major version `3` require UI5 Tooling V3. Any previous releases below major version `3` (if available) also support older versions of the UI5 Tooling. But the usage of the latest UI5 Tooling is strongly recommended!
+> :warning: **UI5 CLI Compatibility**
+> All releases of this UI5 CLI extension using the major version `3` require UI5 CLI V3. Any previous releases below major version `3` (if available) also support older versions of the UI5 CLI. But the usage of the latest UI5 CLI is strongly recommended!
 
 ## Install
 
@@ -35,6 +35,8 @@ Defines how the service worker should behave. Possible values are
 
 `preCache`: List of [glob pattern](https://en.wikipedia.org/wiki/Glob_(programming)) that match the files that will be pre cached when the application starts. Only required for `Cache-First` and `Advanced-Caching` strategies.
 
+`preCachePrefix`:  Prefix for all the files determined using `preCache`. Useful in scenario where application is deployed at a centralized runtime infrastructure e.g. Mangaged Approuter provided by SAP Build Work Zone. Only applicable for `Advanced-Caching` & `Cache-First` strategies.
+
 `networkFirst`: List of regular expressions, everything that matches any of the expressions will be fetched from the network first and only served from cache when there is no network available. Only required for `Advanced-Caching`.
 
 `avoidCaching`: List of regular expressions, everything that matches any of the expressions won't be cached. Only required for `Advanced-Caching`
@@ -42,6 +44,10 @@ Defines how the service worker should behave. Possible values are
 ### `manifest`
 
 Whatever you supply here will be copied to the `manifest.webmanifest` file, you can read more about it at [web.dev](https://web.dev/add-manifest/). If a required parameter is missing a default value will be provided.
+
+Another special parameter `crossOrigin` is supported as part of `manifest` configuration. However, it is not copied to `manifest.webmanifest`, instead added to  `<link>` while changing the `index.html`.
+
+  `crossOrigin`: The request for the manifest is made without credentials, even if it's on the same domain. If the manifest requires credentials, add this parameter and provide value **use-credentials**.
 
 ## Usage
 

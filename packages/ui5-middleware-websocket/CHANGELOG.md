@@ -3,6 +3,119 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-websocket@3.1.6...ui5-middleware-websocket@3.2.0) (2026-03-12)
+
+
+### Features
+
+* update dependencies ([#1326](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1326)) ([6f16575](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/6f16575680b0c526261b84f83b22743806c8509b))
+
+
+
+
+
+## [3.1.6](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-websocket@3.1.5...ui5-middleware-websocket@3.1.6) (2026-01-15)
+
+**Note:** Version bump only for package ui5-middleware-websocket
+
+
+
+
+
+## [3.1.5](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-websocket@3.1.4...ui5-middleware-websocket@3.1.5) (2025-11-02)
+
+**Note:** Version bump only for package ui5-middleware-websocket
+
+
+
+
+
+## [3.1.4](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-websocket@3.1.3...ui5-middleware-websocket@3.1.4) (2025-09-17)
+
+**Note:** Version bump only for package ui5-middleware-websocket
+
+
+
+
+
+## [3.1.3](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-websocket@3.1.2...ui5-middleware-websocket@3.1.3) (2025-09-15)
+
+**Note:** Version bump only for package ui5-middleware-websocket
+
+
+
+
+
+## [3.1.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-websocket@3.1.1...ui5-middleware-websocket@3.1.2) (2025-07-06)
+
+
+### Bug Fixes
+
+* update project dependencies ([#1235](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1235)) ([456fb61](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/456fb6143125e3334acafb129e219499b2a1c882))
+
+
+
+
+
+## [3.1.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-websocket@3.1.0...ui5-middleware-websocket@3.1.1) (2025-03-19)
+
+**Note:** Version bump only for package ui5-middleware-websocket
+
+
+
+
+
+# [3.1.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-websocket@3.0.5...ui5-middleware-websocket@3.1.0) (2024-09-06)
+
+
+### Features
+
+* enhanced v4 compat + update dependencies ([#1070](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1070)) ([2d7ed16](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/2d7ed1623249febd32ecabdd2b47698f1cd968d5))
+
+
+
+
+
+## [3.0.5](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-websocket@3.0.4...ui5-middleware-websocket@3.0.5) (2024-07-22)
+
+**Note:** Version bump only for package ui5-middleware-websocket
+
+
+
+
+
+## [3.0.4](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-websocket@3.0.3...ui5-middleware-websocket@3.0.4) (2024-05-31)
+
+**Note:** Version bump only for package ui5-middleware-websocket
+
+
+
+
+
+## [3.0.3](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-websocket@3.0.2...ui5-middleware-websocket@3.0.3) (2024-05-15)
+
+**Note:** Version bump only for package ui5-middleware-websocket
+
+
+
+
+
+## [3.0.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-websocket@3.0.1...ui5-middleware-websocket@3.0.2) (2024-01-25)
+
+**Note:** Version bump only for package ui5-middleware-websocket
+
+
+
+
+
+## [3.0.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-websocket@3.0.0...ui5-middleware-websocket@3.0.1) (2024-01-17)
+
+**Note:** Version bump only for package ui5-middleware-websocket
+
+
+
+
+
 # [3.0.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-websocket@3.0.0-alpha.8...ui5-middleware-websocket@3.0.0) (2023-11-10)
 
 

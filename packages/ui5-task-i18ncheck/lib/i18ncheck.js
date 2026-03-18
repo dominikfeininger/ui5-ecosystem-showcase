@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars, no-prototype-builtins */
 const utils = require("./utils");
 
 /**
@@ -8,7 +7,7 @@ const utils = require("./utils");
  * @param {module:@ui5/logger/Logger} parameters.log Logger instance
  * @param {module:@ui5/fs.DuplexCollection} parameters.workspace DuplexCollection to read and write files
  * @param {object} parameters.options Options
- * @param {string} parameters.options.configuration Configuration object
+ * @param {object} parameters.options.configuration Configuration object
  * @returns {Promise<undefined>} Promise resolving with undefined once data has been written
  */
 module.exports = async function ({ log, workspace, options }) {
@@ -46,7 +45,7 @@ module.exports = async function ({ log, workspace, options }) {
 
 	let i18nAll = {};
 	i18nUsageXMLArr.forEach((i18nUsage) => {
-		if (!i18nAll.hasOwnProperty(i18nUsage.value)) {
+		if (!Object.prototype.hasOwnProperty.call(i18nAll, i18nUsage.value)) {
 			i18nAll[i18nUsage.value] = {};
 			i18nAll[i18nUsage.value]["key"] = i18nUsage.value;
 			i18nAll[i18nUsage.value]["usedIn"] = new Set([i18nUsage.file]);
@@ -69,7 +68,7 @@ module.exports = async function ({ log, workspace, options }) {
 			//Look for undefined properties
 			Object.keys(i18nAll).forEach((i18nKey) => {
 				//let i18n = i18nAll[i18nKey];
-				if (!properties.hasOwnProperty(i18nKey)) {
+				if (!Object.prototype.hasOwnProperty.call(properties, i18nKey)) {
 					notFoundProperties.push(i18nAll[i18nKey]);
 				}
 			});
@@ -99,7 +98,7 @@ module.exports = async function ({ log, workspace, options }) {
  * @returns {Promise<Set>}
  *      Promise resolving with a Set containing all dependencies
  *      that should be made available to the task.
- *      UI5 Tooling will ensure that those dependencies have been
+ *      UI5 CLI will ensure that those dependencies have been
  *      built before executing the task.
  */
 module.exports.determineRequiredDependencies = async function () {

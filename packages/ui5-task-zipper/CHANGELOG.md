@@ -3,6 +3,210 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.6.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-zipper@3.5.1...ui5-task-zipper@3.6.0) (2026-03-12)
+
+
+### Features
+
+* update dependencies ([#1326](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1326)) ([6f16575](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/6f16575680b0c526261b84f83b22743806c8509b))
+
+
+
+
+
+## [3.5.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-zipper@3.5.0...ui5-task-zipper@3.5.1) (2026-01-15)
+
+**Note:** Version bump only for package ui5-task-zipper
+
+
+
+
+
+# [3.5.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-zipper@3.4.4...ui5-task-zipper@3.5.0) (2025-12-02)
+
+
+### Features
+
+* update depedency versions ([#1302](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1302)) ([0a22ebd](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/0a22ebdde9bcbce570eb7ccdda8539e106dc44e1))
+
+
+
+
+
+## [3.4.4](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-zipper@3.4.3...ui5-task-zipper@3.4.4) (2025-09-17)
+
+**Note:** Version bump only for package ui5-task-zipper
+
+
+
+
+
+## [3.4.3](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-zipper@3.4.2...ui5-task-zipper@3.4.3) (2025-09-15)
+
+**Note:** Version bump only for package ui5-task-zipper
+
+
+
+
+
+## [3.4.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-zipper@3.4.1...ui5-task-zipper@3.4.2) (2025-07-06)
+
+
+### Bug Fixes
+
+* update project dependencies ([#1235](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1235)) ([456fb61](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/456fb6143125e3334acafb129e219499b2a1c882))
+
+
+
+
+
+## [3.4.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-zipper@3.4.0...ui5-task-zipper@3.4.1) (2025-03-19)
+
+
+### Bug Fixes
+
+* **ui5-task-zipper:** recreate escaped single quotes in Component-preload.js ([#1168](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1168)) ([a672eab](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/a672eab867ed2dd3eee7e551715ec1ef9da6a2a1))
+
+
+
+
+
+# [3.4.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-zipper@3.3.3...ui5-task-zipper@3.4.0) (2025-02-06)
+
+
+### Features
+
+* general dependencies update ([#1162](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1162)) ([5375d76](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/5375d76496741433330d76ce59a89b39f7ad8a69))
+
+
+
+
+
+## [3.3.3](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-zipper@3.3.2...ui5-task-zipper@3.3.3) (2025-02-01)
+
+
+### Bug Fixes
+
+* **ui5-task-zipper:** escape stringified json ([#1159](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1159)) ([ea10350](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/ea10350ecfbd31f2ba233d6c7e5c9cde1d9d3959))
+
+
+
+
+
+## [3.3.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-zipper@3.3.1...ui5-task-zipper@3.3.2) (2025-01-30)
+
+
+### Bug Fixes
+
+* **ui5-task-zipper:** also fix relative path in Component-preload.js ([#1152](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1152)) ([7b157d6](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/7b157d6d2142482dd5862a654c164f15d5ae2d90))
+
+
+
+
+
+## [3.3.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-zipper@3.3.0...ui5-task-zipper@3.3.1) (2024-11-01)
+
+
+### Bug Fixes
+
+* update dependencies ([#1114](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1114)) ([d7672f2](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/d7672f2cd10f8a5de1da3070050ab98810e0fcf8))
+
+
+
+
+
+# [3.3.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-zipper@3.2.2...ui5-task-zipper@3.3.0) (2024-09-06)
+
+
+### Features
+
+* enhanced v4 compat + update dependencies ([#1070](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1070)) ([2d7ed16](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/2d7ed1623249febd32ecabdd2b47698f1cd968d5))
+
+
+
+
+
+## [3.2.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-zipper@3.2.1...ui5-task-zipper@3.2.2) (2024-08-25)
+
+**Note:** Version bump only for package ui5-task-zipper
+
+
+
+
+
+## [3.2.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-zipper@3.2.0...ui5-task-zipper@3.2.1) (2024-08-09)
+
+
+### Bug Fixes
+
+* **ui5-task-zipper:** make sure manifest gets zipped if no data sources exist ([#1055](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1055)) ([9758e76](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/9758e7699af005aedb4e1b8885bffa700890fe9b))
+
+
+
+
+
+# [3.2.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-zipper@3.1.7...ui5-task-zipper@3.2.0) (2024-08-07)
+
+
+### Features
+
+* **ui5-task-zipper:** optional  parameter to turn absolute data sour… ([#1046](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1046)) ([f9ceb6d](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/f9ceb6d836cf60ce16290f930a0972df5f33d21b))
+
+
+
+
+
+## [3.1.7](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-zipper@3.1.6...ui5-task-zipper@3.1.7) (2024-07-22)
+
+**Note:** Version bump only for package ui5-task-zipper
+
+
+
+
+
+## [3.1.6](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-zipper@3.1.5...ui5-task-zipper@3.1.6) (2024-07-22)
+
+**Note:** Version bump only for package ui5-task-zipper
+
+
+
+
+
+## [3.1.5](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-zipper@3.1.4...ui5-task-zipper@3.1.5) (2024-07-19)
+
+
+### Bug Fixes
+
+* **ui5-task-zipper:** avoid duplicate entries, show warning and skip ([#1036](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1036)) ([87eb7c8](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/87eb7c8b3673c1c771ec5cd40ae5af7b00e7ff11))
+
+
+
+
+
+## [3.1.4](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-zipper@3.1.3...ui5-task-zipper@3.1.4) (2024-05-15)
+
+**Note:** Version bump only for package ui5-task-zipper
+
+
+
+
+
+## [3.1.3](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-zipper@3.1.2...ui5-task-zipper@3.1.3) (2024-02-18)
+
+**Note:** Version bump only for package ui5-task-zipper
+
+
+
+
+
+## [3.1.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-zipper@3.1.1...ui5-task-zipper@3.1.2) (2024-01-17)
+
+**Note:** Version bump only for package ui5-task-zipper
+
+
+
+
+
 ## [3.1.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-task-zipper@3.1.0...ui5-task-zipper@3.1.1) (2023-12-10)
 
 **Note:** Version bump only for package ui5-task-zipper

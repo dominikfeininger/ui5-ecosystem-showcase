@@ -1,14 +1,21 @@
 const path = require("path");
+
 module.exports = function ({ resolveModule } = {}) {
 	return {
 		name: "pnpm-resolve",
-		resolveId(source) {
-			// ignore absolute paths
-			if (path.isAbsolute(source)) {
+		resolveId: function (importee, importer) {
+			let module = importee;
+			if (path.isAbsolute(importee)) {
+				// ignore absolute paths
 				return null;
+			} else if (importee.startsWith("./") || importee.startsWith("../")) {
+				// resolve relative paths
+				module = path.resolve(path.dirname(importer), importee);
 			}
-			// needs to be in sync with nodeResolve
-			return resolveModule(source);
+			// try to resolve the node module using the provided function
+			const resolvedModule = resolveModule(module);
+			//console.log(`Resolved ${importee} to ${resolvedModule}`);
+			return resolvedModule;
 		},
 	};
 };

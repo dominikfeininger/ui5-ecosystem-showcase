@@ -1,6 +1,6 @@
-# UI5 Tooling Extension for Replacing Strings
+# UI5 CLI Extension for Replacing Strings
 
-> :wave: This is a **community project** and there is no official support for this package! Feel free to use it, open issues, contribute, and help answering questions.
+> :wave: This is an **open‑source, community‑driven project**, developed and actively monitored by members of the UI5 community. You are welcome to use it, report issues, contribute enhancements, and support others in the community.
 
 Task and Middleware for [ui5-server](https://github.com/SAP/ui5-server), doing a string replace on files matched by the `files` configuration option.
 
@@ -8,10 +8,10 @@ Task and Middleware for [ui5-server](https://github.com/SAP/ui5-server), doing a
 
 ## Prerequisites
 
-- Requires at least [`@ui5/cli@3.0.0`](https://sap.github.io/ui5-tooling/v3/pages/CLI/) (to support [`specVersion: "3.0"`](https://sap.github.io/ui5-tooling/pages/Configuration/#specification-version-30))
+- Requires at least [`@ui5/cli@3.0.0`](https://ui5.github.io/cli/v3/pages/CLI/) (to support [`specVersion: "3.0"`](https://ui5.github.io/cli/pages/Configuration/#specification-version-30))
 
-> :warning: **UI5 Tooling Compatibility**
-> All releases of this tooling extension using the major version `3` require UI5 Tooling V3. Any previous releases below major version `3` (if available) also support older versions of the UI5 Tooling. But the usage of the latest UI5 Tooling is strongly recommended!
+> :warning: **UI5 CLI Compatibility**
+> All releases of this UI5 CLI extension using the major version `3` require UI5 CLI V3. Any previous releases below major version `3` (if available) also support older versions of the UI5 CLI. But the usage of the latest UI5 CLI is strongly recommended!
 
 ## Install
 
@@ -34,6 +34,8 @@ yarn add --dev ui5-tooling-stringreplace
   Placeholders will be replaced with their values in files matched by this glob pattern
 - replace: `array`  
   List of placeholder, value pairs
+- separator: `string`
+  separator for stringreplace placeholder
 
 ## Usage
 
@@ -74,6 +76,7 @@ server:
         debug: true
         prefix: UI5_ENV # default
         path: ./ # default
+        separator: "." # default
         files:
           - "**/*.js"
           - "**/*.xml"
@@ -117,6 +120,8 @@ You can specify the `<UI5_ENV>.env` location by setting the `path` property in t
 ```
 
 With `UI5_ENV` set, the strings will be loaded from the `<UI5_ENV>.env` file.
+
+You can define our own separator in `$yourapp/ui5.yaml` using configuration `separator` otherwise will default to `.`. In case of separator set to `_` placeholder will be `stringreplace_`
 
 ## How it works
 

@@ -48,7 +48,7 @@ var firstTime = true;
  *                                        Reader or Collection to read resources of
  *                                        the projects dependencies
  * @param {Object} parameters.options Options
- * @param {string} [parameters.options.configuration] Custom server middleware configuration
+ * @param {object} [parameters.options.configuration] Custom server middleware configuration
  *                                                      if given in ui5.yaml
  * @returns {function} Middleware function to use
  */
@@ -84,8 +84,8 @@ module.exports = function ({ log, options }) {
                 cookie.key = cookie.name;
                 delete cookie.expires;
                 res.cookie(cookie.name, cookie.value, {
-                    maxAge: 86400 * 1000,
-                    httpOnly: true,
+                    maxAge: 86400 * 1000, // 24 hours
+                    httpOnly: true, // http only, prevents JavaScript cookie access
                     secure: false, // cookie must be sent over https / ssl)
                 });
                 cookieStr = cookieStr.concat((0, cookie_1.serialize)(cookie.name, cookie.value, Object.assign(Object.assign({}, cookie), { encode: (value) => value })), "; ");

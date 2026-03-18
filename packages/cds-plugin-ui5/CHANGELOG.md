@@ -3,6 +3,363 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.17.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/cds-plugin-ui5@0.16.3...cds-plugin-ui5@0.17.0) (2026-03-12)
+
+
+### Features
+
+* update dependencies ([#1326](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1326)) ([6f16575](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/6f16575680b0c526261b84f83b22743806c8509b))
+
+
+
+
+
+## [0.16.3](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/cds-plugin-ui5@0.16.2...cds-plugin-ui5@0.16.3) (2026-01-15)
+
+**Note:** Version bump only for package cds-plugin-ui5
+
+
+
+
+
+## [0.16.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/cds-plugin-ui5@0.16.1...cds-plugin-ui5@0.16.2) (2026-01-15)
+
+**Note:** Version bump only for package cds-plugin-ui5
+
+
+
+
+
+## [0.16.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/cds-plugin-ui5@0.16.0...cds-plugin-ui5@0.16.1) (2025-12-05)
+
+
+### Bug Fixes
+
+* **cds-plugin-ui5:** coerce versions for satisfy check ([#1303](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1303)) ([61e65ff](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/61e65ffb64dd7d80976d235fa7cbca3366dac511))
+
+
+
+
+
+# [0.16.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/cds-plugin-ui5@0.15.0...cds-plugin-ui5@0.16.0) (2025-12-02)
+
+
+### Features
+
+* update depedency versions ([#1302](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1302)) ([0a22ebd](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/0a22ebdde9bcbce570eb7ccdda8539e106dc44e1))
+
+
+
+
+
+# [0.15.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/cds-plugin-ui5@0.14.0...cds-plugin-ui5@0.15.0) (2025-11-16)
+
+
+### Features
+
+* **cds-plugin-ui5:** remove the under construction hint ([#1294](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1294)) ([55818e4](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/55818e4994f62e33f62e401b11d2818fc5b81013)), closes [#1293](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1293)
+
+
+
+
+
+# [0.14.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/cds-plugin-ui5@0.13.6...cds-plugin-ui5@0.14.0) (2025-11-02)
+
+
+### Features
+
+* support express >= 4 ([#1287](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1287)) ([f37a1fa](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/f37a1fa9462622ae9aae9dbb6fa17a6662dd38c9))
+
+
+
+
+
+## [0.13.6](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/cds-plugin-ui5@0.13.5...cds-plugin-ui5@0.13.6) (2025-09-17)
+
+**Note:** Version bump only for package cds-plugin-ui5
+
+
+
+
+
+## [0.13.5](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/cds-plugin-ui5@0.13.4...cds-plugin-ui5@0.13.5) (2025-09-15)
+
+**Note:** Version bump only for package cds-plugin-ui5
+
+
+
+
+
+## [0.13.4](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/cds-plugin-ui5@0.13.3...cds-plugin-ui5@0.13.4) (2025-07-31)
+
+
+### Bug Fixes
+
+* **cds-plugin-ui5:** fixes minor condition error for custom webapp path determination ([#1245](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1245)) ([c3b7355](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/c3b735588bd51a4632e4e94893b3205ca0f6aff4))
+
+
+
+
+
+## [0.13.3](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/cds-plugin-ui5@0.13.2...cds-plugin-ui5@0.13.3) (2025-07-29)
+
+
+### Bug Fixes
+
+* **cds-plugin-ui5:** fixes issue in lazy loading feature ([#1224](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1224)) ([a65b4bc](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/a65b4bc13489484d6b755f3c530bc825f5c50f24))
+
+
+
+
+
+## [0.13.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/cds-plugin-ui5@0.13.1...cds-plugin-ui5@0.13.2) (2025-07-06)
+
+
+### Bug Fixes
+
+* update project dependencies ([#1235](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1235)) ([456fb61](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/456fb6143125e3334acafb129e219499b2a1c882))
+
+
+
+
+
+## [0.13.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/cds-plugin-ui5@0.13.0...cds-plugin-ui5@0.13.1) (2025-06-09)
+
+
+### Bug Fixes
+
+* **cds-plugin-ui5:** wait for middlewares if not lazy ([#1229](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1229)) ([7155226](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/71552268eab84b40d6ef7d9bdddb0e707075e26b))
+
+
+
+
+
+# [0.13.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/cds-plugin-ui5@0.12.1...cds-plugin-ui5@0.13.0) (2025-05-20)
+
+
+### Features
+
+* **cds-plugin-ui5:** add lazy module loading ([#1216](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1216)) ([58c88cf](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/58c88cfede10db2ac4aa59f8447edb02e12aa883))
+
+
+
+
+
+## [0.12.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/cds-plugin-ui5@0.12.0...cds-plugin-ui5@0.12.1) (2025-05-18)
+
+
+### Bug Fixes
+
+* **cds-plugin-ui5:** check that it's the `cds` script ([#1215](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1215)) ([e7f1c9a](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/e7f1c9a469d8ff89eab3b65feec8aa90c950cd42))
+
+
+
+
+
+# [0.12.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/cds-plugin-ui5@0.11.2...cds-plugin-ui5@0.12.0) (2025-02-06)
+
+
+### Features
+
+* general dependencies update ([#1162](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1162)) ([5375d76](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/5375d76496741433330d76ce59a89b39f7ad8a69))
+
+
+
+
+
+## [0.11.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/cds-plugin-ui5@0.11.1...cds-plugin-ui5@0.11.2) (2024-12-04)
+
+
+### Bug Fixes
+
+* **cds-plugin-ui5:** color adoption for skip logs ([#1129](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1129)) ([0d2c354](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/0d2c35421c803ef7b5c6492715d13e53e88031d4))
+
+
+
+
+
+## [0.11.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/cds-plugin-ui5@0.11.0...cds-plugin-ui5@0.11.1) (2024-10-10)
+
+
+### Bug Fixes
+
+* **cds-plugin-ui5:** move logging into real execution ([#1091](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1091)) ([f60fc51](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/f60fc51683727a29da03e8cd3f9c80d2077f89eb))
+
+
+
+
+
+# [0.11.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/cds-plugin-ui5@0.10.0...cds-plugin-ui5@0.11.0) (2024-09-06)
+
+
+### Features
+
+* enhanced v4 compat + update dependencies ([#1070](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1070)) ([2d7ed16](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/2d7ed1623249febd32ecabdd2b47698f1cd968d5))
+
+
+
+
+
+# [0.10.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/cds-plugin-ui5@0.9.8...cds-plugin-ui5@0.10.0) (2024-08-29)
+
+
+### Features
+
+* **cds-plugin-ui5:** use CAP logging, custom formatter using colors, allow log levels ([#1067](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1067)) ([4be3b08](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/4be3b08e3a70e1f07b3ae4572928fcec840b7321))
+
+
+
+
+
+## [0.9.8](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/cds-plugin-ui5@0.9.7...cds-plugin-ui5@0.9.8) (2024-08-11)
+
+
+### Bug Fixes
+
+* decouple tooling extensions from UI5 tooling version ([#1058](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1058)) ([6694c59](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/6694c59422ac37d9aea971679de46f5f59b8025c)), closes [#1054](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1054)
+
+
+
+
+
+## [0.9.7](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/cds-plugin-ui5@0.9.6...cds-plugin-ui5@0.9.7) (2024-07-23)
+
+
+### Bug Fixes
+
+* **cds-plugin-ui5:** fix error when resolving symlinks for CDS-DK root ([#1048](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1048)) ([3b05ada](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/3b05ada1fe2bfac2ecc962af700646030d8c39d8)), closes [#1033](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1033)
+
+
+
+
+
+## [0.9.6](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/cds-plugin-ui5@0.9.5...cds-plugin-ui5@0.9.6) (2024-07-22)
+
+
+### Bug Fixes
+
+* **cds-plugin-ui5:** correctly determine the @sap/cds-dk version ([#1047](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1047)) ([5c7f982](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/5c7f982715c6ed2e11859420a4867d192117e9aa))
+
+
+
+
+
+## [0.9.5](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/cds-plugin-ui5@0.9.4...cds-plugin-ui5@0.9.5) (2024-07-22)
+
+
+### Bug Fixes
+
+* **cds-plugin-ui5:** report versions of the plugin and @sap/cds-dk, @sap/cds ([#1045](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1045)) ([8db7560](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/8db7560da65d2d042a5e71887b885c8d102714db))
+
+
+
+
+
+## [0.9.4](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/cds-plugin-ui5@0.9.3...cds-plugin-ui5@0.9.4) (2024-07-19)
+
+
+### Bug Fixes
+
+* **cds-plugin-ui5:** support @sap/cds-dk@8 build priorities ([#1037](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1037)) ([c921a35](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/c921a35f97c0895b603f8b781a946ceaa1234275)), closes [#1033](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1033)
+
+
+
+
+
+## [0.9.3](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/cds-plugin-ui5@0.9.2...cds-plugin-ui5@0.9.3) (2024-06-04)
+
+
+### Bug Fixes
+
+* **cds-plugin-ui5:** silently skip build plugin if not supported ([ca4745b](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/ca4745b8e7da2ca95c8ba504d0aa2952bcf3f440))
+
+
+
+
+
+## [0.9.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/cds-plugin-ui5@0.9.1...cds-plugin-ui5@0.9.2) (2024-05-15)
+
+**Note:** Version bump only for package cds-plugin-ui5
+
+
+
+
+
+## [0.9.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/cds-plugin-ui5@0.9.0...cds-plugin-ui5@0.9.1) (2024-05-14)
+
+**Note:** Version bump only for package cds-plugin-ui5
+
+
+
+
+
+# [0.9.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/cds-plugin-ui5@0.8.3...cds-plugin-ui5@0.9.0) (2024-05-13)
+
+
+### Features
+
+* **cds-plugin-ui5:** sanitizing package.json with cds build task for gen/srv ([#999](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/999)) ([d52386c](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/d52386c168c62ea4c827cfff65be78117e13fd12))
+
+
+
+
+
+## [0.8.3](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/cds-plugin-ui5@0.8.2...cds-plugin-ui5@0.8.3) (2024-03-30)
+
+
+### Bug Fixes
+
+* cleanup of dependencies and improved approuter logic ([#984](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/984)) ([65ffaed](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/65ffaedb7968015e008e2eb6aa66ff1e0a03a73a))
+
+
+
+
+
+## [0.8.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/cds-plugin-ui5@0.8.1...cds-plugin-ui5@0.8.2) (2024-03-04)
+
+
+### Bug Fixes
+
+* **cds-plugin-ui5:** start also when services=all is defined ([#971](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/971)) ([94706ed](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/94706ed04d6fa2c5a711d1928d7367d8b18f8946))
+
+
+
+
+
+## [0.8.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/cds-plugin-ui5@0.8.0...cds-plugin-ui5@0.8.1) (2024-02-18)
+
+
+### Bug Fixes
+
+* **cds-plugin-ui5:** only start when using "cds serve|watch" ([#951](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/951)) ([7b67bd9](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/7b67bd975b5a082e6a33855b12a058ad53d0a433)), closes [#950](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/950)
+* prefere cds.env._home over just current process.cwd ([#947](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/947)) ([ecb6e69](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/ecb6e69af178f93a3723c005609c7fefb50c8b41))
+
+
+
+
+
+# [0.8.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/cds-plugin-ui5@0.7.5...cds-plugin-ui5@0.8.0) (2024-01-25)
+
+
+### Features
+
+* **ui5-middleware-ui5:** support nested scenarios in CDS servers ([#938](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/938)) ([5d61f18](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/5d61f18f04a624e8f61ec7fa1e8f32e81c43f6b0))
+
+
+
+
+
+## [0.7.5](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/cds-plugin-ui5@0.7.4...cds-plugin-ui5@0.7.5) (2024-01-17)
+
+
+### Bug Fixes
+
+* **cds-plugin-ui5:** support app folders being served from cds.env.folders.app ([#934](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/934)) ([#935](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/935)) ([9cff34d](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/9cff34d1b39ff2d22b6a8caaf3971306de737fe5))
+
+
+
+
+
 ## [0.7.4](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/cds-plugin-ui5@0.7.3...cds-plugin-ui5@0.7.4) (2023-12-10)
 
 **Note:** Version bump only for package cds-plugin-ui5

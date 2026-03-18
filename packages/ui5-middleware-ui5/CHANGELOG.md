@@ -3,6 +3,199 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.5.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-ui5@3.4.1...ui5-middleware-ui5@3.5.0) (2026-03-12)
+
+
+### Features
+
+* update dependencies ([#1326](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1326)) ([6f16575](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/6f16575680b0c526261b84f83b22743806c8509b))
+
+
+
+
+
+## [3.4.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-ui5@3.4.0...ui5-middleware-ui5@3.4.1) (2026-01-15)
+
+**Note:** Version bump only for package ui5-middleware-ui5
+
+
+
+
+
+# [3.4.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-ui5@3.3.5...ui5-middleware-ui5@3.4.0) (2025-12-02)
+
+
+### Features
+
+* update depedency versions ([#1302](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1302)) ([0a22ebd](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/0a22ebdde9bcbce570eb7ccdda8539e106dc44e1))
+
+
+
+
+
+## [3.3.5](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-ui5@3.3.4...ui5-middleware-ui5@3.3.5) (2025-11-02)
+
+**Note:** Version bump only for package ui5-middleware-ui5
+
+
+
+
+
+## [3.3.4](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-ui5@3.3.3...ui5-middleware-ui5@3.3.4) (2025-09-17)
+
+**Note:** Version bump only for package ui5-middleware-ui5
+
+
+
+
+
+## [3.3.3](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-ui5@3.3.2...ui5-middleware-ui5@3.3.3) (2025-09-15)
+
+**Note:** Version bump only for package ui5-middleware-ui5
+
+
+
+
+
+## [3.3.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-ui5@3.3.1...ui5-middleware-ui5@3.3.2) (2025-07-22)
+
+
+### Bug Fixes
+
+* **ui5-middleare-ui5:** also consider optional dependencies ([#1241](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1241)) ([c933da8](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/c933da8a7602e3cc72ab40ac4cc90b9403dd3852))
+
+
+
+
+
+## [3.3.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-ui5@3.3.0...ui5-middleware-ui5@3.3.1) (2025-07-06)
+
+
+### Bug Fixes
+
+* update project dependencies ([#1235](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1235)) ([456fb61](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/456fb6143125e3334acafb129e219499b2a1c882))
+
+
+
+
+
+# [3.3.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-ui5@3.2.1...ui5-middleware-ui5@3.3.0) (2025-02-06)
+
+
+### Features
+
+* general dependencies update ([#1162](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1162)) ([5375d76](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/5375d76496741433330d76ce59a89b39f7ad8a69))
+
+
+
+
+
+## [3.2.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-ui5@3.2.0...ui5-middleware-ui5@3.2.1) (2024-11-01)
+
+
+### Bug Fixes
+
+* update dependencies ([#1114](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1114)) ([d7672f2](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/d7672f2cd10f8a5de1da3070050ab98810e0fcf8))
+
+
+
+
+
+# [3.2.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-ui5@3.1.7...ui5-middleware-ui5@3.2.0) (2024-09-06)
+
+
+### Features
+
+* enhanced v4 compat + update dependencies ([#1070](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1070)) ([2d7ed16](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/2d7ed1623249febd32ecabdd2b47698f1cd968d5))
+
+
+
+
+
+## [3.1.7](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-ui5@3.1.6...ui5-middleware-ui5@3.1.7) (2024-08-11)
+
+
+### Bug Fixes
+
+* decouple tooling extensions from UI5 tooling version ([#1058](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1058)) ([6694c59](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/6694c59422ac37d9aea971679de46f5f59b8025c)), closes [#1054](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1054)
+
+
+
+
+
+## [3.1.6](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-ui5@3.1.5...ui5-middleware-ui5@3.1.6) (2024-07-22)
+
+**Note:** Version bump only for package ui5-middleware-ui5
+
+
+
+
+
+## [3.1.5](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-ui5@3.1.4...ui5-middleware-ui5@3.1.5) (2024-05-31)
+
+**Note:** Version bump only for package ui5-middleware-ui5
+
+
+
+
+
+## [3.1.4](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-ui5@3.1.3...ui5-middleware-ui5@3.1.4) (2024-05-15)
+
+**Note:** Version bump only for package ui5-middleware-ui5
+
+
+
+
+
+## [3.1.3](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-ui5@3.1.2...ui5-middleware-ui5@3.1.3) (2024-03-30)
+
+
+### Bug Fixes
+
+* cleanup of dependencies and improved approuter logic ([#984](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/984)) ([65ffaed](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/65ffaedb7968015e008e2eb6aa66ff1e0a03a73a))
+
+
+
+
+
+## [3.1.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-ui5@3.1.1...ui5-middleware-ui5@3.1.2) (2024-02-21)
+
+
+### Bug Fixes
+
+* **ui5-middleware-ui5:** ensure using forward slashes for mount path ([#956](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/956)) ([92f1362](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/92f1362a27e1be224091bdada5b51a01d4188975)), closes [#955](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/955)
+
+
+
+
+
+## [3.1.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-ui5@3.1.0...ui5-middleware-ui5@3.1.1) (2024-02-18)
+
+**Note:** Version bump only for package ui5-middleware-ui5
+
+
+
+
+
+# [3.1.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-ui5@3.0.2...ui5-middleware-ui5@3.1.0) (2024-01-25)
+
+
+### Features
+
+* **ui5-middleware-ui5:** support nested scenarios in CDS servers ([#938](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/938)) ([5d61f18](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/5d61f18f04a624e8f61ec7fa1e8f32e81c43f6b0))
+
+
+
+
+
+## [3.0.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-ui5@3.0.1...ui5-middleware-ui5@3.0.2) (2024-01-17)
+
+**Note:** Version bump only for package ui5-middleware-ui5
+
+
+
+
+
 ## [3.0.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-ui5@3.0.0...ui5-middleware-ui5@3.0.1) (2023-12-10)
 
 **Note:** Version bump only for package ui5-middleware-ui5

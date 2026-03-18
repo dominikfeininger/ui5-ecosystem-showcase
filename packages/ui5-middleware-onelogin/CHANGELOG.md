@@ -3,6 +3,182 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.9.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-onelogin@3.8.1...ui5-middleware-onelogin@3.9.0) (2026-03-12)
+
+
+### Features
+
+* update dependencies ([#1326](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1326)) ([6f16575](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/6f16575680b0c526261b84f83b22743806c8509b))
+
+
+
+
+
+## [3.8.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-onelogin@3.8.0...ui5-middleware-onelogin@3.8.1) (2026-01-15)
+
+**Note:** Version bump only for package ui5-middleware-onelogin
+
+
+
+
+
+# [3.8.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-onelogin@3.7.4...ui5-middleware-onelogin@3.8.0) (2025-12-02)
+
+
+### Features
+
+* update depedency versions ([#1302](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1302)) ([0a22ebd](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/0a22ebdde9bcbce570eb7ccdda8539e106dc44e1))
+
+
+
+
+
+## [3.7.4](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-onelogin@3.7.3...ui5-middleware-onelogin@3.7.4) (2025-09-17)
+
+**Note:** Version bump only for package ui5-middleware-onelogin
+
+
+
+
+
+## [3.7.3](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-onelogin@3.7.2...ui5-middleware-onelogin@3.7.3) (2025-09-15)
+
+**Note:** Version bump only for package ui5-middleware-onelogin
+
+
+
+
+
+## [3.7.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-onelogin@3.7.1...ui5-middleware-onelogin@3.7.2) (2025-07-06)
+
+
+### Bug Fixes
+
+* update project dependencies ([#1235](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1235)) ([456fb61](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/456fb6143125e3334acafb129e219499b2a1c882))
+
+
+
+
+
+## [3.7.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-onelogin@3.7.0...ui5-middleware-onelogin@3.7.1) (2025-03-19)
+
+**Note:** Version bump only for package ui5-middleware-onelogin
+
+
+
+
+
+# [3.7.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-onelogin@3.6.3...ui5-middleware-onelogin@3.7.0) (2025-02-06)
+
+
+### Features
+
+* general dependencies update ([#1162](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1162)) ([5375d76](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/5375d76496741433330d76ce59a89b39f7ad8a69))
+
+
+
+
+
+## [3.6.3](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-onelogin@3.6.2...ui5-middleware-onelogin@3.6.3) (2024-11-05)
+
+**Note:** Version bump only for package ui5-middleware-onelogin
+
+
+
+
+
+## [3.6.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-onelogin@3.6.1...ui5-middleware-onelogin@3.6.2) (2024-11-01)
+
+
+### Bug Fixes
+
+* update dependencies ([#1114](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1114)) ([d7672f2](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/d7672f2cd10f8a5de1da3070050ab98810e0fcf8))
+
+
+
+
+
+## [3.6.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-onelogin@3.6.0...ui5-middleware-onelogin@3.6.1) (2024-10-10)
+
+**Note:** Version bump only for package ui5-middleware-onelogin
+
+
+
+
+
+# [3.6.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-onelogin@3.5.1...ui5-middleware-onelogin@3.6.0) (2024-09-06)
+
+
+### Features
+
+* enhanced v4 compat + update dependencies ([#1070](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1070)) ([2d7ed16](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/2d7ed1623249febd32ecabdd2b47698f1cd968d5))
+
+
+
+
+
+## [3.5.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-onelogin@3.5.0...ui5-middleware-onelogin@3.5.1) (2024-08-13)
+
+**Note:** Version bump only for package ui5-middleware-onelogin
+
+
+
+
+
+# [3.5.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-onelogin@3.4.1...ui5-middleware-onelogin@3.5.0) (2024-08-09)
+
+
+### Features
+
+* **ui5-middleware-onelogin:** allow changing login subdirectory & retry certificate sign-on ([#1053](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1053)) ([4729e5e](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/4729e5e1c50946fdce4d3bd7004a66cf275581e6))
+
+
+
+
+
+## [3.4.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-onelogin@3.4.0...ui5-middleware-onelogin@3.4.1) (2024-07-22)
+
+**Note:** Version bump only for package ui5-middleware-onelogin
+
+
+
+
+
+# [3.4.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-onelogin@3.3.8...ui5-middleware-onelogin@3.4.0) (2024-05-23)
+
+
+### Features
+
+* login url query parameter support ([#1004](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1004)) ([a9ffbd0](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/a9ffbd01d388af237bf374552c83574b968a707a))
+
+
+
+
+
+## [3.3.8](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-onelogin@3.3.7...ui5-middleware-onelogin@3.3.8) (2024-05-15)
+
+**Note:** Version bump only for package ui5-middleware-onelogin
+
+
+
+
+
+## [3.3.7](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-onelogin@3.3.6...ui5-middleware-onelogin@3.3.7) (2024-02-18)
+
+**Note:** Version bump only for package ui5-middleware-onelogin
+
+
+
+
+
+## [3.3.6](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-onelogin@3.3.5...ui5-middleware-onelogin@3.3.6) (2024-01-17)
+
+**Note:** Version bump only for package ui5-middleware-onelogin
+
+
+
+
+
 ## [3.3.5](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-onelogin@3.3.4...ui5-middleware-onelogin@3.3.5) (2023-12-10)
 
 **Note:** Version bump only for package ui5-middleware-onelogin

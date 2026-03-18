@@ -2,6 +2,7 @@
 const path = require("path");
 const fs = require("fs");
 const JSONC = require("comment-json");
+const { pathToFileURL } = require("url");
 
 /**
  * Custom task to transpile resources to JavaScript modules.
@@ -15,7 +16,7 @@ const JSONC = require("comment-json");
  * @param {object} parameters.options Options
  * @param {string} parameters.options.projectName Project name
  * @param {string} [parameters.options.projectNamespace] Project namespace if available
- * @param {string} [parameters.options.configuration] Task configuration if given in ui5.yaml
+ * @param {object} [parameters.options.configuration] Task configuration if given in ui5.yaml
  * @returns {Promise<undefined>} Promise resolving with <code>undefined</code> once data has been written
  */
 module.exports = async function ({ log, workspace /*, dependencies*/, taskUtil, options }) {
@@ -27,6 +28,7 @@ module.exports = async function ({ log, workspace /*, dependencies*/, taskUtil, 
 		determineResourceFSPath,
 		transformAsync
 	} = require("./util")(log);
+	const { OmitFromBuildResult } = taskUtil.STANDARD_TAGS;
 
 	const cwd = taskUtil.getProject().getRootPath() || process.cwd();
 	const config = createConfiguration({ configuration: options?.configuration || {}, isMiddleware: false }, cwd);
@@ -54,8 +56,9 @@ module.exports = async function ({ log, workspace /*, dependencies*/, taskUtil, 
 				// run the interface generator
 				config.debug && log.info(`Executing "@ui5/ts-interface-generator"...`);
 				main({
-					//logLevel: config.debug ? log.constructor.getLevel() : "error",
-					config: path.join(cwd, "tsconfig.json")
+					loglevel: config.debug ? log.constructor.getLevel() : "error",
+					config: config.tsConfigFile,
+					jsdoc: config.generateTsInterfacesJsDoc
 				});
 				// reset the clear screen function
 				ts.sys.clearScreen = originalClearScreen;
@@ -68,6 +71,35 @@ module.exports = async function ({ log, workspace /*, dependencies*/, taskUtil, 
 					`Missing dependency "@ui5/ts-interface-generator"! TypeScript interfaces will not be generated until dependency has been added...`
 				);
 		}
+	}
+
+	// replace the version in all files handled by this task because this plugin handles additional file types
+	// which are not supported by the replaceVersion task of the UI5 CLI (hardcoded some selected file types)
+	// (HINT: do this a bit loosely coupled for now to avoid tight dependencies to UI5 CLI)
+	// Also check for @ui5/builder under @ui5/cli to avoid issues with the module resolution
+	try {
+		// dynamically require the replaceVersion task
+		// (using the absolute path to the module to avoid issues with the module resolution)
+		const replaceVersion = (
+			await import(
+				pathToFileURL(
+					require.resolve("@ui5/builder/tasks/replaceVersion", {
+						paths: [cwd, path.dirname(require.resolve("@ui5/cli/package.json"))]
+					})
+				)
+			)
+		).default;
+		// replace the versions for all supported file types
+		// using the central replaceVersion task of the UI5 CLI
+		await replaceVersion({
+			workspace,
+			options: {
+				pattern: `**/*${config.filePattern}`,
+				version: rootProject.getVersion()
+			}
+		});
+	} catch (e) {
+		log.error(`Failed to replace the version in the TypeScript files!\nReason: ${e}`);
 	}
 
 	// TODO: should we accept the full glob pattern as param or just the file pattern?
@@ -107,7 +139,7 @@ module.exports = async function ({ log, workspace /*, dependencies*/, taskUtil, 
 
 					// create the ts file in the workspace
 					config.debug && log.info(`  + [.js] ${filePath}`);
-					let string = normalizeLineFeeds(result.code);
+					let string = result.code;
 
 					// create sourcemap resource if available
 					if (result.map) {
@@ -116,7 +148,7 @@ module.exports = async function ({ log, workspace /*, dependencies*/, taskUtil, 
 
 						const resourceMap = resourceFactory.createResource({
 							path: `${filePath}.map`,
-							string: JSON.stringify(result.map)
+							string: normalizeLineFeeds(JSON.stringify(result.map))
 						});
 
 						await workspace.write(resourceMap);
@@ -127,7 +159,7 @@ module.exports = async function ({ log, workspace /*, dependencies*/, taskUtil, 
 
 					const transpiledResource = resourceFactory.createResource({
 						path: filePath,
-						string
+						string: normalizeLineFeeds(string)
 					});
 					await workspace.write(transpiledResource);
 				}
@@ -139,8 +171,8 @@ module.exports = async function ({ log, workspace /*, dependencies*/, taskUtil, 
 	// for the resources of the root project (not included dependencies)
 	if (config.transformTypeScript) {
 		// determine if the project is a library and enable the DTS generation by default
-		// TODO: UI5 Tooling 3.0 allows to access the project with the TaskUtil
-		//       https://sap.github.io/ui5-tooling/v3/api/@ui5_project_build_helpers_TaskUtil.html#~ProjectInterface
+		// TODO: UI5 CLI 3.0 allows to access the project with the TaskUtil
+		//       https://ui5.github.io/cli/v3/api/@ui5_project_build_helpers_TaskUtil.html#~ProjectInterface
 		//       from here we could derive the project type instead of guessing via file existence
 		const libraryResources = await workspace.byGlob(`/resources/${options.projectNamespace}/*library*`);
 		const isLibrary = libraryResources.length > 0;
@@ -153,7 +185,7 @@ module.exports = async function ({ log, workspace /*, dependencies*/, taskUtil, 
 		// allows doing this during the iteration across all resources at another place...)
 		for await (const resourcePath of Object.keys(sourcesMap)) {
 			// all ts files will be omitted from the build result (if set in config)
-			let omitFromBuildResult = resourcePath.endsWith(".ts") && config.omitTSFromBuildResult;
+			let omitFromBuildResult = config.omitTSFromBuildResult && /\.tsx?$/.test(resourcePath);
 			// root projects with generateDts=true will include d.ts files for build result
 			if (resourcePath.endsWith(".d.ts")) {
 				omitFromBuildResult = !taskUtil.isRootProject() || !config.generateDts;
@@ -162,7 +194,7 @@ module.exports = async function ({ log, workspace /*, dependencies*/, taskUtil, 
 			if (omitFromBuildResult) {
 				config.debug && log.verbose(`Omitting resource ${resourcePath}`);
 				const resource = await workspace.byPath(resourcePath);
-				taskUtil.setTag(resource, taskUtil.STANDARD_TAGS.OmitFromBuildResult, true);
+				taskUtil.setTag(resource, OmitFromBuildResult, true);
 			}
 		}
 
@@ -174,7 +206,7 @@ module.exports = async function ({ log, workspace /*, dependencies*/, taskUtil, 
 				const ts = require(tsPath);
 
 				// read the tsconfig.json
-				const tsConfigFile = path.join(cwd, "tsconfig.json");
+				const { tsConfigFile } = config || {};
 				let tsOptions = {};
 				if (fs.existsSync(tsConfigFile)) {
 					tsOptions = JSONC.parse(fs.readFileSync(tsConfigFile, { encoding: "utf8" }));
@@ -194,32 +226,34 @@ module.exports = async function ({ log, workspace /*, dependencies*/, taskUtil, 
 				for await (const resourcePath of Object.keys(sourcesMap)) {
 					// declare the modules as an ambient module (with full module namespace)
 					let source = sourcesMap[resourcePath];
-					let moduleName = /^\/resources\/(.*)\.ts$/.exec(resourcePath)?.[1];
-					// we differentiate between ".gen.d.ts" files and regular ".ts" files
-					if (moduleName?.endsWith(".gen.d")) {
-						// we assume that each "*.gen.d.ts" is generated by the @ui5/ts-interface-generator
-						// and as the generated interfaces include a "declare module" definition we need to
-						// move the "declare module" to the root and use the fully qualified module name
-						moduleName = /^(.*)\.gen\.d$/.exec(moduleName)[1];
-						sourcesMap[resourcePath] = `declare module "${moduleName}" {\n${source.replace(
-							/\ndeclare module "[^"]+" {\n/,
-							""
-						)}`;
-						// update the modified resource
-						const resource = await workspace.byPath(resourcePath);
-						resource.setString(sourcesMap[resourcePath]);
-						await workspace.write(resource);
-					} else if (moduleName) {
+					let moduleName = /^\/resources\/(.*)\.tsx?$/.exec(resourcePath)?.[1];
+					if (moduleName) {
 						// rewrite all imports with their fully qualified name
 						const relativeModulePaths = [...source.matchAll(/import.+("\.{1,2}[^"]+"|'\.{1,2}[^']+')/g)];
 						relativeModulePaths.forEach((reModPath) => {
 							const relativePath = reModPath[1].slice(1, -1);
 							source = source.replaceAll(
 								reModPath[0],
-								reModPath[0].replaceAll(relativePath, path.join(moduleName, "..", relativePath))
+								reModPath[0].replaceAll(relativePath, path.posix.join(moduleName, "..", relativePath))
 							);
 						});
-						sourcesMap[resourcePath] = `declare module "${moduleName}" {\n${source}\n}`;
+						// we differentiate between ".gen.d.ts" files and regular ".ts" files
+						if (moduleName.endsWith(".gen.d")) {
+							// we assume that each "*.gen.d.ts" is generated by the @ui5/ts-interface-generator
+							// and as the generated interfaces include a "declare module" definition we need to
+							// move the "declare module" to the root and use the fully qualified module name
+							moduleName = /^(.*)\.gen\.d$/.exec(moduleName)[1];
+							sourcesMap[resourcePath] = `declare module "${moduleName}" {\n${source.replace(
+								/\ndeclare module "[^"]+" {\n/,
+								""
+							)}`;
+							// update the modified resource
+							const resource = await workspace.byPath(resourcePath);
+							resource.setString(sourcesMap[resourcePath]);
+							await workspace.write(resource);
+						} else {
+							sourcesMap[resourcePath] = `declare module "${moduleName}" {\n${source}\n}`;
+						}
 					}
 				}
 
@@ -236,14 +270,15 @@ module.exports = async function ({ log, workspace /*, dependencies*/, taskUtil, 
 				// emit type definitions in-memory and read/write resources from the UI5 workspace
 				const typeDefs = {};
 				const host = ts.createCompilerHost(options);
-				(host.getCurrentDirectory = () => cwd),
-					(host.fileExists = (file) => !!sourcesMap[file] || fs.existsSync(file));
+				((host.getCurrentDirectory = () => cwd),
+					(host.fileExists = (file) => !!sourcesMap[file] || fs.existsSync(file)));
 				host.readFile = (file) => {
 					if (/\/package.json$/g.test(file)) {
 						if (!typeDefs[file]) {
 							try {
 								const typeDefPkgJson = JSON.parse(fs.readFileSync(file, { encoding: "utf8" }));
 								typeDefs[file] = typeDefPkgJson;
+								// eslint-disable-next-line no-unused-vars
 							} catch (err) {
 								/* ignore the error */
 							}
@@ -259,7 +294,7 @@ module.exports = async function ({ log, workspace /*, dependencies*/, taskUtil, 
 						// able to use the "Go to Source Definition" feature of VSCode
 						// /!\ this solution is fragile as it assumes to be generated
 						//     into a direct folder (like dist) and not in deeper structures
-						//     -> to avoid the hack we need more FS infos from the tooling!
+						//     -> to avoid the hack we need more FS infos from UI5 CLI!
 						try {
 							const resourcePath = /^\//.test(sourceFile.fileName)
 								? sourceFile.fileName
@@ -359,7 +394,7 @@ module.exports = async function ({ log, workspace /*, dependencies*/, taskUtil, 
 					await workspace.write(indexDtsFile);
 				} else {
 					// error diagnostics
-					log.error(
+					throw new Error(
 						`The following errors occured during d.ts generation: \n${ts.formatDiagnostics(
 							result.diagnostics,
 							host
@@ -368,7 +403,11 @@ module.exports = async function ({ log, workspace /*, dependencies*/, taskUtil, 
 				}
 			} catch (e) {
 				// typescript dependency should be available, otherwise we can't generate the dts files
+				// or if a d.ts file is not valid, the generation will fail and we report the error
 				log.error(`Generating d.ts failed! Reason: ${e.message}\n${e.stack}`);
+				if (config.failOnDtsErrors) {
+					throw e;
+				}
 			}
 		}
 	}
@@ -380,7 +419,7 @@ module.exports = async function ({ log, workspace /*, dependencies*/, taskUtil, 
  * @returns {Promise<Set>}
  *      Promise resolving with a Set containing all dependencies
  *      that should be made available to the task.
- *      UI5 Tooling will ensure that those dependencies have been
+ *      UI5 CLI will ensure that those dependencies have been
  *      built before executing the task.
  */
 module.exports.determineRequiredDependencies = async function () {

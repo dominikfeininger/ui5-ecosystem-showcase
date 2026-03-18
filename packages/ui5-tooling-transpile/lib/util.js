@@ -29,10 +29,12 @@ function resolveNodeModule(moduleName, cwd = process.cwd()) {
 		modulePath = require.resolve(moduleName, {
 			paths: [cwd] // necessary for PNPM and/or DEBUG scenario
 		});
+		// eslint-disable-next-line no-unused-vars
 	} catch (err) {
 		// use the default lookup
 		try {
 			modulePath = require.resolve(moduleName);
+			// eslint-disable-next-line no-unused-vars
 		} catch (err) {
 			// gracefully ignore the error
 			//console.error(err);
@@ -44,14 +46,21 @@ function resolveNodeModule(moduleName, cwd = process.cwd()) {
 // https://babeljs.io/docs/en/config-files
 
 // project-wide configuration
+// https://babeljs.io/docs/config-files#project-wide-configuration
 const PRJ_CFG_FILES = [...multiply("babel.config", [".json", ".js", ".cjs", ".mjs"])];
 
 // file-relative configuration
+// https://babeljs.io/docs/config-files#file-relative-configuration
+// => Babel stops recursive lookup of configuration files at the project root (package.json)
 const CFG_FILES = [...multiply(".babelrc", [".json", ".js", ".cjs", ".mjs"]), ".babelrc", "package.json"];
 
 // helper to load the babel configuration
 // eslint-disable-next-line jsdoc/require-jsdoc
 async function loadBabelConfigOptions(babelConfigOptions, skipBabelPresetPluginResolve, cwd = process.cwd()) {
+	// load the babel configuration file if specified
+	if (typeof babelConfigOptions === "string") {
+		babelConfigOptions = { configFile: babelConfigOptions };
+	}
 	// make the paths of the babel plugins and presets absolute
 	let fileToPresetOrPlugin;
 	if (!skipBabelPresetPluginResolve) {
@@ -63,9 +72,11 @@ async function loadBabelConfigOptions(babelConfigOptions, skipBabelPresetPluginR
 	const partialConfig = await babel.loadPartialConfigAsync(
 		Object.assign(
 			{
+				cwd,
 				configFile: false,
 				babelrc: false,
-				filename: "src/dummy.js" // necessary for ignore/include/exclude
+				filename: "src/dummy.js", // necessary for ignore/include/exclude
+				envName: process.env.BABEL_ENV || process.env.NODE_ENV || "development"
 			},
 			babelConfigOptions
 		)
@@ -112,9 +123,18 @@ async function findBabelConfigOptions(cwd) {
 	} else if (configFile) {
 		// for a babel config file we load it on our own to normalize the plugin/preset paths
 		// => no recursive merging of babel config is possible with this approach
-		babelConfigOptions = JSONC.parse(fs.readFileSync(configFile, { encoding: "utf8" }));
-		// let Babel lookup the configuration file with the Babel API
-		//partialConfig = await loadBabelConfigOptions({ configFile, filename: dir, babelrc: true });
+		try {
+			babelConfigOptions = JSONC.parse(fs.readFileSync(configFile, { encoding: "utf8" }));
+			// eslint-disable-next-line no-unused-vars
+		} catch (err) {
+			// no JSON so we let Babel lookup the configuration file with the Babel API
+			const partialConfig = await babel.loadPartialConfigAsync({
+				configFile,
+				cwd
+			});
+			// but we only extract the presets and plugins and ignore the other properties
+			babelConfigOptions = partialConfig?.options;
+		}
 	}
 
 	return babelConfigOptions ? { configFile, babelConfigOptions } : undefined;
@@ -139,9 +159,11 @@ function normalizePresetOrPlugin(babelPresetOrPlugin, isPreset) {
 	} else if ((matches = new RegExp(`^@babel/(?!${type}-)([^/]+)$`).exec(moduleName))) {
 		// plugin-/preset- will be injected at the start of any @babel-scoped package that doesn't have it as a prefix.
 		moduleName = `@babel/${type}-${matches[1]}`;
+		/* eslint-disable-next-line no-useless-assignment */
 	} else if ((matches = /^@([^/]+)$/.exec(moduleName))) {
 		// babel-plugin/babel-preset will be injected as the package name if only the @-scope name is given.
 		moduleName = `${moduleName}/babel-${type}`;
+		/* eslint-disable-next-line no-useless-assignment */
 	} else if ((matches = new RegExp(`^(?!(@|babel-${type}-))([^/]+)$`).exec(moduleName))) {
 		// babel-plugin-/babel-preset- will be injected as a prefix any unscoped package that doesn't have it as a prefix
 		moduleName = `babel-${type}-${moduleName}`;
@@ -161,7 +183,7 @@ function resolvePresetOrPlugin(babelPresetOrPlugin, isPreset, fileToPresetOrPlug
 	// should be ignored and just returned (already resolved by babel)
 	// => in case of the preset/plugin cannot be resolved, we return just
 	//    use the given preset/plugin name and let babel do the resolve
-	//    which may lead to issues in pnpm or global ui5 tooling scenarios (rare cases!)
+	//    which may lead to issues in pnpm or global UI5 CLI scenarios (rare cases!)
 	// => in addition we add a hint to the fileTotPresetOrPlugin map so that later
 	//    the original name of the preset/plugin can be derived again
 	//    for the ConfigItem property: plugin|preset.file.request
@@ -237,15 +259,28 @@ module.exports = function (log) {
 		createConfiguration: function createConfiguration({ configuration, isMiddleware }, cwd = process.cwd()) {
 			// extract the configuration
 			const config = configuration || {};
+			let tsConfig = "tsconfig.json";
+
+			// check the altTsConfig file to exist in the project
+			if (config.altTsConfig) {
+				if (!fs.existsSync(path.join(cwd, config.altTsConfig))) {
+					throw new Error(
+						`The specified altTsConfig file does not exist: ${config.altTsConfig} (cwd: ${cwd})`
+					);
+				} else {
+					tsConfig = config.altTsConfig;
+					config.debug && log.verbose(`Using tsconfig.json from: ${tsConfig} (cwd: ${cwd})`);
+				}
+			}
 
 			// if a tsconfig.json file exists, the project is a TypeScript project
-			const tscJsonPath = path.join(cwd, "tsconfig.json");
-			const isTypeScriptProject = fs.existsSync(tscJsonPath);
+			const tsConfigFile = path.join(cwd, tsConfig);
+			const isTypeScriptProject = fs.existsSync(tsConfigFile);
 
 			// read tsconfig.json to determine whether to transpile dependencies or not
-			if (isTypeScriptProject && !config.transpileDependencies && fs.existsSync(tscJsonPath)) {
-				const tscJson = JSONC.parse(fs.readFileSync(tscJsonPath, { encoding: "utf8" }));
-				const tsDeps = tscJson?.compilerOptions?.types?.filter((typePkgName) => {
+			if (isTypeScriptProject && !config.transpileDependencies && fs.existsSync(tsConfigFile)) {
+				const tsConfigJson = JSONC.parse(fs.readFileSync(tsConfigFile, { encoding: "utf8" }));
+				const tsDeps = tsConfigJson?.compilerOptions?.types?.filter((typePkgName) => {
 					try {
 						// if a type dependency includes a ui5.yaml we assume
 						// to support transpiling of dependencies - and in case
@@ -255,7 +290,8 @@ module.exports = function (log) {
 							paths: [cwd]
 						});
 						return !!ui5YamlPath;
-					} catch (e) {
+						// eslint-disable-next-line no-unused-vars
+					} catch (err) {
 						return false;
 					}
 				});
@@ -305,15 +341,20 @@ module.exports = function (log) {
 			const normalizedConfiguration = {
 				debug: config.debug,
 				babelConfig: config.babelConfig,
+				generateBabelConfig: config.generateBabelConfig,
 				includes,
 				excludes,
 				filePattern,
 				omitTSFromBuildResult: config.omitTSFromBuildResult,
+				omitSourceMaps: config.omitSourceMaps,
 				generateTsInterfaces,
+				generateTsInterfacesJsDoc: config.generateTsInterfacesJsDoc,
 				generateDts: config.generateDts,
+				failOnDtsErrors: config.failOnDtsErrors,
 				transpileDependencies: config.transpileDependencies,
 				transformAtStartup: config.transformAtStartup,
 				transformTypeScript,
+				tsConfigFile,
 				transformModulesToUI5,
 				transformAsyncToPromise,
 				targetBrowsers: config.targetBrowsers,
@@ -333,8 +374,8 @@ module.exports = function (log) {
 		 * @param {object} cfg configuration object
 		 * @param {object} cfg.configuration task/middleware configuration
 		 * @param {boolean} cfg.isMiddleware true, if the function is called from the middleware
-		 * @param {function} [cfg.preprocess] function to preprocess the babel configuration (before loaded)
-		 * @param {function} [cfg.postprocess] function to postprocess the babel configuration (after loaded)
+		 * @param {Function} [cfg.preprocess] function to preprocess the babel configuration (before loaded)
+		 * @param {Function} [cfg.postprocess] function to postprocess the babel configuration (after loaded)
 		 * @param {string} [cwd] the cwd to lookup the configuration (defaults to process.cwd())
 		 * @returns {object} the babel plugins configuration
 		 */
@@ -433,7 +474,8 @@ module.exports = function (log) {
 			let browserListConfigFile;
 			try {
 				browserListConfigFile = browserslist.findConfig(cwd);
-			} catch (ex) {
+				// eslint-disable-next-line no-unused-vars
+			} catch (err) {
 				configuration?.debug && log.info(`Unable to find browserslist configuration. Fallback to default...`);
 			}
 			const envPreset = ["@babel/preset-env"];
@@ -441,17 +483,33 @@ module.exports = function (log) {
 				configuration?.debug && log.info(`Using external browserslist configuration...`);
 			} else {
 				configuration?.debug && log.info(`Using browserslist configuration from ui5.yaml...`);
-				envPreset.push({
-					targets: {
-						// future: consider to read the browserslist config from OpenUI5/SAPUI5?
-						// env variables must not use "-" or "." and therefore we use "_" only
-						browsers:
-							process.env?.["ui5_tooling_transpile__targetBrowsers"] ||
-							configuration?.targetBrowsers ||
-							"defaults"
-					}
-				});
+				if (process.env?.["ui5_tooling_transpile__target_rhino"]) {
+					// necessary to transpile to ES5 for Rhino (to support some legacy Java tools)
+					envPreset.push({
+						targets: {
+							rhino: process.env?.["ui5_tooling_transpile__target_rhino"]
+						}
+					});
+				} else {
+					envPreset.push({
+						targets: {
+							// future: consider to read the browserslist config from OpenUI5/SAPUI5?
+							// env variables must not use "-" or "." and therefore we use "_" only
+							browsers:
+								process.env?.["ui5_tooling_transpile__target_browsers"] ||
+								process.env?.["ui5_tooling_transpile__targetBrowsers"] ||
+								configuration?.targetBrowsers ||
+								"defaults"
+						}
+					});
+				}
 			}
+			// disable the modules conversion as this is handled by the transform-ui5 preset
+			if (envPreset.length === 1) {
+				envPreset.push({});
+			}
+			envPreset[1].modules = false;
+			// add the env preset to the presets
 			babelConfigOptions.presets.push(envPreset);
 
 			// add the presets to enable transformation of ES modules to
@@ -497,7 +555,23 @@ module.exports = function (log) {
 			}
 
 			// include the source maps
-			babelConfigOptions.sourceMaps = true;
+			babelConfigOptions.sourceMaps = configuration?.omitSourceMaps ? false : true;
+
+			// create the babel config file in the current working directory if missing
+			if (configuration?.generateBabelConfig) {
+				const babelConfigFile = path.join(
+					cwd,
+					typeof configuration?.generateBabelConfig === "string"
+						? configuration?.generateBabelConfig
+						: "babel.config.json"
+				);
+				if (!fs.existsSync(babelConfigFile)) {
+					fs.mkdirSync(path.dirname(babelConfigFile), { recursive: true });
+					fs.writeFileSync(babelConfigFile, JSON.stringify(babelConfigOptions, null, 2), {
+						encoding: "utf8"
+					});
+				}
+			}
 
 			return updateBabelConfigOptions(babelConfigOptions);
 		},
@@ -543,7 +617,7 @@ module.exports = function (log) {
 			// specVersion 3.0 provides source metadata and only if the
 			// current work directory is the rootpath of the project resource
 			// it is a root resource which should be considered to be resolved
-			if (path.relative(cwd, resource.getProject().getRootPath()) === "") {
+			if (resource.getProject() && path.relative(cwd, resource.getProject().getRootPath()) === "") {
 				// npm dependencies don't have sourceMetadata applied to resource!
 				resourcePath = resource.getSourceMetadata()?.fsPath || resourcePath;
 			}

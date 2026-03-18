@@ -2,6 +2,17 @@ const path = require("path");
 const fs = require("fs");
 
 /**
+ * Custom logger for the dev-approuter.
+ * Prefixes all logs with "[dev-approuter] - ", similar to what the CDS logger does.
+ * The reason not to use the CDS logger directly is to avoid loading the cds.env too early, before the cds.root is properly detected.
+ */
+const LOG = {
+	info: (...args) => {
+		console.log("[dev-approuter] -", ...args);
+	},
+};
+
+/**
  * Parses the approuter configuration from an `xs-dev.json` file.
  * If that file doesn't exist, it looks for an `xs-app.json` file.
  * Also scans the routes of the config file and checks for the `dependency` property
@@ -16,6 +27,7 @@ const parseConfig = () => {
 		if (fs.existsSync(path.join(process.cwd(), file))) {
 			config = JSON.parse(fs.readFileSync(path.join(process.cwd(), file), { encoding: "utf8" }));
 			configFile = file;
+			LOG.info(`Using configuration from ${path.join(process.cwd(), configFile)}`);
 			break;
 		}
 	}
@@ -47,6 +59,7 @@ const applyDependencyConfig = (config) => {
 		}
 	});
 	delete config.dependencyRoutes;
+	LOG.info("running these routes:", config.routes);
 	return config;
 };
 
@@ -63,12 +76,7 @@ const addDestination = (moduleId, port, mountPath) => {
 		destinations = JSON.parse(process.env.destinations);
 	}
 
-	let url;
-	if (mountPath) {
-		url = `http://localhost:${process.env.PORT || 5000}${mountPath}`;
-	} else {
-		url = `http://localhost:${port}`;
-	}
+	let url = `http://localhost${port ? `:${port}` : ""}${mountPath || ""}`;
 
 	// only add new destination if it's not already provided
 	const destinationAlreadyExists = destinations.some((destination) => {
@@ -88,6 +96,7 @@ const addDestination = (moduleId, port, mountPath) => {
 		});
 		process.env.destinations = JSON.stringify(destinations);
 	}
+	LOG.info("running these destinations:", JSON.parse(process.env.destinations));
 };
 
 /**
@@ -133,6 +142,7 @@ const configureUI5Route = (moduleId, sourcePath, route) => {
 };
 
 module.exports = {
+	LOG,
 	parseConfig,
 	applyDependencyConfig,
 	addDestination,

@@ -1,9 +1,8 @@
-/* eslint-disable no-unused-vars, no-useless-escape */
 const defaultMinifyOptions = {
 	collapseWhitespaceInAttributeValues: true,
 };
 
-const attrValueRegExp = /(?<=<\/?[^\s\/>]+\b(?:\s+[^=\s>]+\s*=\s*(?:"[^"]*"|'[^']*'))*\s+[^\s=\/>]+\s*=\s*(["']))[^\1]*?(?=\1)/g;
+const attrValueRegExp = /(?<=<\/?[^\s/>]+\b(?:\s+[^=\s>]+\s*=\s*(?:"[^"]*"|'[^']*'))*\s+[^\s=/>]+\s*=\s*(["']))[^\1]*?(?=\1)/g;
 
 /**
  * Task to minify XML views, fragments, controls, etc.
@@ -13,7 +12,7 @@ const attrValueRegExp = /(?<=<\/?[^\s\/>]+\b(?:\s+[^=\s>]+\s*=\s*(?:"[^"]*"|'[^'
  * @param {module:@ui5/fs.DuplexCollection} parameters.workspace DuplexCollection to read and write files
  * @param {object} parameters.options Options
  * @param {string} parameters.options.projectName Project name
- * @param {string} [parameters.options.configuration] Task configuration if given in ui5.yaml
+ * @param {object} [parameters.options.configuration] Task configuration if given in ui5.yaml
  * @returns {Promise<undefined>} Promise resolving with undefined once data has been written
  */
 module.exports = async ({ log, workspace, options }) => {
@@ -50,7 +49,7 @@ module.exports = async ({ log, workspace, options }) => {
 
 			resource.setString(xml);
 			await workspace.write(resource);
-		})
+		}),
 	);
 };
 
@@ -60,7 +59,7 @@ module.exports = async ({ log, workspace, options }) => {
  * @returns {Promise<Set>}
  *      Promise resolving with a Set containing all dependencies
  *      that should be made available to the task.
- *      UI5 Tooling will ensure that those dependencies have been
+ *      UI5 CLI will ensure that those dependencies have been
  *      built before executing the task.
  */
 module.exports.determineRequiredDependencies = async function () {

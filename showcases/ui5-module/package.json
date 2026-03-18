@@ -1,6 +1,6 @@
 {
   "name": "ui5-module",
-  "version": "0.2.4",
+  "version": "0.7.0",
   "description": "UI5 module",
   "private": true,
   "author": "Peter Muessig",
@@ -15,5 +15,9 @@
   },
   "dependencies": {
     "chart.js": "^3.9.1"
+  },
+  "devDependencies": {
+    "eslint": "^10.0.3",
+    "globals": "^17.4.0"
   }
 }

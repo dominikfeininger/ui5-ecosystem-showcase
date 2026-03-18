@@ -1,0 +1,72 @@
+# UI5 task for appending copyright headers for TypeScript, JavaScript and XML files
+
+> :wave: This is an **open‑source, community‑driven project**, developed and actively monitored by members of the UI5 community. You are welcome to use it, report issues, contribute enhancements, and support others in the community.
+
+Task for [ui5-builder](https://github.com/SAP/ui5-builder) for appending copyright headers to every TypeScript (`*.ts`), JavaScript (`*.js`), or XML (`*.xml`) source file.
+
+## Prerequisites
+
+- Requires at least [`@ui5/cli@3.0.0`](https://ui5.github.io/cli/v3/pages/CLI/) (to support [`specVersion: "3.0"`](https://ui5.github.io/cli/pages/Configuration/#specification-version-30))
+
+> :warning: **UI5 CLI Compatibility**
+> All releases of this UI5 CLI extension using the major version `3` require UI5 CLI V3. Any previous releases below major version `3` (if available) also support older versions of the UI5 CLI. But the usage of the latest UI5 CLI is strongly recommended!
+
+## Install
+
+```bash
+npm install ui5-task-copyright --save-dev
+```
+
+## Configuration options (in `$yourapp/ui5.yaml`)
+
+- copyright: `String` (via env var: `ui5_task_copyright__file` expects file name, or `ui5_task_copyright__copyright` with the value)
+  the value of the copyright or the path to a file containing the copyright statement - if not given, the task will be skipped - the copyright can also be injected by the environment variable `ui5_task_copyright__file` which must point to an existing file and then the copyright is extracted from this file or directly via environment variable `ui5_task_copyright__copyright`
+
+- copyrightPlaceholder: `String` (defaults to: `copyright`, env var: `ui5_task_copyright__placeholder_copyright`)
+  the name of the copyright placeholder to check for in the copyright comments and to replace with the copyright value (will replace all hits of `${copyright}` or `@copyright@`)
+
+- currentYearPlaceholder: `String` (defaults to: `currentYear`, env var: `ui5_task_copyright__placeholder_current_year`)
+  the name of the currentYear placeholder in the copyright comments which will be replaced with the currentYear value (will replace all hits of `${currentYear}` or `@currentYear@`)
+
+- currentYear: `String` (defaults to: `new Date().getFullYear()`, env var: `ui5_task_copyright__current_year`)
+  the value of the currentYear placeholder in the copyright comments
+
+- excludePatterns: `Array<String>`
+  array of paths inside `$yourapp/` to exclude from the minification, e.g. 3-rd party libs in `lib/*`. defaults to an empty array `[]`.
+
+## Usage
+
+1. Define the dependency in `$yourapp/package.json`:
+
+```json
+"devDependencies": {
+    // ...
+    "ui5-task-copyright": "*"
+    // ...
+}
+```
+
+2. configure it in `$yourapp/ui5.yaml`:
+
+```yaml
+builder:
+  customTasks:
+  - name: ui5-task-copyright
+    beforeTask: replaceCopyright
+    configuration:
+      copyright: "Copyright ${currentYear} UI5 Community"
+      excludePatterns:
+      - "thirdparty/"
+```
+
+## How to obtain support
+
+Please use the GitHub bug tracking system to post questions, bug reports or to create pull requests.
+
+## Contributing
+
+Any type of contribution (code contributions, pull requests, issues) to this showcase will be equally appreciated.
+
+## License
+
+This work is [dual-licensed](../../LICENSE) under Apache 2.0 and the Derived Beer-ware License. The official license will be Apache 2.0 but finally you can choose between one of them if you use this work.

@@ -4,9 +4,7 @@ const path = require("path")
 const express = require("express")
 const expressws = require("ui5-middleware-websocket/lib/expressws")
 
-const supertest = require("supertest")
 const superwstest = require("superwstest")
-const nock = require("nock")
 
 // Start server before running tests
 test.before(async (t) => {
@@ -30,7 +28,6 @@ test.before(async (t) => {
 
 	// start the UI5 development server with multiple proxy middlewares
 	const { graphFromPackageDependencies } = await import("@ui5/project/graph")
-	const debug = false
 	const graph = await graphFromPackageDependencies({
 		cwd: "../../showcases/ui5-app",
 		rootConfiguration: {
@@ -71,11 +68,21 @@ test.before(async (t) => {
 		}
 	})
 
+	// install a global hook to register the approuter instances
+	globalThis["ui5-middleware-approuter"] = {
+		approuters: []
+	}
+
 	// start the UI5 server
 	const { serve } = await import("@ui5/server")
 	t.context.server = await serve(graph, {
 		port: ui5ServerPort
 	})
+
+	// get the approuter instance
+	const approuter = globalThis["ui5-middleware-approuter"]?.approuters?.pop()
+
+	t.context.approuter = approuter
 	const wsRequest = superwstest
 	t.context.wsRequest = wsRequest(`http://localhost:${ui5ServerPort}`)
 })
@@ -95,7 +102,7 @@ test.after.always((t) => {
 	}
 
 	// stop all servers
-	return Promise.all([close(t.context.wsServer), close(t.context.server)])
+	return Promise.all([close(t.context.approuter), close(t.context.wsServer), close(t.context.server)])
 })
 
 test("WebSocket basic test (express server)", async (t) => {

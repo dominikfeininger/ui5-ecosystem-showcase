@@ -19,7 +19,8 @@ module.exports = function ({ log, workspace, options }) {
 	// get all environment variables
 	const prefix = options.configuration?.prefix ? options.configuration?.prefix : "UI5_ENV"; // default
 	const path = options.configuration?.path ? options.configuration?.path : "./"; // default
-	const placeholderStrings = readPlaceholderFromEnv(path, prefix, log);
+	const separator = options.configuration?.separator ? options.configuration?.separator : "."; // default
+	const placeholderStrings = readPlaceholderFromEnv(path, prefix, separator, log);
 
 	// extract the placeholder strings from the configuration
 	options.configuration?.replace?.forEach((entry) => {
@@ -34,7 +35,7 @@ module.exports = function ({ log, workspace, options }) {
 	}
 
 	return workspace
-		.byGlob(options.configuration && options.configuration.files)
+		.byGlob((options.configuration && options.configuration.files) || "**/*")
 		.then((allResources) => {
 			// replaces all files placeholder strings with replacement text values
 			return allResources.map((resource) => {
@@ -55,7 +56,7 @@ module.exports = function ({ log, workspace, options }) {
 			return Promise.all(
 				processedResources.map((resource) => {
 					return workspace.write(resource);
-				})
+				}),
 			);
 		})
 		.catch((err) => {
@@ -69,7 +70,7 @@ module.exports = function ({ log, workspace, options }) {
  * @returns {Promise<Set>}
  *      Promise resolving with a Set containing all dependencies
  *      that should be made available to the task.
- *      UI5 Tooling will ensure that those dependencies have been
+ *      UI5 CLI will ensure that those dependencies have been
  *      built before executing the task.
  */
 module.exports.determineRequiredDependencies = async function () {

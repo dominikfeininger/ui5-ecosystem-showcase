@@ -3,6 +3,134 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.5.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-servestatic@3.4.1...ui5-middleware-servestatic@3.5.0) (2026-03-12)
+
+
+### Features
+
+* update dependencies ([#1326](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1326)) ([6f16575](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/6f16575680b0c526261b84f83b22743806c8509b))
+
+
+
+
+
+## [3.4.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-servestatic@3.4.0...ui5-middleware-servestatic@3.4.1) (2026-01-15)
+
+**Note:** Version bump only for package ui5-middleware-servestatic
+
+
+
+
+
+# [3.4.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-servestatic@3.3.3...ui5-middleware-servestatic@3.4.0) (2025-12-02)
+
+
+### Features
+
+* update depedency versions ([#1302](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1302)) ([0a22ebd](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/0a22ebdde9bcbce570eb7ccdda8539e106dc44e1))
+
+
+
+
+
+## [3.3.3](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-servestatic@3.3.2...ui5-middleware-servestatic@3.3.3) (2025-09-17)
+
+**Note:** Version bump only for package ui5-middleware-servestatic
+
+
+
+
+
+## [3.3.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-servestatic@3.3.1...ui5-middleware-servestatic@3.3.2) (2025-09-15)
+
+**Note:** Version bump only for package ui5-middleware-servestatic
+
+
+
+
+
+## [3.3.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-servestatic@3.3.0...ui5-middleware-servestatic@3.3.1) (2025-07-06)
+
+
+### Bug Fixes
+
+* update project dependencies ([#1235](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1235)) ([456fb61](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/456fb6143125e3334acafb129e219499b2a1c882))
+
+
+
+
+
+# [3.3.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-servestatic@3.2.1...ui5-middleware-servestatic@3.3.0) (2025-02-06)
+
+
+### Features
+
+* general dependencies update ([#1162](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1162)) ([5375d76](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/5375d76496741433330d76ce59a89b39f7ad8a69))
+
+
+
+
+
+## [3.2.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-servestatic@3.2.0...ui5-middleware-servestatic@3.2.1) (2024-11-01)
+
+
+### Bug Fixes
+
+* update dependencies ([#1114](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1114)) ([d7672f2](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/d7672f2cd10f8a5de1da3070050ab98810e0fcf8))
+
+
+
+
+
+# [3.2.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-servestatic@3.1.1...ui5-middleware-servestatic@3.2.0) (2024-09-06)
+
+
+### Features
+
+* enhanced v4 compat + update dependencies ([#1070](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1070)) ([2d7ed16](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/2d7ed1623249febd32ecabdd2b47698f1cd968d5))
+
+
+
+
+
+## [3.1.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-servestatic@3.1.0...ui5-middleware-servestatic@3.1.1) (2024-06-04)
+
+
+### Bug Fixes
+
+* **ui5-middleware-servestatic:** support npm packages without a nested path ([#1016](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1016)) ([d7d2856](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/d7d2856cf469be559629759a30fabd537b7a7f04))
+
+
+
+
+
+# [3.1.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-servestatic@3.0.3...ui5-middleware-servestatic@3.1.0) (2024-05-23)
+
+
+### Features
+
+* **ui5-middleware-servestatic:** support npm package paths ([#1006](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1006)) ([dccc440](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/dccc44041d601973dd86fd493420d3effc1aedc8))
+
+
+
+
+
+## [3.0.3](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-servestatic@3.0.2...ui5-middleware-servestatic@3.0.3) (2024-05-15)
+
+**Note:** Version bump only for package ui5-middleware-servestatic
+
+
+
+
+
+## [3.0.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-servestatic@3.0.1...ui5-middleware-servestatic@3.0.2) (2024-02-18)
+
+**Note:** Version bump only for package ui5-middleware-servestatic
+
+
+
+
+
 ## [3.0.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-servestatic@3.0.0...ui5-middleware-servestatic@3.0.1) (2023-10-14)
 
 **Note:** Version bump only for package ui5-middleware-servestatic

@@ -27,8 +27,8 @@ module.exports = async function findUI5Modules({ cwd, config, log }) {
 		deps = [];
 	deps.push(...Object.keys(pkgJson.dependencies || {}));
 	deps.push(...Object.keys(pkgJson.devDependencies || {}));
+	deps.push(...Object.keys(pkgJson.optionalDependencies || {}));
 	//deps.push(...Object.keys(pkgJson.peerDependencies || {}));
-	//deps.push(...Object.keys(pkgJson.optionalDependencies || {}));
 	appDirs.push(
 		...deps.filter((dep) => {
 			try {
@@ -36,10 +36,11 @@ module.exports = async function findUI5Modules({ cwd, config, log }) {
 					paths: [cwd],
 				});
 				return true;
-			} catch (e) {
+				// eslint-disable-next-line no-unused-vars
+			} catch (err) {
 				return false;
 			}
-		})
+		}),
 	);
 
 	// if apps are available, attach the middlewares of the UI5 apps

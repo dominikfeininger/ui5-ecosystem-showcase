@@ -3,6 +3,179 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.9.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-approuter@3.8.2...ui5-middleware-approuter@3.9.0) (2026-03-12)
+
+
+### Features
+
+* update dependencies ([#1326](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1326)) ([6f16575](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/6f16575680b0c526261b84f83b22743806c8509b))
+
+
+
+
+
+## [3.8.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-approuter@3.8.1...ui5-middleware-approuter@3.8.2) (2026-02-09)
+
+
+### Bug Fixes
+
+* **ui5-middleware-approuter:** properly handle destinations ([#1313](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1313)) ([70aa960](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/70aa9600146e477c0a7293991f8244a3fa49c518))
+
+
+
+
+
+## [3.8.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-approuter@3.8.0...ui5-middleware-approuter@3.8.1) (2026-01-15)
+
+**Note:** Version bump only for package ui5-middleware-approuter
+
+
+
+
+
+# [3.8.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-approuter@3.7.2...ui5-middleware-approuter@3.8.0) (2025-12-02)
+
+
+### Bug Fixes
+
+* **ui5-tooling-modules:** include also non-documented properties in wrappers ([#1299](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1299)) ([bd63306](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/bd633061b3e03379cfed1b83a79a5bc317d65ddf))
+
+
+### Features
+
+* update depedency versions ([#1302](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1302)) ([0a22ebd](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/0a22ebdde9bcbce570eb7ccdda8539e106dc44e1))
+
+
+
+
+
+## [3.7.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-approuter@3.7.1...ui5-middleware-approuter@3.7.2) (2025-11-02)
+
+**Note:** Version bump only for package ui5-middleware-approuter
+
+
+
+
+
+## [3.7.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-approuter@3.7.0...ui5-middleware-approuter@3.7.1) (2025-09-17)
+
+**Note:** Version bump only for package ui5-middleware-approuter
+
+
+
+
+
+# [3.7.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-approuter@3.6.2...ui5-middleware-approuter@3.7.0) (2025-09-15)
+
+
+### Features
+
+* **ui5-middleware-approuter:** upgrade to http-proxy-middleware@3.0.5 ([#1267](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1267)) ([b99b195](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/b99b1959c68fbd09c49e650789bec707f26204e3)), closes [#1263](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1263)
+
+
+
+
+
+## [3.6.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-approuter@3.6.1...ui5-middleware-approuter@3.6.2) (2025-07-06)
+
+
+### Bug Fixes
+
+* update project dependencies ([#1235](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1235)) ([456fb61](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/456fb6143125e3334acafb129e219499b2a1c882))
+
+
+
+
+
+## [3.6.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-approuter@3.6.0...ui5-middleware-approuter@3.6.1) (2025-03-19)
+
+**Note:** Version bump only for package ui5-middleware-approuter
+
+
+
+
+
+# [3.6.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-approuter@3.5.1...ui5-middleware-approuter@3.6.0) (2025-02-06)
+
+
+### Features
+
+* general dependencies update ([#1162](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1162)) ([5375d76](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/5375d76496741433330d76ce59a89b39f7ad8a69))
+
+
+
+
+
+## [3.5.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-approuter@3.5.0...ui5-middleware-approuter@3.5.1) (2024-11-01)
+
+
+### Bug Fixes
+
+* update dependencies ([#1114](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1114)) ([d7672f2](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/d7672f2cd10f8a5de1da3070050ab98810e0fcf8))
+
+
+
+
+
+# [3.5.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-approuter@3.4.8...ui5-middleware-approuter@3.5.0) (2024-09-06)
+
+
+### Features
+
+* enhanced v4 compat + update dependencies ([#1070](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1070)) ([2d7ed16](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/2d7ed1623249febd32ecabdd2b47698f1cd968d5))
+
+
+
+
+
+## [3.4.8](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-approuter@3.4.7...ui5-middleware-approuter@3.4.8) (2024-07-22)
+
+**Note:** Version bump only for package ui5-middleware-approuter
+
+
+
+
+
+## [3.4.7](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-approuter@3.4.6...ui5-middleware-approuter@3.4.7) (2024-05-31)
+
+**Note:** Version bump only for package ui5-middleware-approuter
+
+
+
+
+
+## [3.4.6](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-approuter@3.4.5...ui5-middleware-approuter@3.4.6) (2024-05-15)
+
+**Note:** Version bump only for package ui5-middleware-approuter
+
+
+
+
+
+## [3.4.5](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-approuter@3.4.4...ui5-middleware-approuter@3.4.5) (2024-02-18)
+
+**Note:** Version bump only for package ui5-middleware-approuter
+
+
+
+
+
+## [3.4.4](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-approuter@3.4.3...ui5-middleware-approuter@3.4.4) (2024-01-25)
+
+**Note:** Version bump only for package ui5-middleware-approuter
+
+
+
+
+
+## [3.4.3](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-approuter@3.4.2...ui5-middleware-approuter@3.4.3) (2024-01-17)
+
+**Note:** Version bump only for package ui5-middleware-approuter
+
+
+
+
+
 ## [3.4.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-middleware-approuter@3.4.1...ui5-middleware-approuter@3.4.2) (2023-12-10)
 
 **Note:** Version bump only for package ui5-middleware-approuter

@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 const { readFile } = require("fs").promises;
 const path = require("path");
 
@@ -97,7 +96,7 @@ async function addServiceworkerRegistration() {
  *
  * @param {object} parameters Parameters
  * @param {string} parameters.path The path to the resource that should be written
- * @param {string|buffer} parameters.content The content to write to the file
+ * @param {string|Buffer} parameters.content The content to write to the file
  * @returns {Promise} which resolves once the data has been written
  */
 async function writeFile({ path, content }) {
@@ -136,13 +135,14 @@ async function addOfflineCopySw() {
  * @returns {Promise<undefined>}
  */
 async function addOfflineCopyBackupSw(parameters) {
-	await renderServiceWorker(path.join("../templates/offlineCopyWithBackup.js"), parameters);
+	await renderServiceWorker(path.join(__dirname, "../templates/offlineCopyWithBackup.js"), parameters);
 }
 
 /**
  * Takes the template for the cacheFirst service worker and fills it with the values provided in parameters
  *
  * @param {object} parameters Parameters
+ * @param {string} [parameters.preCachePrefix] Path to be prefixed for files identified for precaching
  * @param {string} parameters.preCache Path to the file that will be used as offline page
  * @returns {Promise<undefined>}
  */
@@ -150,6 +150,7 @@ async function addCacheFirstSw(parameters) {
 	// We need to prefix the pattern with our rootDir
 	let globPattern = [];
 	for (let i = 0; i < parameters.preCache.length; i++) {
+		/* eslint-disable-next-line no-useless-assignment */
 		let pattern = undefined;
 		// Check for leading slash before concatenating paths
 		if (parameters.preCache[i][0] === "/") {
@@ -162,9 +163,10 @@ async function addCacheFirstSw(parameters) {
 	// Get all resources that match the pattern and make them into a nice list
 	let resources = await ws.byGlob(globPattern);
 	let fileList = "";
+	const preCachePrefix = parameters.preCachePrefix || "";
 	for (let i = 0; i < resources.length; i++) {
-		// Remove prefix
-		let path = resources[i].getPath().replace(rootDir, "");
+		// Replace/Remove prefix
+		let path = resources[i].getPath().replace(rootDir, preCachePrefix);
 		fileList = fileList + '\n"' + path + '",';
 	}
 	// Write the service worker
@@ -175,6 +177,7 @@ async function addCacheFirstSw(parameters) {
  * Takes the template for the advancedCache service worker and fills it with the values provided in parameters
  *
  * @param {object} parameters Parameters
+ * @param {string} [parameters.preCachePrefix] Path to be prefixed for files identified for precaching
  * @param {string} parameters.preCache Path to the file that will be used as offline page
  * @param {string} parameters.networkFirst Path to the file that will be used as offline page
  * @param {string} parameters.avoidCaching Path to the file that will be used as offline page
@@ -184,8 +187,10 @@ async function addCacheFirstSw(parameters) {
 async function addAdvancedCachingSw(parameters) {
 	// First collect the pre cache files
 	// We need to prefix the pattern with our rootDir
+	/* eslint-disable-next-line no-useless-assignment */
 	let globPattern = [];
 	for (let i = 0; i < parameters.preCache.length; i++) {
+		/* eslint-disable-next-line no-useless-assignment */
 		let pattern = undefined;
 		// Check for leading slash before concatenating paths
 		if (parameters.preCache[i][0] === "/") {
@@ -198,9 +203,10 @@ async function addAdvancedCachingSw(parameters) {
 	// Get all resources that match the pattern and make them into a nice list
 	let resources = await ws.byGlob(globPattern);
 	let preCache = "";
+	const preCachePrefix = parameters.preCachePrefix || "";
 	for (let i = 0; i < resources.length; i++) {
-		// Remove prefix
-		let path = resources[i].getPath().replace(rootDir, "");
+		// Replace/Remove prefix
+		let path = resources[i].getPath().replace(rootDir, preCachePrefix);
 		preCache = preCache + '\n"' + path + '",';
 	}
 	// Concatenate all regular expressions for networkFirst
@@ -264,11 +270,17 @@ async function appendToIndexHtmlHead(element) {
  * And adds manifest-link to index.html
  *
  * @param {object} manifestConfig Every parameter supplied will override the corresponding default value.
+ * @param {string} [manifestConfig.crossOrigin] Cross-origin attribute for the manifest link
  */
 async function addManifest(manifestConfig) {
 	let manifest = Object.assign(default_manifest, manifestConfig); //default_manifest will be overidden
+	if (!manifest.crossOrigin) {
+		await appendToIndexHtmlHead('<link rel="manifest" href="manifest.webmanifest">');
+	} else {
+		await appendToIndexHtmlHead(`<link rel="manifest" href="manifest.webmanifest" crossorigin="${manifestConfig.crossOrigin}">`);
+		delete manifest["crossOrigin"];
+	}
 	await writeFile({ path: rootDir + "/manifest.webmanifest", content: JSON.stringify(manifest) });
-	await appendToIndexHtmlHead('<link rel="manifest" href="manifest.webmanifest">');
 	if (!manifestConfig.icons) {
 		//if no icons are provided use default icons
 		let icon192 = await readFile(path.join(__dirname, "../default_icon/192x192.png"));
@@ -290,7 +302,7 @@ async function addManifest(manifestConfig) {
  * @returns {Promise<Set>}
  *      Promise resolving with a Set containing all dependencies
  *      that should be made available to the task.
- *      UI5 Tooling will ensure that those dependencies have been
+ *      UI5 CLI will ensure that those dependencies have been
  *      built before executing the task.
  */
 module.exports.determineRequiredDependencies = async function () {

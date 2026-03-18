@@ -20,7 +20,7 @@ const intercept = require("ui5-utils-express/lib/intercept");
  * @param {module:@ui5/server.middleware.MiddlewareUtil} parameters.middlewareUtil Specification version dependent
  *                                                       interface to a MiddlewareUtil instance
  * @param {object} parameters.options Options
- * @param {string} [parameters.options.configuration] Custom server middleware configuration if given in ui5.yaml
+ * @param {object} [parameters.options.configuration] Custom server middleware configuration if given in ui5.yaml
  * @returns {Function} Middleware function to use
  */
 module.exports = function createMiddleware({ log, resources, options, middlewareUtil }) {
@@ -29,7 +29,8 @@ module.exports = function createMiddleware({ log, resources, options, middleware
 	// get all environment variables
 	const prefix = options.configuration?.prefix ? options.configuration?.prefix : "UI5_ENV"; // default
 	const path = options.configuration?.path ? options.configuration?.path : "./"; // default
-	const placeholderStrings = readPlaceholderFromEnv(path, prefix, log);
+	const separator = options.configuration?.separator ? options.configuration?.separator : "."; // default
+	const placeholderStrings = readPlaceholderFromEnv(path, prefix, separator, log);
 
 	let filesToInclude = [];
 	if (options.configuration) {

@@ -2,8 +2,6 @@ const path = require("path");
 const fs = require("fs");
 const yaml = require("js-yaml");
 
-const log = require("./log");
-
 /**
  * @typedef UI5Module
  * @type {object}
@@ -16,11 +14,13 @@ const log = require("./log");
  * Returns all UI5 modules from local apps and the project dependencies.
  * @param {object} options configuration options
  * @param {string} options.cwd current working directory
+ * @param {string} options.cds reference to cds
  * @param {string} options.skipLocalApps skip local apps
  * @param {string} options.skipDeps skip dependencies
- * @returns {Array<UI5Module>} array of UI5 module
+ * @param {string} options.log the logger (defaults to console)
+ * @returns {Promise<Array<UI5Module>>} array of UI5 module
  */
-module.exports = async function findUI5Modules({ cwd, skipLocalApps, skipDeps }) {
+module.exports = async function findUI5Modules({ cwd, cds, skipLocalApps, skipDeps, log = console }) {
 	// extract the modules configuration from the package.json
 	const pkgJson = require(path.join(cwd, "package.json"));
 
@@ -32,7 +32,7 @@ module.exports = async function findUI5Modules({ cwd, skipLocalApps, skipDeps })
 	try {
 		modulesConfig = JSON.parse(process.env.CDS_PLUGIN_UI5_MODULES);
 		log.info(`Using modules configuration from env`);
-	} catch (err) {
+	} catch {
 		modulesConfig = pkgJson.cds?.["cds-plugin-ui5"]?.modules;
 	}
 	if (modulesConfig) {
@@ -52,9 +52,9 @@ module.exports = async function findUI5Modules({ cwd, skipLocalApps, skipDeps })
 	const localApps = new Set();
 	const appDirs = [];
 	if (!skipLocalApps) {
-		const appDir = path.join(cwd, "app");
+		const appDir = path.join(cwd, cds?.env?.folders?.app || "app");
 		if (fs.existsSync(appDir)) {
-			// is the UI5 app directly in teh app directory?
+			// is the UI5 app directly in the app directory?
 			if (!fs.existsSync(path.join(appDir, determineUI5Yaml(appDir)))) {
 				// lookup all dirs inside the root app directory for
 				// being either a local app or a UI5 application
@@ -101,10 +101,10 @@ module.exports = async function findUI5Modules({ cwd, skipLocalApps, skipDeps })
 						paths: [cwd],
 					});
 					return true;
-				} catch (e) {
+				} catch {
 					return false;
 				}
-			})
+			}),
 		);
 	}
 

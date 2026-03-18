@@ -9,7 +9,7 @@ const path = require("path");
 const customUI5Html = fs.readFileSync(path.join(`${__dirname}`, "ui5mangler.html"), { encoding: "utf-8" });
 
 /**
- * @typedef {Object} [configuration] configuration
+ * @typedef {object} [configuration] configuration
  * @property {string} httpModule - capability to e.g. use `http2`
  * @property {string|yo<input|3000>} [port] port to run middleware at
  * @property {string|yo<confirm|true>} [logConnections] show connected browsers
@@ -23,7 +23,7 @@ const customUI5Html = fs.readFileSync(path.join(`${__dirname}`, "ui5mangler.html
  * @param {object} parameters Parameters
  * @param {@ui5/logger/Logger} parameters.log Logger instance
  * @param {object} parameters.options Options
- * @param {string} [parameters.options.configuration] Custom server middleware configuration if given in ui5.yaml
+ * @param {object} [parameters.options.configuration] Custom server middleware configuration if given in ui5.yaml
  * @returns {Function} Middleware function to use
  */
 module.exports = ({ log, options }) => {
@@ -32,7 +32,7 @@ module.exports = ({ log, options }) => {
 		{
 			logSnippet: false,
 			https: options?.configuration?.https || false,
-			// http2 here, e.g. from ui5-tooling
+			// http2 here, e.g. from UI5 CLI
 			httpModule: options?.configuration?.httpModule,
 			logLevel: options?.configuration?.debug ? "debug" : "info",
 			// per default, log connections
@@ -47,7 +47,7 @@ module.exports = ({ log, options }) => {
 		},
 		(err, instance) => {
 			log.info(`started on port ${port}`);
-		}
+		},
 	);
 	return inject(bs, {}, customUI5Html);
 };

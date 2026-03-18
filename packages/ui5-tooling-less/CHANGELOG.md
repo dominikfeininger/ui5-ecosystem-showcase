@@ -3,6 +3,82 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.4](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tooling-less@3.2.3...ui5-tooling-less@3.2.4) (2026-01-15)
+
+**Note:** Version bump only for package ui5-tooling-less
+
+
+
+
+
+## [3.2.3](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tooling-less@3.2.2...ui5-tooling-less@3.2.3) (2025-09-17)
+
+**Note:** Version bump only for package ui5-tooling-less
+
+
+
+
+
+## [3.2.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tooling-less@3.2.1...ui5-tooling-less@3.2.2) (2025-09-15)
+
+**Note:** Version bump only for package ui5-tooling-less
+
+
+
+
+
+## [3.2.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tooling-less@3.2.0...ui5-tooling-less@3.2.1) (2024-11-01)
+
+
+### Bug Fixes
+
+* update dependencies ([#1114](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1114)) ([d7672f2](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/d7672f2cd10f8a5de1da3070050ab98810e0fcf8))
+
+
+
+
+
+# [3.2.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tooling-less@3.1.5...ui5-tooling-less@3.2.0) (2024-09-06)
+
+
+### Features
+
+* enhanced v4 compat + update dependencies ([#1070](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1070)) ([2d7ed16](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/2d7ed1623249febd32ecabdd2b47698f1cd968d5))
+
+
+
+
+
+## [3.1.5](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tooling-less@3.1.4...ui5-tooling-less@3.1.5) (2024-07-10)
+
+
+### Bug Fixes
+
+* handle case when lessToCompile is provided as a string value ([#1027](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1027)) ([cad15b0](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/cad15b025137fecd744796cc1dcf12e1a7893dcc))
+
+
+
+
+
+## [3.1.4](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tooling-less@3.1.3...ui5-tooling-less@3.1.4) (2024-06-10)
+
+
+### Bug Fixes
+
+* **ui5-tooling-less:** ensure task to work on windows os ([#1019](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1019)) ([2928475](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/292847557994be4abe43075bc0d828e686fe2594))
+
+
+
+
+
+## [3.1.3](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tooling-less@3.1.2...ui5-tooling-less@3.1.3) (2024-02-18)
+
+**Note:** Version bump only for package ui5-tooling-less
+
+
+
+
+
 ## [3.1.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tooling-less@3.1.1...ui5-tooling-less@3.1.2) (2023-12-10)
 
 **Note:** Version bump only for package ui5-tooling-less

@@ -1,6 +1,6 @@
 {
   "name": "ui5-app-simple",
-  "version": "0.6.17",
+  "version": "0.12.0",
   "description": "UI5 application using custom middlewares and tasks",
   "private": true,
   "author": "Volker Buzek, Peter Muessig",
@@ -16,14 +16,17 @@
     "build:sc": "ui5 build self-contained --clean-dest",
     "start": "ui5 serve --config ui5-dist.yaml --port 1337 --open index.html",
     "dev": "ui5 serve --port 1337 --open index.html",
+    "dev-ws": "npm run dev -- --workspace=local",
     "lint": "eslint webapp"
   },
   "dependencies": {
     "ui5-module": "workspace:^"
   },
   "devDependencies": {
-    "@ui5/cli": "^3.7.3",
-    "rimraf": "^5.0.5",
+    "@ui5/cli": "^4.0.48",
+    "eslint": "^10.0.3",
+    "globals": "^17.4.0",
+    "rimraf": "^6.1.3",
     "ui5-middleware-livereload": "workspace:^",
     "ui5-middleware-serveframework": "workspace:^",
     "ui5-task-zipper": "workspace:^",

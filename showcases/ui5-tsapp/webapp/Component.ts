@@ -1,3 +1,6 @@
+/*!
+ * ${copyright}
+ */
 import UIComponent from "sap/ui/core/UIComponent";
 import Device from "sap/ui/Device";
 
@@ -16,6 +19,8 @@ export default class Component extends UIComponent {
 		super.init();
 		// enable routing
 		this.getRouter().initialize();
+		// stringreplace test
+		console.log("${project.version}");
 	}
 
 	/**

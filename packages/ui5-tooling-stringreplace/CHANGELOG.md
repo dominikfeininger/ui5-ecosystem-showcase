@@ -3,6 +3,140 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.6.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tooling-stringreplace@3.5.1...ui5-tooling-stringreplace@3.6.0) (2026-03-12)
+
+
+### Features
+
+* update dependencies ([#1326](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1326)) ([6f16575](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/6f16575680b0c526261b84f83b22743806c8509b))
+
+
+
+
+
+## [3.5.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tooling-stringreplace@3.5.0...ui5-tooling-stringreplace@3.5.1) (2026-01-15)
+
+**Note:** Version bump only for package ui5-tooling-stringreplace
+
+
+
+
+
+# [3.5.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tooling-stringreplace@3.4.4...ui5-tooling-stringreplace@3.5.0) (2025-12-02)
+
+
+### Features
+
+* update depedency versions ([#1302](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1302)) ([0a22ebd](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/0a22ebdde9bcbce570eb7ccdda8539e106dc44e1))
+
+
+
+
+
+## [3.4.4](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tooling-stringreplace@3.4.3...ui5-tooling-stringreplace@3.4.4) (2025-11-02)
+
+**Note:** Version bump only for package ui5-tooling-stringreplace
+
+
+
+
+
+## [3.4.3](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tooling-stringreplace@3.4.2...ui5-tooling-stringreplace@3.4.3) (2025-09-17)
+
+**Note:** Version bump only for package ui5-tooling-stringreplace
+
+
+
+
+
+## [3.4.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tooling-stringreplace@3.4.1...ui5-tooling-stringreplace@3.4.2) (2025-09-15)
+
+**Note:** Version bump only for package ui5-tooling-stringreplace
+
+
+
+
+
+## [3.4.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tooling-stringreplace@3.4.0...ui5-tooling-stringreplace@3.4.1) (2025-07-06)
+
+
+### Bug Fixes
+
+* update project dependencies ([#1235](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1235)) ([456fb61](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/456fb6143125e3334acafb129e219499b2a1c882))
+
+
+
+
+
+# [3.4.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tooling-stringreplace@3.3.0...ui5-tooling-stringreplace@3.4.0) (2025-02-06)
+
+
+### Features
+
+* general dependencies update ([#1162](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1162)) ([5375d76](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/5375d76496741433330d76ce59a89b39f7ad8a69))
+
+
+
+
+
+# [3.3.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tooling-stringreplace@3.2.3...ui5-tooling-stringreplace@3.3.0) (2024-09-06)
+
+
+### Features
+
+* enhanced v4 compat + update dependencies ([#1070](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/1070)) ([2d7ed16](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/2d7ed1623249febd32ecabdd2b47698f1cd968d5))
+
+
+
+
+
+## [3.2.3](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tooling-stringreplace@3.2.2...ui5-tooling-stringreplace@3.2.3) (2024-05-31)
+
+**Note:** Version bump only for package ui5-tooling-stringreplace
+
+
+
+
+
+## [3.2.2](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tooling-stringreplace@3.2.1...ui5-tooling-stringreplace@3.2.2) (2024-05-15)
+
+**Note:** Version bump only for package ui5-tooling-stringreplace
+
+
+
+
+
+## [3.2.1](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tooling-stringreplace@3.2.0...ui5-tooling-stringreplace@3.2.1) (2024-03-27)
+
+
+### Bug Fixes
+
+* **ui5-tooling-stringreplace:** corrected the mime type for ts ([#981](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/981)) ([e777f5a](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/e777f5a67ad1d81d4c6efd8a3a0af442ecb88266))
+* **ui5-tooling-stringreplace:** support TypeScript files ([#980](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/980)) ([95ec2c5](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/95ec2c5a2debcfe172b4ac03f25e05f5192d5010))
+
+
+
+
+
+# [3.2.0](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tooling-stringreplace@3.1.4...ui5-tooling-stringreplace@3.2.0) (2024-02-18)
+
+
+### Features
+
+* **ui5-stringreplace:** make separator configurable ([#949](https://github.com/ui5-community/ui5-ecosystem-showcase/issues/949)) ([b986526](https://github.com/ui5-community/ui5-ecosystem-showcase/commit/b986526aac360254e2e952c0a38ad719b4edf560))
+
+
+
+
+
+## [3.1.4](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tooling-stringreplace@3.1.3...ui5-tooling-stringreplace@3.1.4) (2024-01-25)
+
+**Note:** Version bump only for package ui5-tooling-stringreplace
+
+
+
+
+
 ## [3.1.3](https://github.com/ui5-community/ui5-ecosystem-showcase/compare/ui5-tooling-stringreplace@3.1.2...ui5-tooling-stringreplace@3.1.3) (2023-11-03)
 
 **Note:** Version bump only for package ui5-tooling-stringreplace

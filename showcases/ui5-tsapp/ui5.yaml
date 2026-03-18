@@ -2,6 +2,11 @@ specVersion: "3.0"
 metadata:
   name: ui5.ecosystem.demo.tsapp
 customConfiguration:
+  config-ui5-tooling-stringreplace: &cfgStringReplace
+    debug: true
+    replace:
+      - placeholder: "${project.version}"
+        value: "1.0.0-SNAPSHOT"
   config-ui5-tooling-transpile: &cfgTranspile
     debug: true
     filePattern: .+(ts|tsx)
@@ -9,10 +14,17 @@ customConfiguration:
     omitTSFromBuildResult: true
   config-ui5-tooling-modules: &cfgModules
     debug: true
+    minify: true
+    watch:
+      - "../ui5-tsapp-webc/webapp"
+    pluginOptions:
+      webcomponents:
+        skipJSDoc: false # enable the JSDoc generation
+        skipDtsGeneration: false
 type: application
 framework:
   name: OpenUI5
-  version: "1.120.1"
+  version: "1.145.0"
   libraries:
     - name: sap.m
     - name: sap.ui.core
@@ -22,14 +34,22 @@ builder:
   settings:
     includeDependency:
       - ui5.ecosystem.demo.tslib
+  minification:
+    excludes:
+      - "ui5/ecosystem/demo/tsapp/thirdparty/**"
   componentPreload:
     excludes:
+      - "ui5/ecosystem/demo/tsapp/thirdparty/_dynamics/**"
       - "ui5/ecosystem/demo/tsapp/thirdparty/@stomp/**"
       - "ui5/ecosystem/demo/tsapp/thirdparty/jspdf*.js"
       - "ui5/ecosystem/demo/tsapp/thirdparty/xlsx.js"
   customTasks:
-    - name: ui5-tooling-transpile-task
+    - name: ui5-tooling-stringreplace-task
       afterTask: replaceVersion
+      configuration:
+        <<: *cfgStringReplace
+    - name: ui5-tooling-transpile-task
+      afterTask: ui5-tooling-stringreplace-task
       configuration:
         <<: *cfgTranspile
         generateTsInterfaces: true
@@ -37,10 +57,14 @@ builder:
       afterTask: ui5-tooling-transpile-task
       configuration:
         <<: *cfgModules
-        prependPathMappings: false
-        addToNamespace: true
         providedDependencies:
           - moment
+    - name: ui5-task-copyright
+      beforeTask: replaceCopyright
+      configuration:
+        copyright: ./copyright.txt
+        excludePatterns:
+          - "Component.ts"
 server:
   customMiddleware:
     - name: ui5-tooling-transpile-middleware

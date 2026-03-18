@@ -1,8 +1,10 @@
-# karma-ui5-transpile
+# karma-ui5-transpile **[DEPRECATED]**
 
-> :wave: This is a **community project** and there is no official support for this package! Feel free to use it, open issues, contribute, and help answering questions.
+> :warning: This project has been deprecated. We recommend you to pick a successor from the [available UI5 community projects](https://bestofui5.org/#/packages?tokens=testing:tag). For more information see [Deprecation of karma-ui5 plugin](https://community.sap.com/t5/technology-blogs-by-sap/deprecation-of-karma-ui5-plugin/ba-p/13954060).
 
-The `karma-ui5-transpile` preprocessor transpiles code of UI5 projects having a `ui5.yaml` using `ui5-tooling-transpile` tooling extension. This preprocesser is usable for [Karma](https://karma-runner.github.io/) testing to transpile your resources before testing (i.e. TypeScript compilation for later usage of the [`karma-coverage`](https://www.npmjs.com/package/karma-coverage) plugin).
+> :wave: This is an **open‑source, community‑driven project**, developed and actively monitored by members of the UI5 community. You are welcome to use it, report issues, contribute enhancements, and support others in the community.
+
+The `karma-ui5-transpile` preprocessor transpiles code of UI5 projects having a `ui5.yaml` using `ui5-tooling-transpile` UI5 CLI extension. This preprocesser is usable for [Karma](https://karma-runner.github.io/) testing to transpile your resources before testing (i.e. TypeScript compilation for later usage of the [`karma-coverage`](https://www.npmjs.com/package/karma-coverage) plugin).
 
 ## Prerequisites
 
@@ -40,7 +42,7 @@ module.exports = function (config) {
 
 To enable code coverage for your UI5 project using `ui5-tooling-transpile`, you can install and use the `karma-ui5-transpile` to preprocess your source files of your project. It uses the same configuration as the `ui5-tooling-transpile` and `karma-ui5`.
 
-Let's assume you already use the tooling extension `ui5-tooling-transpile` and all is configured properly in `ui5.yaml`. To add code coverage, we first need to install all required dependencies `karma`, `karma-ui5`, `karma-ui5-transpile`, `karma-coverage`, and `karma-chrome-launcher` which are needed for the automated execution of your e.g. QUnit or OPA tests:
+Let's assume you already use the UI5 CLI extension `ui5-tooling-transpile` and all is configured properly in `ui5.yaml`. To add code coverage, we first need to install all required dependencies `karma`, `karma-ui5`, `karma-ui5-transpile`, `karma-coverage`, and `karma-chrome-launcher` which are needed for the automated execution of your e.g. QUnit or OPA tests:
 
 ```sh
 npm install --save-dev karma karma-ui5 karma-ui5-transpile karma-coverage karma-chrome-launcher
@@ -91,7 +93,7 @@ Please use the GitHub bug tracking system to post questions, bug reports or to c
 
 ## Contributing
 
-Any type of contribution (code contributions, pull requests, issues) to this set of tooling extensions will be equally appreciated.
+Any type of contribution (code contributions, pull requests, issues) to this set of UI5 CLI extensions will be equally appreciated.
 
 ## License
 
