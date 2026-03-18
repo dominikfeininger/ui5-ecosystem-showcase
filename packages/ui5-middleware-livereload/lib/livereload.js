@@ -133,6 +133,7 @@ module.exports = async ({ log, resources, options, middlewareUtil }) => {
 		debug: debug,
 		extraExts: extraExts ? extraExts.split(",") : undefined,
 		port: port,
+		host: "0.0.0.0",
 		exclusions: exclusions,
 		usePolling: usePolling,
 	};
