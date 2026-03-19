@@ -1,6 +1,15 @@
 # UI5 middleware for syncing interactions across browsers
 
+> :wave: This is an **open‑source, community‑driven project**, developed and actively monitored by members of the UI5 community. You are welcome to use it, report issues, contribute enhancements, and support others in the community.
+
 Middleware for [ui5-server](https://github.com/SAP/ui5-server), syncing interactions between different browsers, hopefully somewhat easing manual testing :)  
+
+## Prerequisites
+
+- Requires at least [`@ui5/cli@3.0.0`](https://ui5.github.io/cli/v3/pages/CLI/) (to support [`specVersion: "3.0"`](https://ui5.github.io/cli/pages/Configuration/#specification-version-30))
+
+> :warning: **UI5 CLI Compatibility**
+> All releases of this UI5 CLI extension using the major version `3` require UI5 CLI V3. Any previous releases below major version `3` (if available) also support older versions of the UI5 CLI. But the usage of the latest UI5 CLI is strongly recommended!
 
 ## Install
 
@@ -30,17 +39,8 @@ show connected browsers
     // ...
     "ui5-middleware-iasync": "*"
     // ...
-},
-"ui5": {
-  "dependencies": [
-    // ...
-    "ui5-middleware-iasync",
-    // ...
-  ]
 }
 ```
-
-> As the devDependencies are not recognized by the UI5 tooling, they need to be listed in the `ui5 > dependencies` array. In addition, once using the `ui5 > dependencies` array you need to list all UI5 tooling relevant dependencies.
 
 2. configure it in `$yourapp/ui5.yaml`:
 

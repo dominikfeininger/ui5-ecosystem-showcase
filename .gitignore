@@ -1,9 +1,21 @@
+# Private folders
+_
+
 # Ignore Mac files
 .DS_Store
 
-# uiveri5 screenshots
-packages/ui5-app/webapp/test/e2e/target/*
-packages/ui5-app/webapp/test/e2e-wdi5/report/*
+# irrelevant lock files
+package-lock.json
+yarn.lock
+
+# ignore ui5-tooling-modules cache
+showcases/*/.ui5-tooling-modules
+
+# wdi5 screenshots
+packages/ui5-app/webapp/test/e2e/report/*
+
+# test resources
+packages/ui5-middleware-approuter/test/_ui5-app
 
 # Logs
 logs
@@ -60,8 +72,20 @@ typings/
 # Ignore default target directory for the npm package 'ui5-codecompletion'
 .ui5
 
-# UI5 tooling dist folder
+# UI5 CLI dist folder
 dist
 
 # WebStorm/IntelliJ IDE
 .idea
+
+# vscode settings - to each her/his own
+.vscode/settings.json
+
+# local workspace configs
+ui5-workspace.yaml
+
+# local markdown files
+TODO.md
+
+# UI5 preload resources
+.ui5-middleware-serveframework

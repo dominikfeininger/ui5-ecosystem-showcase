@@ -1,0 +1,32 @@
+{
+  "name": "ui5-middleware-ui5",
+  "version": "3.5.0",
+  "description": "UI5 middleware to include UI5 application as dependencies",
+  "author": "Peter Muessig",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/ui5-community/ui5-ecosystem-showcase/tree/main/packages/ui5-middleware-ui5#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ui5-community/ui5-ecosystem-showcase.git",
+    "directory": "packages/ui5-middleware-ui5"
+  },
+  "scripts": {
+    "lint": "eslint lib"
+  },
+  "dependencies": {
+    "express": "^5",
+    "js-yaml": "^4.1.1",
+    "node-html-parser": "^7.1.0",
+    "ui5-utils-express": "workspace:^"
+  },
+  "devDependencies": {
+    "@ui5/fs": "*",
+    "@ui5/project": "*",
+    "@ui5/server": "*"
+  },
+  "peerDependencies": {
+    "@ui5/fs": ">=3 <5",
+    "@ui5/project": ">=3 <5",
+    "@ui5/server": ">=3 <5"
+  }
+}

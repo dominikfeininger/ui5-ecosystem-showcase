@@ -1,0 +1,48 @@
+<mvc:View controllerName="ui5.ecosystem.demo.app.controller.Main" displayBlock="true" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:lib="ui5.ecosystem.demo.lib">
+  <Page id="page" title="{i18n>appTitle}">
+    <headerContent>
+      <core:Icon color="#1873B4" src="sap-icon://sap-ui5" size="2rem" />
+      <Text text="Latest: {UI5VersionInfo>/latest/version}&#13;&#10;Current: {UI5Version>/current/version}" tooltip="Latest OpenUI5 Version" />
+    </headerContent>
+    <content>
+      <VBox alignItems="Center" justifyContent="Center">
+        <Title level="H1" titleStyle="H1" text="{i18n>startPage.title.text}" width="100%" textAlign="Center" />
+        <HBox>
+          <Button id="NavButton" icon="sap-icon://forward" text="{i18n>startPage.navButton.text}" press="navTo('RouteOther')" />
+          <Button icon="sap-icon://forward" text="{i18n>startPage.odatav4Button.text}" press="navTo('RouteODataV4')" />
+          <Button icon="sap-icon://forward" text="{i18n>startPage.odatav2Button.text}" press="navTo('RouteODataV2')" />
+        </HBox>
+        <Button text="IA Sync" press="onPress" />
+        <Panel expandable="true">
+          <headerToolbar>
+            <OverflowToolbar>
+              <Title text="Custom Toolbar with a header text" />
+            </OverflowToolbar>
+          </headerToolbar>
+          <content>
+            <Text text="Lorem ipsum dolor st amet" />
+          </content>
+        </Panel>
+        <Panel expandable="true">
+          <headerToolbar>
+            <OverflowToolbar>
+              <Title text="Content of docs/index.md" />
+            </OverflowToolbar>
+          </headerToolbar>
+          <content>
+            <TextArea id="doc" rows="10" cols="40" />
+          </content>
+        </Panel>
+        <DateTimePicker id="DateTimePicker" placeholder="Enter Date ..." />
+        <Button text="Don't press me!" press="onBoo" />
+        <Button text="Test 3rd party!" press="navTo('RouteThirdparty')" />
+        <HBox>
+          <Button text="Test WebSocket!" press="testWebSocket" />
+          <Button text="Test WebSocket SimpleProxy!" press="testWebSocketSP" />
+          <Button text="Test WebSocket CF!" press="testWebSocketCF" />
+        </HBox>
+        <lib:Example text="Hello World" />
+      </VBox>
+    </content>
+  </Page>
+</mvc:View>

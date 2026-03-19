@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es2023",
+    "module": "es2022",
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "allowJs": true,
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "rootDir": "./",
+    "paths": {
+      "ui5/ecosystem/demo/tslib/*": ["./src/*"]
+    }
+  },
+  "include": ["./src/**/*", "./test/**/*"]
+}

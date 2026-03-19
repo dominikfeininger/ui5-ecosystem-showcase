@@ -1,0 +1,78 @@
+specVersion: "3.0"
+metadata:
+  name: ui5.ecosystem.demo.app
+type: application
+framework:
+  name: OpenUI5
+  version: "1.145.0"
+  libraries:
+    - name: sap.m
+    - name: sap.ui.core
+    - name: sap.ui.layout
+    - name: themelib_sap_horizon
+builder:
+  componentPreload:
+    excludes:
+      - "ui5/ecosystem/demo/app/thirdparty/js-temporal/**"
+      - "ui5/ecosystem/demo/app/thirdparty/stomp/**"
+      - "ui5/ecosystem/demo/app/thirdparty/zod.js"
+  customTasks:
+    - name: ui5-tooling-less-task
+      afterTask: replaceVersion
+    - name: ui5-tooling-transpile-task
+      afterTask: replaceVersion
+      configuration:
+        debug: true
+        removeConsoleStatements: true
+        excludePatterns:
+          - "lib/"
+    - name: ui5-task-minify-xml
+      afterTask: replaceVersion
+      configuration:
+        minifyOptions:
+          removeComments: true
+          collapseEmptyElements: true
+          collapseWhitespaceInAttributeValues: true
+          # ... further minify-xml attributes
+        fileExtensions:
+          - "xml"
+          - "edmx"
+        excludePatterns:
+          - "lib/"
+          - "another/dir/in/webapp"
+          - "yet/another/dir"
+    - name: ui5-task-i18ncheck
+      afterTask: replaceVersion
+    - name: ui5-tooling-modules-task
+      afterTask: replaceVersion
+    - name: ui5-task-pwa-enabler
+      afterTask: generateVersionInfo
+      configuration:
+        serviceWorker:
+          strategy: Advanced-Caching
+          offlinePage: offline.html
+          preCache:
+            - "controller/*"
+            - "*.html"
+            - "view/*"
+            - "images/*"
+          networkFirst:
+            - /\/api\/.*/
+          avoidCaching:
+            - /\/realtime-api\/.*/
+        manifest:
+          short_name: UI5 PWA Showcase
+          name: UI5 PWA Showcase Demo
+          description: UI5 PWA Showcase for the ui5-task-pwa-enabler
+          icons:
+            - src: img/192x192.png
+              type: image/png
+              sizes: 192x192
+            - src: img/512x512.png
+              type: image/png
+              sizes: 512x512
+          start_url: /index.html
+          scope: /
+          background_color: "#EFF4F9"
+          theme_color: "#3F5161"
+          display: standalone

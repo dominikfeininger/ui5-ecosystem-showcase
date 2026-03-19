@@ -1,181 +1,228 @@
-let proxy = require('express-http-proxy');
-const log = require("@ui5/logger").getLogger("server:custommiddleware:proxy");
-const dotenv = require('dotenv');
+/**
+ * @typedef {object} [configuration] configuration
+ * @property {string} mountPath - The path to mount the extension
+ * @property {string} baseUri - The baseUri to proxy. => env:UI5_MIDDLEWARE_SIMPLE_PROXY_BASEURI
+ * @property {boolean|yo<confirm|true>} [strictSSL] Ignore strict SSL checks. => env:UI5_MIDDLEWARE_SIMPLE_PROXY_STRICT_SSL
+ * @property {boolean|yo<confirm>} [removeETag] Removes the ETag header from the response to avoid conditional requests.
+ * @property {string} [username] Username used for Basic Authentication. => env:UI5_MIDDLEWARE_SIMPLE_PROXY_USERNAME
+ * @property {string|yo<password>} [password] Password used for Basic Authentication. => env:UI5_MIDDLEWARE_SIMPLE_PROXY_PASSWORD
+ * @property {map|yo<input>} [httpHeaders] Http headers set for the proxied request. Will overwrite the http headers from the request.
+ * @property {map|yo<input>} [query] Query parameters set for the proxied request. Will overwrite the parameters from the request.
+ * @property {string[]|yo<input>} [excludePatterns] Array of exclude patterns using glob syntax
+ * @property {boolean|yo<confirm>} [skipCache] Remove the cache guid when serving from the FLP launchpad if it matches an excludePattern
+ * @property {boolean|yo<confirm>} [debug] see output
+ */
 
+const hook = require("ui5-utils-express/lib/hook");
+const { createProxyMiddleware, responseInterceptor } = require("http-proxy-middleware");
+
+const minimatch = require("minimatch");
+
+// load environment variables
+const dotenv = require("dotenv");
 dotenv.config();
 
-const env = {
-  baseUri: process.env.UI5_MIDDLEWARE_SIMPLE_PROXY_BASEURI,
-  strictSSL: process.env.UI5_MIDDLEWARE_SIMPLE_PROXY_STRICT_SSL,
-  httpHeaders: process.env.UI5_MIDDLEWARE_SIMPLE_PROXY_HTTP_HEADERS || process.env.UI5_MIDDLEWARE_HTTP_HEADERS /* compat */,
-  limit: process.env.UI5_MIDDLEWARE_SIMPLE_PROXY_LIMIT,
-  removeETag: process.env.UI5_MIDDLEWARE_SIMPLE_PROXY_REMOVEETAG,
-  username: process.env.UI5_MIDDLEWARE_SIMPLE_PROXY_USERNAME,
-  password: process.env.UI5_MIDDLEWARE_SIMPLE_PROXY_PASSWORD
-};
+// eslint-disable-next-line jsdoc/require-jsdoc
+function parseBoolean(b) {
+	return /^true|false$/i.test(b) ? JSON.parse(b.toLowerCase()) : undefined;
+}
 
-/**
- * Handle decision between configuration and environment value while processing
- * string values from environment and possible null and undefined values. Any string
- * passed to environment variable except `"false"` will default to `true`. If both
- * values are undefined or null, return `true` as well.
- *
- * @param {?boolean} environmentValue Value of the environment variable 
- *                                  UI5_MIDDLEWARE_SIMPLE_PROXY_STRICT_SSL
- * @param {?boolean} configurationValue Value from the ui5.yaml configuration
- * @returns {boolean} Indicator whether to require strict SSL checking
- */
-function deriveStrictSSL(environmentValue, configurationValue) {
-  const environmentBooleanOrNull =
-    (environmentValue === undefined || environmentValue === null)
-      ? undefined
-      : !(environmentValue === "false");
+// eslint-disable-next-line jsdoc/require-jsdoc
+function parseJSON(v) {
+	try {
+		return JSON.parse(v);
+		// eslint-disable-next-line no-unused-vars
+	} catch (err) {
+		return undefined;
+	}
+}
 
-  if (environmentBooleanOrNull === undefined) {
-    if (configurationValue === undefined || configurationValue === null) {
-      return true;
-    } else {
-      return configurationValue;
-    }
-  } else {
-    return environmentBooleanOrNull;
-  }
+// eslint-disable-next-line jsdoc/require-jsdoc
+function sanitizeObject(o) {
+	return (
+		o &&
+		Object.keys(o)
+			.filter((key) => {
+				return o[key] != null;
+			})
+			.reduce((acc, key) => {
+				acc[key] = o[key];
+				return acc;
+			}, {})
+	);
 }
 
 /**
- * Get the HTTP headers from environment variable if exists, otherwise get from the configuration
- * 
- * @param {string} environmentValue The value coming from the enviroment variable 'UI5_MIDDLEWARE_HTTP_HEADERS'
- * @param {Object} configuration The configuration object
- * 
- * @returns {Object} http headers
- */
-function getHttpHeaders(environmentValue, configuration) {
-  let httpHeaders;
-  if (environmentValue) {
-    httpHeaders = JSON.parse(environmentValue);
-  } else if (configuration) {
-    httpHeaders = configuration.httpHeaders;
-  }
-  httpHeaders && configuration && configuration.debug && log.info(`HTTP headers will be injected: ${Object.keys(httpHeaders).join(", ")} `);
-  return httpHeaders;
-}
-
-/**
- * Get the authentication token, to be used send via Basic Authentication HTTP header, from environment variable if exists, otherwise get from the configuration
+ * UI5 server proxy middleware
  *
- * @param {object} environmentValue The enviroment variable object UI5_MIDDLEWARE_SIMPLE_PROXY_*
- * @param {object} configuration The configuration object
- *
- * @returns {string} Basic Authentication token username:password format
+ * @param {object} parameters Parameters
+ * @param {@ui5/logger/Logger} parameters.log Logger instance
+ * @param {object} parameters.options Options
+ * @param {object} [parameters.options.configuration] Custom server middleware configuration if given in ui5.yaml
+ * @param {object} parameters.middlewareUtil Specification version dependent interface to a
+ *                                        [MiddlewareUtil]{@link module:@ui5/server.middleware.MiddlewareUtil} instance
+ * @returns {Function} Middleware function to use
  */
-function getBasicAuthenticationToken(environmentValue = {}, configuration = {}) {
-  const username = environmentValue.username || configuration.username;
-  const password = environmentValue.password || configuration.password;
-  if (username && password) {
-    return `${username}:${password}`;
-  }
-}
+// eslint-disable-next-line no-unused-vars
+module.exports = async function ({ log, options, middlewareUtil }) {
+	// determine environment variables
+	const env = {
+		baseUri: process.env.UI5_MIDDLEWARE_SIMPLE_PROXY_BASEURI,
+		strictSSL: parseBoolean(process.env.UI5_MIDDLEWARE_SIMPLE_PROXY_STRICT_SSL),
+		httpHeaders: parseJSON(process.env.UI5_MIDDLEWARE_SIMPLE_PROXY_HTTP_HEADERS || process.env.UI5_MIDDLEWARE_HTTP_HEADERS /* compat */),
+		removeETag: parseBoolean(process.env.UI5_MIDDLEWARE_SIMPLE_PROXY_REMOVEETAG),
+		username: process.env.UI5_MIDDLEWARE_SIMPLE_PROXY_USERNAME,
+		password: process.env.UI5_MIDDLEWARE_SIMPLE_PROXY_PASSWORD,
+		query: parseJSON(process.env.UI5_MIDDLEWARE_SIMPLE_PROXY_QUERY),
+	};
 
-/**
- * Custom UI5 Server middleware example
- *
- * @param {Object} parameters Parameters
- * @param {Object} parameters.resources Resource collections
- * @param {module:@ui5/fs.AbstractReader} parameters.resources.all Reader or Collection to read resources of the
- *                                        root project and its dependencies
- * @param {module:@ui5/fs.AbstractReader} parameters.resources.rootProject Reader or Collection to read resources of
- *                                        the project the server is started in
- * @param {module:@ui5/fs.AbstractReader} parameters.resources.dependencies Reader or Collection to read resources of
- *                                        the projects dependencies
- * @param {Object} parameters.options Options
- * @param {string} [parameters.options.configuration] Custom server middleware configuration if given in ui5.yaml
- * @returns {function} Middleware function to use
- */
-module.exports = function ({ resources, options }) {
-  // Environment wins over YAML configuration when loading settings
-  const providedBaseUri = env.baseUri || (options.configuration && options.configuration.baseUri);
-  const providedStrictSSL = deriveStrictSSL(
-    env.strictSSL,
-    options.configuration ? options.configuration.strictSSL : undefined
-  );
-  const providedHttpHeaders = getHttpHeaders(env.httpHeaders, options.configuration);
-  options.configuration && options.configuration.debug && log.info(`Starting proxy for baseUri ${providedBaseUri}`);
-  // determine the uri parts (protocol, baseUri, path)
-  let baseUriParts = providedBaseUri.match(/(https|http)\:\/\/([^/]*)(\/.*)?/i);
-  if (!baseUriParts) {
-    throw new Error(`The baseUri ${providedBaseUri} is not valid!`);
-  }
-  let protocol = baseUriParts[1];
-  let baseUri = baseUriParts[2];
-  let path = baseUriParts[3];
-  if (path && path.endsWith("/")) {
-    path = path.slice(0, -1);
-  }
-  const limit = env.limit || (options.configuration && options.configuration.limit);
-  const removeETag = env.removeETag || (options.configuration && options.configuration.removeETag);
+	// provide a set of default runtime options
+	const effectiveOptions = {
+		debug: false,
+		baseUri: null,
+		strictSSL: true,
+		removeETag: false,
+		username: null,
+		password: null,
+		httpHeaders: {},
+		query: null,
+		excludePatterns: [],
+		skipCache: false,
+		enableWebSocket: false,
+	};
 
-  // run the proxy middleware based on the baseUri configuration
-  return proxy(baseUri, {
-    https: protocol === "https",
-    limit: limit,
-    preserveHostHdr: false,
-    proxyReqOptDecorator: function (proxyReqOpts) {
-      if (providedStrictSSL === false) {
-        proxyReqOpts.rejectUnauthorized = false;
-      }
-      if (providedHttpHeaders) {
-        Object.assign(proxyReqOpts.headers, providedHttpHeaders); 
-      }
-      const authorizationToken = getBasicAuthenticationToken(env, options.configuration);
-      if (authorizationToken) {
-        proxyReqOpts.auth = authorizationToken;
-      }
-      return proxyReqOpts;
-    },
-    proxyReqPathResolver: function (req) {
-      return (path ? path : "") + req.url;
-    },
-    userResHeaderDecorator: function(headers) {
-      if (protocol === "https") {
-        Object.keys(headers).forEach((headerName) => {
-          if (/set-cookie/i.test(headerName)) {
-            // remove the secure flag of the cookies
-            if (Array.isArray(headers[headerName])) {
-              headers[headerName] = headers[headerName]
-                // remove flag 'Secure'
-                .map(function(cookieValue) {
-                  return cookieValue.replace(/;\s*secure\s*(?:;|$)/gi, ";");
-                })
-                // remove attribute 'Domain'
-                .map(function (cookieValue) {
-                  return cookieValue.replace(/;\s*domain=[^;]+\s*(?:;|$)/gi, ";");
-                })
-                // remove attribute 'Path'
-                .map(function (cookieValue) {
-                  return cookieValue.replace(/;\s*path=[^;]+\s*(?:;|$)/gi, ";");
-                })
-                // remove attribute 'SameSite'
-                .map(function (cookieValue) {
-                  return cookieValue.replace(/;\s*samesite=[^;]+\s*(?:;|$)/gi, ";");
-                  // alternatively replace the value with 'Lax':
-                  // return cookieValue.replace(/;\s*samesite=[^;]+\s*(?:;|$)/gi, "; SameSite=Lax;");
-                });
-            }
-          }
-        });
-      }
-      return headers;
-    },
-    userResDecorator: function(proxyRes, proxyResData, userReq, userRes) {
-      if (removeETag) {
-        const fnEnd = userRes.end;
-        userRes.end = function() {
-          this.removeHeader("ETag");
-          return fnEnd.apply(this, arguments);
-        }  
-      }
-      return proxyResData;
-    },
-  });
+	// config-time options from ui5.yaml for cfdestination take precedence
+	Object.assign(effectiveOptions, sanitizeObject(options.configuration), /* env values */ sanitizeObject(env));
+
+	// effective configuration options
+	const { debug, baseUri, strictSSL, removeETag, username, password, httpHeaders, query, excludePatterns, skipCache } = effectiveOptions;
+
+	// log the configuration for the proxy in debug mode
+	debug && log.info(`[${baseUri}] Effective configuration:\n${JSON.stringify(effectiveOptions, undefined, 2)}`);
+
+	// validate baseUri and determine the protocol
+	const baseURL = new URL(baseUri);
+	const ssl = /^(https|wss)/i.test(baseURL.protocol);
+
+	// support for coporate proxies (for HTTPS or HTTP)
+	const { getProxyForUrl } = await import("proxy-from-env");
+	const proxyUrl = getProxyForUrl(baseURL);
+	let agent;
+	if (ssl) {
+		const { HttpsProxyAgent } = await import("https-proxy-agent");
+		agent = proxyUrl ? new HttpsProxyAgent(proxyUrl) : undefined;
+	} else {
+		const { HttpProxyAgent } = await import("http-proxy-agent");
+		agent = proxyUrl ? new HttpProxyAgent(proxyUrl) : undefined;
+	}
+	debug && log.info(`[${baseUri}] Proxy: ${proxyUrl ? proxyUrl : "n/a"}`);
+
+	// check whether the request should be included or not
+	const hasExcludePatterns = excludePatterns && Array.isArray(excludePatterns);
+	const filter = function (pathname, req) {
+		if (hasExcludePatterns) {
+			const exclude = excludePatterns.some((glob) => minimatch(pathname, glob));
+			if (exclude) {
+				const url = req.url;
+				debug && log.info(`[${baseUri}] Request ${url} is excluded`);
+				const reCBToken = /\/~.*~.\//g;
+				if (skipCache && reCBToken.test(url)) {
+					const newUrl = url.replace(reCBToken, "/");
+					debug && log.info(`[${baseUri}] Removing cachebuster token from ${url}, resolving to ${newUrl}`);
+					req.url = newUrl;
+				}
+			}
+			return !exclude;
+		}
+		return true;
+	};
+
+	// run the proxy middleware based on the host configuration
+	const target = /^(.*)\/$/.exec(baseURL.toString())?.[1] || baseURL.toString(); // remove trailing slash!
+	const proxyMiddleware = createProxyMiddleware({
+		logger: effectiveOptions.debug ? console : undefined,
+		target,
+		pathFilter: filter,
+		agent,
+		secure: strictSSL,
+		changeOrigin: true, // for vhosted sites
+		autoRewrite: true, // rewrites the location host/port on (301/302/307/308) redirects based on requested host/port
+		xfwd: true, // adds x-forward headers
+		auth: username != null && password != null ? `${username}:${password}` : undefined,
+		headers: httpHeaders,
+		pathRewrite: function (path /*, req*/) {
+			// append the query parameters if available
+			if (query) {
+				const url = new URL(path, new URL("/", baseURL));
+				let pathname = url.pathname;
+				if (pathname === "/") {
+					pathname = "";
+				}
+				const search = url.searchParams;
+				Object.keys(query).forEach((key) => search.append(key, query[key]));
+				path = `${pathname}${url.search}`;
+			}
+			return path;
+		},
+		selfHandleResponse: true, // + responseInterceptor: necessary to omit ERR_CONTENT_DECODING_FAILED error when opening OData URls directly
+		on: {
+			proxyRes: responseInterceptor(async (responseBuffer, proxyRes, req, res) => {
+				effectiveOptions.debug && console.log("Proxy response status:", proxyRes.statusCode);
+				const url = req.url;
+				effectiveOptions.debug && log.info(`[${baseUri}] ${req.method} ${url} -> ${target}${url} [${proxyRes.statusCode}]`);
+				// remove the secure flag of the cookies
+				if (ssl) {
+					const setCookie = res.getHeader("set-cookie");
+					if (Array.isArray(setCookie)) {
+						res.setHeader(
+							"set-cookie",
+							proxyRes.headers["set-cookie"]
+								// remove flag 'Secure'
+								.map(function (cookieValue) {
+									return cookieValue.replace(/;\s*secure\s*(?:;|$)/gi, ";");
+								})
+								// remove attribute 'Domain'
+								.map(function (cookieValue) {
+									return cookieValue.replace(/;\s*domain=[^;]+\s*(?:;|$)/gi, ";");
+								})
+								// remove attribute 'Path'
+								.map(function (cookieValue) {
+									return cookieValue.replace(/;\s*path=[^;]+\s*(?:;|$)/gi, ";");
+								})
+								// remove attribute 'SameSite'
+								.map(function (cookieValue) {
+									return cookieValue.replace(/;\s*samesite=[^;]+\s*(?:;|$)/gi, ";");
+								}),
+						);
+					}
+				}
+				// remove etag
+				if (removeETag) {
+					debug && log.info(`[${baseUri}] Removing etag from ${url}`);
+					res.removeHeader("etag", undefined);
+				}
+				return responseBuffer;
+			}),
+		},
+	});
+
+	// manually install the upgrade function for the websocket
+	return effectiveOptions.enableWebSocket
+		? hook(
+				"ui5-middleware-simpleproxy",
+				({ on, options }) => {
+					const { mountpath } = options;
+					on("upgrade", (req, socket, head) => {
+						// only handle requests in the mountpath
+						if (mountpath === req.url) {
+							req.url = "/";
+							// call the upgrade function of the proxy middleware to
+							// initialize the websocket and establish the connection
+							proxyMiddleware.upgrade.call(this, req, socket, head);
+						}
+					});
+				},
+				proxyMiddleware,
+			)
+		: proxyMiddleware;
 };

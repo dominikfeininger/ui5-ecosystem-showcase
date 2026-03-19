@@ -2,6 +2,13 @@
 
 Middleware for [ui5-server](https://github.com/SAP/ui5-server), enabling proxy support.
 
+## Prerequisites
+
+- Requires at least [`@ui5/cli@3.0.0`](https://ui5.github.io/cli/v3/pages/CLI/) (to support [`specVersion: "3.0"`](https://ui5.github.io/cli/pages/Configuration/#specification-version-30))
+
+> :warning: **UI5 CLI Compatibility**
+> All releases of this UI5 CLI extension using the major version `3` require UI5 CLI V3. Any previous releases below major version `3` (if available) also support older versions of the UI5 CLI. But the usage of the latest UI5 CLI is strongly recommended!
+
 ## Install
 
 ```bash
@@ -10,20 +17,26 @@ npm install ui5-middleware-simpleproxy --save-dev
 
 ## Configuration options (in `$yourapp/ui5.yaml`)
 
-- baseUri: `string`
-  The baseUri to proxy. Can also be set using the `UI5_MIDDLEWARE_SIMPLE_PROXY_BASEURI` environment variable.
-- strictSSL: `boolean`
+- `baseUri`: `string`
+  The baseUri to proxy. Can also be set using the `UI5_MIDDLEWARE_SIMPLE_PROXY_BASEURI` environment variable. To proxy WebSockets just use a WebSocket URL, e.g. `ws://echo.websocket.org`. *Hint: the `mountPath` of the middleware is not considered for the baseUri. It's just used as is!*
+- `strictSSL`: `boolean`
   Ignore strict SSL checks. Default value `true`. Can also be set using the `UI5_MIDDLEWARE_SIMPLE_PROXY_STRICT_SSL` environment variable.
-- limit: `string`
-  This sets the body size limit (default: `1mb`). If the body size is larger than the specified (or default) limit,
-  a `413 Request Entity Too Large`  error will be returned. See [bytes.js](https://www.npmjs.com/package/bytes) for
-  a list of supported formats.
-- removeETag:  `boolean`
+- `removeETag`:  `boolean`
   Removes the ETag header from the response to avoid conditional requests.
-- username:  `string`
+- `username`:  `string`
   Username used for Basic Authentication.
-- password:  `string`
+- `password`:  `string`
   Password used for Basic Authentication.
+- `httpHeaders`: `map`
+  Http headers set for the proxied request. Will overwrite the http headers from the request. 
+- `query`: `map`
+  Query parameters set for the proxied request. Will overwrite the parameters from the request. 
+- `excludePatterns`: `string[]`
+  Array of exclude patterns using glob syntax
+- `skipCache`: `boolean`
+  Remove the cache guid when serving from the FLP launchpad if it matches an excludePattern
+- `enableWebSocket`: `<boolean>`, default: `false` *experimental*
+enables support for proxying web sockets
 
 In general, use of environment variables or values set in a `.env` file will override configuration values in the `ui5.yaml`.
 
@@ -36,17 +49,8 @@ In general, use of environment variables or values set in a `.env` file will ove
     // ...
     "ui5-middleware-simpleproxy": "*"
     // ...
-},
-"ui5": {
-  "dependencies": [
-    // ...
-    "ui5-middleware-simpleproxy",
-    // ...
-  ]
 }
 ```
-
-> As the devDependencies are not recognized by the UI5 tooling, they need to be listed in the `ui5 > dependencies` array. In addition, once using the `ui5 > dependencies` array you need to list all UI5 tooling relevant dependencies.
 
 2. configure it in `$yourapp/ui5.yaml`:
 
@@ -60,6 +64,12 @@ server:
       baseUri: "https://services.odata.org"
       username: myUsername
       password: myPassword
+      httpHeaders:
+        Any-Header: AnyHeader
+      query:
+        sap-client: '206'
+      excludePatterns:
+      - "/local/**"
 ```
 
 ## How it works
@@ -104,7 +114,19 @@ UI5_MIDDLEWARE_SIMPLE_PROXY_PASSWORD=myPassword
 
 ## Hints
 
-If you are using the Microsoft OData services for testing purposes, like Northwind, please ensure to use the `https` URLs instead of the `http` URLs. The `http` URL will redirect to `https` but instead of the proxy it will try to directly connect to the Microsoft OData services.
+If you are using the Microsoft OData services for testing purposes, like [Northwind](https://services.odata.org/v2/northwind/northwind.svc/) for V2 or [TripPin](https://www.odata.org/blog/trippin-new-odata-v4-sample-service/) for V4, please ensure to use the `https` URLs instead of the `http` URLs. The `http` URL will redirect to `https` but instead of the proxy it will try to directly connect to the Microsoft OData services.
+
+Another known issue is the the validation of the `csrf-token` fails for the `$batch` requests (e.g. in Chrome). To workaround this issue, also running the dev server in `https` can solve the issue.
+
+UI5 CLI supports running the dev server in `https` by running the following command line option:
+
+```sh
+ui5 serve --h2
+```
+
+**Note:** With Node v24, usage of HTTP/2 is no longer supported in UI5 CLI. Please check https://github.com/UI5/cli/issues/327 for updates.
+
+More details can be found in the documentation of the UI5 CLI for the [`ui5 serve` command](https://ui5.github.io/cli/stable/pages/CLI/#ui5-serve).
 
 ## License
 

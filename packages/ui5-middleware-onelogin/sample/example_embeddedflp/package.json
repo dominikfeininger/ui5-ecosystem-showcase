@@ -1,0 +1,34 @@
+{
+  "name": "example_simpleproxy_and_onelogin",
+  "description": "UI5 application using custom middlewares and tasks",
+  "private": true,
+  "author": "Jakob Kjaer",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ui5-community/ui5-ecosystem-showcase.git",
+    "directory": "packages/ui5-middleware-onelogin/sample/example_simpleproxy_and_onelogin"
+  },
+  "scripts": {
+    "start": "ui5 serve --h2 --open sap/bc/ui5_ui5/ui2/ushell/shells/abap/Fiorilaunchpad.html?sap-ushell-nocb=true"
+  },
+  "watch": {
+    "build": {
+      "patterns": [
+        "webapp"
+      ],
+      "extensions": "html,js,json,xml,properties",
+      "quiet": false
+    }
+  },
+  "devDependencies": {
+    "@ui5/cli": "^3",
+    "ui5-middleware-onelogin": "file:../../",
+    "ui5-middleware-servestatic": "^0.3.7",
+    "ui5-middleware-simpleproxy": "^0.7.6"
+  },
+  "dependencies": {
+    "async-prompt": "^1.0.1",
+    "ui5-middleware-servestatic": "^0.3.7"
+  }
+}

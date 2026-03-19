@@ -1,0 +1,26 @@
+# Ignore specific files
+CHANGELOG.md
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Ignore specific folders
+.vscode
+
+# Ignore build output folders
+/packages/*/dist/**
+/packages/ui5-middleware-onelogin/lib/**
+
+# Ignore build test folders
+/packages/ui5-middleware-approuter/test/*/**
+/packages/ui5-task-pwa-enabler/templates/**
+/packages/ui5-task-zipper/test/**
+/packages/ui5-tooling-modules/test/__snap__/**
+/packages/ui5-tooling-modules/test/__fixtures__/**
+
+# Ignore files by extension
+/**/*.svg
+/**/*.png
+/**/*.md
+/**/*.gen.d.ts
+/**/*.hbs

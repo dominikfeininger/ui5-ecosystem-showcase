@@ -1,0 +1,243 @@
+specVersion: "3.0"
+metadata:
+  name: ui5.ecosystem.demo.app
+type: application
+framework:
+  name: OpenUI5
+  version: "1.145.0"
+  libraries:
+    - name: sap.m
+    - name: sap.ui.core
+    - name: sap.ui.layout
+    - name: themelib_sap_horizon
+builder:
+  settings:
+    includeDependency:
+      - ui5.ecosystem.demo.lib
+  componentPreload:
+    excludes:
+      - "ui5/ecosystem/demo/app/thirdparty/js-temporal/**"
+      - "ui5/ecosystem/demo/app/thirdparty/stomp/**"
+      - "ui5/ecosystem/demo/app/thirdparty/zod.js"
+  customTasks:
+    - name: ui5-tooling-stringreplace-task
+      afterTask: replaceVersion
+      configuration:
+        prefix: "UI5_TEST"
+        debug: true
+        files:
+          - "**/*.js"
+          - "**/*.xml"
+          - "**/*.html"
+        replace:
+          - placeholder: "${project.version}"
+            value: "1.0.0-SNAPSHOT"
+    - name: ui5-task-minify-xml
+      afterTask: replaceVersion
+      configuration:
+        minifyOptions:
+          removeComments: true
+          collapseEmptyElements: true
+          collapseWhitespaceInAttributeValues: true
+          # ... further minify-xml attributes
+        fileExtensions:
+          - "xml"
+          - "edmx"
+        excludePatterns:
+          - "lib/"
+          - "another/dir/in/webapp"
+          - "yet/another/dir"
+    - name: ui5-task-i18ncheck
+      afterTask: replaceVersion
+    - name: ui5-tooling-transpile-task
+      afterTask: replaceVersion
+      configuration: &cfgTranspile
+        debug: true
+        transformAsyncToPromise: true
+        #removeConsoleStatements: true
+        targetBrowsers: ">0.2% and not dead"
+        excludePatterns:
+          - "resources/"
+          - "lib/"
+          - "test/"
+        #babelConfig: &babelConfig
+        #  plugins:
+        #    - - "@babel/plugin-transform-computed-properties"
+        #      - loose: true
+        #    - - "@babel/plugin-transform-for-of"
+        #      - assumeArray: true
+        #    - - "babel-plugin-transform-async-to-promises"
+        #      - inlineHelpers: true
+        #  presets:
+        #    - - "@babel/preset-env"
+        #      - targets:
+        #          browsers: "last 2 versions, ie 10-11"
+    - name: ui5-tooling-modules-task
+      afterTask: ui5-tooling-transpile-task
+      configuration:
+        debug: true
+        removeScopePrefix: true
+        additionalDependencies:
+          - "xlsx"
+        includeAssets:
+          "@octokit/core":
+            - "dist-web/*.map"
+          "tui-image-editor":
+            - "dist/**/*.css"
+            - "dist/**/*.svg"
+    - name: ui5-task-zipper
+      afterTask: generateVersionInfo
+      configuration:
+        archiveName: webapp
+        includeDependencies: true
+        onlyZip: false
+        additionalFiles:
+          - "xs-app.json"
+    - name: ui5-tooling-less-task
+      afterTask: replaceVersion
+      configuration:
+        debug: true
+        lessToCompile: # (Optional by default css from manifest will be used)
+          - "css/**/style.less"
+# https://ui5.github.io/cli/pages/extensibility/CustomServerMiddleware/
+server:
+  customMiddleware:
+    - name: ui5-middleware-servestatic
+      mountPath: /docs
+      afterMiddleware: compression
+      configuration:
+        debug: true
+        rootPath: ../../docs
+    - name: ui5-middleware-servestatic
+      mountPath: "/sst/@ui5/webcomponents-icons"
+      afterMiddleware: compression
+      configuration:
+        debug: true
+        npmPackagePath: "@ui5/webcomponents-icons/dist/generated/assets"
+    - name: ui5-middleware-servestatic
+      mountPath: /sst/tui-image-editor
+      afterMiddleware: compression
+      configuration:
+        debug: true
+        npmPackagePath: "tui-image-editor/dist/svg"
+    - name: ui5-middleware-simpleproxy
+      mountPath: /versioninfo
+      afterMiddleware: compression
+      configuration:
+        debug: true
+        baseUri: "https://sdk.openui5.org/"
+        httpHeaders:
+          Any-Header: AnyHeader
+        query:
+          "sap-ui-config-showall": true
+    - name: ui5-middleware-simpleproxy
+      mountPath: /proxy
+      afterMiddleware: compression
+      configuration:
+        debug: true
+        baseUri: "https://openui5nightly.hana.ondemand.com/"
+        excludePatterns:
+          - "/local/**"
+    # PoC: reuse the same middleware at a different "mountPath"
+    - name: ui5-middleware-simpleproxy
+      mountPath: /ui5
+      afterMiddleware: compression
+      configuration:
+        debug: true
+        baseUri: "https://sdk.openui5.org/"
+        removeETag: true
+    - name: ui5-middleware-simpleproxy
+      mountPath: /odatav4
+      afterMiddleware: compression
+      configuration:
+        debug: true
+        baseUri: "https://services.odata.org/V4/(S(soab2geixerd5hqzncsoqpba))/TripPinServiceRW/"
+    - name: ui5-middleware-simpleproxy
+      mountPath: /spwsecho
+      afterMiddleware: compression
+      configuration:
+        debug: true
+        baseUri: "ws://localhost:1081/wsecho/"
+        enableWebSocket: true
+    - name: ui5-middleware-simpleproxy
+      mountPath: /version.json
+      afterMiddleware: compression
+      configuration:
+        debug: true
+        baseUri: "https://sdk.openui5.org/version.json"
+    - name: ui5-tooling-stringreplace-middleware
+      afterMiddleware: compression
+      configuration:
+        debug: true
+        files:
+          - "**/*.js"
+          - "**/*.xml"
+          - "**/*.html"
+        replace:
+          - placeholder: "${project.version}"
+            value: "1.0.0-SNAPSHOT"
+    - name: ui5-middleware-approuter
+      afterMiddleware: compression
+      configuration:
+        debug: true
+        port: 1091
+        xsappJson: "xs-app.json"
+        destinations:
+          # check that the destination name (here: "backend") matches your router in xssppJson
+          - name: "backend"
+            url: "https://services.odata.org/V4/(S(fdng4tbvlxgzpdtpfap2rqss))/TripPinServiceRW/"
+          - name: "odatav2"
+            url: "https://services.odata.org/V2/Northwind/Northwind.svc/"
+          - name: "todos"
+            url: "https://jsonplaceholder.typicode.com/todos/"
+          - name: "cfwsecho"
+            url: "ws://localhost:1081/wsecho/"
+        extensions:
+          - module: ./approuter-local-ext.js
+            parameters:
+              authenticated: true
+              userId: mustermann@ui5.com
+              userType: EMPLOYEE # EMPLOYEE|CONSUMER
+              #maintenanceText: "The shop is currently in maintenance mode!"
+    #- name: ui5-middleware-iasync
+    #  beforeMiddleware: serveResources
+    #  configuration:
+    #    https: false
+    #    debug: false
+    #    logConnections: true
+    #    port: 4711
+    - name: ui5-middleware-index
+      afterMiddleware: compression
+      configuration:
+        debug: true
+    - name: ui5-middleware-webjars
+      afterMiddleware: compression
+      configuration:
+        debug: true
+        jarRootPath: "META-INF/"
+    - name: ui5-tooling-transpile-middleware
+      afterMiddleware: ui5-tooling-stringreplace-middleware
+      configuration:
+        <<: *cfgTranspile
+    - name: ui5-tooling-modules-middleware
+      afterMiddleware: ui5-tooling-transpile-middleware
+      configuration:
+        debug: true
+        #sourcemap: true
+        additionalDependencies:
+          - "xlsx"
+        #skipCache: true
+    - name: ui5-tooling-less-middleware
+      beforeMiddleware: serveResources
+      configuration:
+        debug: true
+    - name: ui5-middleware-websocket-echo
+      afterMiddleware: compression
+      mountPath: /wsecho/
+    # Last middleware (for the same afterMiddleware) comes first!
+    - name: ui5-middleware-livereload
+      afterMiddleware: compression
+      configuration:
+        debug: true
+        exclusions:
+          - "lib/nolivereload/"

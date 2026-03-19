@@ -13,20 +13,58 @@
             "sourceMaps": true,
             "disableNetworkCache": true,
             "showAsyncStacks": true,
-            "preLaunchTask": "yarn-debug",
-            "postDebugTask": "postdebug-kill"
+            "preLaunchTask": "pnpm-debug-start",
+            "postDebugTask": "pnpm-debug-stop"
         },
         {
             "type": "node",
             "request": "launch",
             "name": "Debug Middlewares",
-            "runtimeExecutable": "npm",
-            "runtimeArgs": [
-                "run-script",
-                "debug"
-            ],
+            "runtimeExecutable": "pnpm",
+            "args": [ "dev" ],
             "cwd": "${workspaceFolder}/packages/ui5-app",
-            "port": 9229
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug TS Middlewares",
+            "runtimeExecutable": "pnpm",
+            "args": [ "start" ],
+            "cwd": "${workspaceFolder}/packages/ui5-app-ts",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug Tasks",
+            "runtimeExecutable": "pnpm",
+            "args": [ "build" ],
+            "cwd": "${workspaceFolder}/packages/ui5-app",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug TS Tasks",
+            "runtimeExecutable": "pnpm",
+            "args": [ "build" ],
+            "cwd": "${workspaceFolder}/packages/ui5-app-ts",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        },
+        {
+          "type": "node",
+          "request": "launch",
+          "name": "Debug App Router Middleware Test",
+          "runtimeExecutable": "pnpm",
+          "args": [ "test:ui5-middleware-approuter" ],
+          "cwd": "${workspaceFolder}",
+          "console": "integratedTerminal",
+          "internalConsoleOptions": "neverOpen"
         }
     ]
 }

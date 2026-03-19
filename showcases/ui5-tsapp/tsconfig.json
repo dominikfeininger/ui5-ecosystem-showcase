@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "es2023",
+    "module": "es2022",
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "allowJs": true,
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "rootDir": "./webapp",
+    "sourceMap": true,
+    "paths": {
+      "ui5/ecosystem/demo/tsapp/*": ["./webapp/*"],
+      "unit/*": ["./webapp/test/unit/*"],
+      "integration/*": ["./webapp/test/integration/*"]
+    },
+    "types": ["@types/openui5", "@types/qunit", "ui5-tslib", "ui5-tsmodule"]
+  },
+  "include": ["./webapp/**/*.ts"]
+}

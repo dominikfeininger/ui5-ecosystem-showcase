@@ -1,19 +1,20 @@
 {
   "name": "ui5-middleware-servestatic",
-  "version": "0.3.3",
+  "version": "3.5.0",
   "description": "UI5 simple proxy middleware",
   "author": "Volker Buzek, Peter Muessig",
   "license": "Apache-2.0",
+  "homepage": "https://github.com/ui5-community/ui5-ecosystem-showcase/tree/main/packages/ui5-middleware-servestatic#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/petermuessig/ui5-ecosystem-showcase.git"
+    "url": "https://github.com/ui5-community/ui5-ecosystem-showcase.git",
+    "directory": "packages/ui5-middleware-servestatic"
+  },
+  "scripts": {
+    "lint": "eslint lib"
   },
   "dependencies": {
-    "@ui5/logger": "^2.0.0",
-    "dotenv": "^8.2.0",
-    "serve-static": "^1.14.1"
-  },
-  "ui5": {
-    "dependencies": []
+    "dotenv": "^17.3.1",
+    "serve-static": "^2.2.1"
   }
 }

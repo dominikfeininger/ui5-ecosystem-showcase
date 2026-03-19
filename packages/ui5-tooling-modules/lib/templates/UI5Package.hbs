@@ -1,0 +1,56 @@
+/*!
+ * ${copyright}
+ */
+sap.ui.define([
+  "{{webcPackage}}",{{#if isBaseLib}}
+  "sap/ui/core/webc/WebComponent",{{/if}}{{#if hasEnums}}
+  "sap/ui/base/DataType",{{/if}}{{#each dependencies}}
+  "{{this}}",{{/each}}
+], function(
+  WebCPackage,{{#if isBaseLib}}
+  WebComponent,{{/if}}{{#if hasEnums}}
+  DataType,{{/if}}
+) {
+  "use strict";
+  {{#if hasEnums}}
+  const { registerEnum } = DataType;
+  {{/if}}
+
+	// re-export package object
+  const pkg = Object.assign({}, WebCPackage);
+
+	// export the UI5 metadata along with the package
+	pkg["_ui5metadata"] = {{{metadata}}};
+
+	// Enums
+  {{#each enums}}
+  {{{this._jsDoc}}}
+  pkg["{{this.name}}"] = {
+  {{#each this.values}}
+    {{this._jsDoc}}
+    "{{this.name}}": "{{this.name}}",
+  {{/each}}
+  };
+  registerEnum("{{this._ui5QualifiedName}}", pkg["{{this.name}}"]);
+  {{/each}}
+
+  // Interfaces
+  {{#each interfaces}}
+  {{{this._jsDoc}}}
+  {{/each}}
+
+  {{#if isBaseLib}}
+  // ====================
+  // MONKEY PATCHES BEGIN
+  // ====================
+{{{monkeyPatches}}}
+  // ====================
+  // MONKEY PATCHES END
+  // ====================
+  {{/if}}
+
+	// marker to threat this as an ES module to support named exports
+	pkg.__esModule = true;
+
+  return pkg;
+});

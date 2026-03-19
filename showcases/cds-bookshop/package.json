@@ -1,0 +1,65 @@
+{
+  "name": "cds-bookshop",
+  "version": "0.8.0",
+  "description": "CAP bookshop app to showcase cds-plugin-ui5",
+  "private": true,
+  "author": "Nicolai Schoenteich, Peter Muessig",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ui5-community/ui5-ecosystem-showcase.git",
+    "directory": "showcases/cds-bookshop"
+  },
+  "files": [
+    "app",
+    "srv",
+    "db"
+  ],
+  "dependencies": {
+    "@cap-js/sqlite": "^2",
+    "@sap/cds": "^9.4",
+    "express": "^5",
+    "passport": "^0.7.0"
+  },
+  "devDependencies": {
+    "@sap/eslint-plugin-cds": "^4",
+    "cds-bookshop-ui5-viewer": "workspace:^",
+    "cds-plugin-ui5": "workspace:^",
+    "eslint": "^9",
+    "globals": "^17.4.0",
+    "rimraf": "^6.1.3",
+    "ui5-tsapp-simple": "workspace:^"
+  },
+  "scripts": {
+    "clean": "rimraf gen",
+    "build": "cds build",
+    "lint": "eslint .",
+    "watch": "cds watch",
+    "watch:lazy": "CDS_PLUGIN_UI5_LAZY_LOADING=true cds w",
+    "start": "cds-serve",
+    "start:dist": "CDS_PLUGIN_UI5_MODULES=\"{ \"ui5-bookshop\": { \"configFile\": \"ui5-dist.yaml\" } }\" cds-serve"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sql",
+        "model": [
+          "db",
+          "srv"
+        ]
+      }
+    },
+    "cds-plugin-ui5": {
+      "modules": {
+        "ui5-bookshop": {
+          "configFile": "ui5.yaml",
+          "_workspaceConfigFile": "ui5-workspace-test.yaml"
+        },
+        "cds-bookshop-ui5-viewer": {
+          "configFile": "ui5.yaml",
+          "_workspaceConfigFile": "ui5-workspace-test.yaml"
+        }
+      }
+    }
+  }
+}

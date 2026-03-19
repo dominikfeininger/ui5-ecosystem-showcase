@@ -1,6 +1,15 @@
 # UI5 serve static middleware
 
+> :wave: This is an **open‑source, community‑driven project**, developed and actively monitored by members of the UI5 community. You are welcome to use it, report issues, contribute enhancements, and support others in the community.
+
 Middleware for [ui5-server](https://github.com/SAP/ui5-server), enabling to serve static resources.
+
+## Prerequisites
+
+- Requires at least [`@ui5/cli@3.0.0`](https://ui5.github.io/cli/v3/pages/CLI/) (to support [`specVersion: "3.0"`](https://ui5.github.io/cli/pages/Configuration/#specification-version-30))
+
+> :warning: **UI5 CLI Compatibility**
+> All releases of this UI5 CLI extension using the major version `3` require UI5 CLI V3. Any previous releases below major version `3` (if available) also support older versions of the UI5 CLI. But the usage of the latest UI5 CLI is strongly recommended!
 
 ## Install
 
@@ -10,8 +19,16 @@ npm install ui5-middleware-servestatic --save-dev
 
 ## Configuration options (in `$yourapp/ui5.yaml`)
 
+- debug: `boolean`
+  debug logging
 - rootPath: `string`
-  the root path to the static resources on your system
+  the root path to the static resources on your system (absolute or relative path to app)
+- npmPackagePath: `string`
+  the npm package path pointing to the root path for the static resources (e.g. "`@scope/packageName/path`", "`packageName/path`", "`packageName`")
+
+> Hints:
+> * If a `rootPath` is given, the `npmPackagePath` will be ignored
+> * Values for `rootPath` or `npmPackagePath` can be also provided by environment variables by using the prefix `env.` e.g. `rootPath: env.MY_ENV_VAR`
 
 ## Usage
 
@@ -22,17 +39,8 @@ npm install ui5-middleware-servestatic --save-dev
     // ...
     "ui5-middleware-servestatic": "*"
     // ...
-},
-"ui5": {
-  "dependencies": [
-    // ...
-    "ui5-middleware-servestatic",
-    // ...
-  ]
 }
 ```
-
-> As the devDependencies are not recognized by the UI5 tooling, they need to be listed in the `ui5 > dependencies` array. In addition, once using the `ui5 > dependencies` array you need to list all UI5 tooling relevant dependencies.
 
 2. configure it in `$yourapp/ui5.yaml`:  
 
@@ -47,6 +55,7 @@ server:
 ```
 
 Example which uses Environment Variables from `.env` file
+
 ```yaml
 server:
   customMiddleware:
@@ -56,6 +65,7 @@ server:
     configuration:
       rootPath: ${env.SAPUI5_SDK_1_60__RESOURCES}
 ```
+
 ## How it works
 
 The middleware integrates [serve-static](https://github.com/expressjs/serve-static) to serve static resources from a specified `rootPath`.

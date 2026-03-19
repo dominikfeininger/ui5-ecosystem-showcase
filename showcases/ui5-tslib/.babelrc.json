@@ -1,0 +1,12 @@
+{
+  "presets": ["@babel/preset-env", "transform-ui5", "@babel/preset-typescript"],
+  "plugins": [
+    [
+      "transform-async-to-promises",
+      {
+        "inlineHelpers": true
+      }
+    ]
+  ],
+  "sourceMaps": true
+}

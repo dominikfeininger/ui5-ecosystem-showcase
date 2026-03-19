@@ -1,0 +1,40 @@
+{
+  "name": "ui5-middleware-onelogin",
+  "version": "3.9.0",
+  "description": "A universal login provider for UI5 CLI",
+  "author": "Jakob Kjaer",
+  "main": "lib/index.js",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/ui5-community/ui5-ecosystem-showcase/tree/main/packages/ui5-middleware-onelogin#readme",
+  "repository": {
+    "url": "https://github.com/ui5-community/ui5-ecosystem-showcase.git",
+    "directory": "packages/ui5-middleware-onelogin"
+  },
+  "keywords": [
+    "UI5-tooling",
+    "SAPUI5",
+    "OPENUI5",
+    "Fiori"
+  ],
+  "scripts": {
+    "lint": "eslint src",
+    "test:onelogin": "npx playwright test"
+  },
+  "dependencies": {
+    "async-prompt": "^1.0.1",
+    "cookie": "^1.1.1",
+    "dotenv": "^17.3.1",
+    "playwright-chromium": "^1.58.2",
+    "playwright-core": "^1.58.2",
+    "sleep-promise": "^9.1.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@types/cookie": "^1.0.0",
+    "@types/express": "^5",
+    "@types/prompt": "^1.1.9",
+    "eslint": "^10.0.3",
+    "globals": "^17.4.0",
+    "typescript-eslint": "^8.57.0"
+  }
+}
